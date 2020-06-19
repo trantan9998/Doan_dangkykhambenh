@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="alert alert-success">
+        <strong>ĐĂNG KÝ THÀNH CÔNG!</strong> TÀI KHOẢN CỦA BẠN ĐÃ ĐƯỢC KÍCH HOẠT THÀNH CÔNG, CLICK VÀO ĐÂY: @Html.ActionLink("login", "login", "Taikhoan_user")
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @ViewBag.Message
+    </div>
+}

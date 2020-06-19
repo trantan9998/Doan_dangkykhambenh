@@ -1,0 +1,78 @@
+﻿@model IEnumerable<doan_qldkonline.Models.login_admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!------ Include the above in your HEAD tag ---------->
+<body>
+
+    @using (@Html.BeginForm())
+    {
+        <div class="container h-100 ">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="card">
+                    <h3 class="card-header text-center text-info">ADMIN</h3>
+                    <div class="card-body">
+                        @*<div class="alert alert-danger" role="alert">
+                                thông báo lỗi
+                            </div>*@
+                        <form data-toggle="validator" role="form" method="post" action="#">
+                            <input type="hidden" class="hide" id="csrf_token" name="csrf_token" value="C8nPqbqTxzcML7Hw0jLRu41ry5b9a10a0e2bc2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Tên tài khoản:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" name="txttaikhoan" value="" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">
+                                        </div>
+                                        <div class="help-block with-errors text-danger"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Mật khẩu:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="password" name="txtmatkhau" class="form-control" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">
+                                        </div>
+                                        <div class="help-block with-errors text-danger"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox_remember" type="checkbox" name="remember">
+                                    <label for="checkbox_remember"> Recordar</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="hidden" name="redirect" value="">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="ĐĂNG NHẬP" name="submit">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="clear"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <link href="~/Areas/ql_website/css/login.css" rel="stylesheet" />
+
+</body>
+

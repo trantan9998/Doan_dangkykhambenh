@@ -1,0 +1,82 @@
+﻿@using doan_qldkonline.Models;
+@{
+    ViewBag.Title = "khoangoai";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+    QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+    var khoangoai = (from a in db.bacsis where a.id_khoa == 2 select a).ToList();
+}
+
+@model List<bacsi>
+<div>
+        <h1>KHOA NGOẠI</h1>
+        <div style="font-size:18px;">
+            <p>Là chuyên khoa mũi nhọn của Bệnh viện ABC. Khoa Ngoại có đầy đủ năng lực cả về trang thiết bị kĩ thuật để thực hiện mọi kỹ thuật ngoại khoa hiện đại, đáp ứng nhu cầu khám chữa bệnh đa dạng của nhân dân.</p>
+           <img src="https://cdn.bookingcare.vn/fr/w800/2019/05/21/164731bs-than-kinh.jpg" width="500px;">
+            <h3><strong>ĐỘI NGŨ BÁC SĨ&nbsp;</strong></h3>
+            <p>Khoa Ngoại – Bệnh viện ABC quy tụ đội ngũ Giáo sư, Tiến sĩ đầu ngành, được đào tạo bài bản từ các trường Đại học y khoa danh tiếng trong nước cũng như quốc tế, có kinh nghiệm làm việc ở các bệnh viện tuyến TW như Hữu nghị Việt Đức; Bạch Mai; Viện K; Viện 108…</p>
+
+            <h3><strong>DỊCH VỤ CHUYÊN KHOA</strong></h3>
+
+            <p>Là một chuyên khoa nòng cốt, có vị trí quan trọng trong hệ thống khoa phòng của bệnh viện ABC, Khoa Ngoại mang đến cho khách hàng những dịch vụ y tế chất lượng cao.</p>
+
+            <h3><b>QUY TRÌNH THĂM KHÁM, ĐIỀU TRỊ&nbsp;</b></h3>
+            🔹 Hệ thống phòng khám khoa học, linh động, liên kết với nhau ngay tại tầng B1, tầng 1 và tầng 2. Đặc biệt hệ thống thang cuốn với thiết kế kiến trúc mở giúp bao quát được toàn bộ quá trình thăm khám. Không gian ngồi chờ khách hàng được thiết kế theo không gian khách sạn. Quy trình sát khuẩn nghiêm ngặt đảm bảo an toàn.
+
+            <br />
+            🔹 Chăm sóc khách hàng trong toàn bộ thời gian khám: Lễ tân bệnh viện sẽ có mặt ở mọi nơi giúp hướng dẫn bạn thăm khám thuận tiện.
+
+            <br />
+            🔹 Đội ngũ bác sĩ, chuyên gia chuyên môn cao, giàu kinh nghiệm; đều là trưởng, phó khoa của bệnh viện trực tiếp thăm khám. Được chọn bác sĩ theo yêu cầu. Đặt lịch hẹn thăm khám và phẫu thuật với bác sĩ Ngoại khoa giỏi của Bệnh viện Phương Đông hoặc các bác sĩ từ các bệnh viện Trung ương.
+
+            <br />
+            🔹 Nhân viên y tế chuyên nghiệp, thân thiện; giúp quá trình thăm khám, lấy máu xét nghiệm, siêu âm, chụp chiếu… trở nên nhẹ nhàng.
+
+            <br />
+            🔹Hệ thống trang thiết bị hiện đại, nhập khẩu đồng bộ từ châu Âu; cho kết quả nhanh chóng, chính xác và giúp phát hiện các bệnh sớm nhất.
+
+            <br />
+            🔹 Quy trình thăm khám khoa học: giúp khách hàng tiết kiệm thời gian, công sức.
+
+            <br />
+            🔹Chính sách thông tuyến bảo hiểm hạng 3. Áp dụng bảo hiểm bảo lãnh: mang lại quyền lợi tối đa cho khách hàng.
+        </div>
+        
+        
+
+      
+ </div>
+
+<hr>
+<h2 style="text-align:center;color:forestgreen;margin-top:1px;">ĐỘI NGŨ BÁC SĨ KHOA NGOẠI</h2>
+    <hr />
+    <div class="row text-center @*slideanim*@">
+       
+            @foreach (var item in khoangoai)
+            {
+                <div class="col-sm-3">
+                    <div class="thumbnail" style="background-color:azure;">
+                        <p class="card">
+                            @*<img src="@Url.Content(item.hinhanh)"><br />*@
+                            <img src="~/hinh_tintuc/background-dep-ppt_110341618.jpg" />
+                        </p>
+                        <p class="card-text">
+                            BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.hovaten)</b><br />
+                            @Html.DisplayFor(modelItem => item.namsinh)<br />
+                            @Html.DisplayFor(modelItem => item.chucvu)
+
+                        </p>
+
+
+                        <div style="background-color:forestgreen; height:40px;padding:10px;">
+                            <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+        
+    </div>
+

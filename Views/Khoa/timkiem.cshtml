@@ -1,0 +1,38 @@
+﻿@*@using doan_qldkonline.Models;*@
+@model IEnumerable<doan_qldkonline.Models.bacsi>
+@{
+                /**/
+
+                ViewBag.Title = "timkiem";
+                Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+
+<h3>BÁC SỸ CHUYÊN MÔN</h3>
+<hr />
+
+@if (Model.Count() == 0)
+{
+    <center>
+        <h1 style="color:red">Rất tiếc không tìm thấy Bác sỹ phù hợp 😥</h1>
+    </center>
+}
+else
+{
+
+    foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="thumbnail" style="background-color:lavender">
+                <img src="@Url.Content(item.hovaten)"><br />
+
+                <h5 class="card-title">
+                    @Html.DisplayFor(modelItem => item.khoa)
+                </h5>
+
+                <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})">XEM CHI TIẾT</a>
+
+
+            </div>
+        </div>
+    }
+}

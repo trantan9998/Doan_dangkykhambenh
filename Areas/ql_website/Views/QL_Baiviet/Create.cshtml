@@ -1,0 +1,76 @@
+﻿@model doan_qldkonline.Models.tintuc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h2>THÊM</h2>
+
+@using (Html.BeginForm("Create", "QL_Baiviet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>tintuc</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.tenbaiviet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" required @Html.EditorFor(model => model.tenbaiviet, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.tenbaiviet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ngaydang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" required @Html.EditorFor(model => model.ngaydang, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.ngaydang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hinhanh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required />
+                @*@Html.EditorFor(model => model.hinhanh, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.hinhanh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.noidung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.noidung, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.noidung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SEOTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" required @Html.EditorFor(model => model.SEOTitle, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.SEOTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SEOdescriptison, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" required @Html.EditorFor(model => model.SEOdescriptison, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.SEOdescriptison, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

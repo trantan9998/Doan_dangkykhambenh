@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "khoa";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+
+<h2 style="text-align:center;color:forestgreen;margin-top:1px;">Chuyên Khoa</h2>
+<center> <span>Chúng tôi có đội ngũ bác sĩ nhiều năm kinh nghiệm và những thiết bị tân tiến phục vụ cho khám chữa bệnh</span></center>
+<hr />
+<div class="row text-center @*slideanim*@">
+
+    <div class="col-sm-4">
+        <div class="thumbnail" style="background-color:lavender; border:dotted;border-radius:10px;">
+            <img class="card-img-top img-fluid" src="https://baosonhospital.com/Uploads/images/IMG_8077.JPG" alt="img">
+            <h5 class="card-title"></h5>
+            <b style="color:brown">KHOA NỘI</b> 
+            <p class="card-text">Đội ngũ bác kỹ khoa nội</p>
+            <a href="@Url.Action("khoanoi","Khoa")" style="text-decoration:none" ><b>XEM THÔNG TIN > </b></a>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="thumbnail" style="background-color:lavender;border:dotted;border-radius:10px;">
+            <img class="card-img-top img-fluid" src="https://abcalliance.org/wp-content/uploads/2019/01/ngoai-khoa-la-gi-628x275.jpg" alt="img">
+
+            <h5 class="card-title"></h5>
+            <b style="color:brown">KHOA NGOẠI</b>
+            <p class="card-text">Đội ngũ bác kỹ khoa ngoại</p>
+
+
+            <a href="@Url.Action("khoangoai","Khoa")" style="text-decoration:none"><b>XEM THÔNG TIN > </b></a>
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,352 @@
+﻿/*! CSS Used from: http://superscooper.eaksquad.tech/assets/public/green/css/styles-merged.css */
+section {
+    display: block;
+}
+
+@media print {
+    *, :after, :before {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: 0 0 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    h2, p {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2 {
+        page-break-after: avoid;
+    }
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width:768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.container:after, .container:before {
+    display: table;
+    content: " ";
+}
+
+.container:after {
+    clear: both;
+}
+
+.probootstrap-animated {
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+/*! CSS Used from: http://superscooper.eaksquad.tech/assets/public/green/css/style.min.css */
+h2 {
+    font-family: "Open Sans",sans-serif;
+}
+
+::selection {
+    background: #000;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: #000;
+    color: #fff;
+}
+
+h2 {
+    margin: 1.414em 0 .5em;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000;
+}
+
+h2 {
+    font-size: 2.827em;
+}
+
+@media screen and (max-width:768px) {
+    h2 {
+        font-size: 2.1em;
+    }
+}
+
+p {
+    margin-bottom: 1.3em;
+}
+
+.probootstrap-section {
+    padding: 4em 0;
+    position: relative;
+    z-index: 2;
+}
+
+@media screen and (max-width:768px) {
+    .probootstrap-section {
+        padding: 3em 0;
+    }
+}
+
+.probootstrap-section.probootstrap-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 8em 0;
+}
+
+    .probootstrap-section.probootstrap-bg:before {
+        position: absolute;
+        content: "";
+        background: rgba(0,0,0,.4);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .probootstrap-section.probootstrap-bg .heading {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #fff;
+        font-family: "Just Another Hand",cursive;
+        text-transform: uppercase;
+        font-size: 80px;
+        line-height: 100px;
+    }
+
+    .probootstrap-section.probootstrap-bg .sub-heading {
+        font-size: 20px;
+        line-height: 1.5;
+        color: rgba(255,255,255,.7);
+    }
+
+    .probootstrap-section.probootstrap-bg .container {
+        position: relative;
+        z-index: 2;
+    }
+
+.probootstrap-animate {
+    opacity: 0;
+    visibility: hidden;
+}
+/*! CSS Used keyframes */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        -ms-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+        -ms-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        -ms-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+        -ms-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+/*! CSS Used fontfaces */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OX-hpOqc.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OVuhpOqc.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXuhpOqc.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUehpOqc.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXehpOqc.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXOhpOqc.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWJ0bbck.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFUZ0bbck.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWZ0bbck.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVp0bbck.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWp0bbck.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Just Another Hand';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Just Another Hand Regular'), local('JustAnotherHand-Regular'), url(https://fonts.gstatic.com/s/justanotherhand/v10/845CNN4-AJyIGvIou-6yJKyptyOpOfr4DGg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

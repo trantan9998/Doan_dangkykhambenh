@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_DKKHAMBENH_ONLINEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bacsi">
+    <Key>
+      <PropertyRef Name="id_bacsi" />
+    </Key>
+    <Property Name="id_bacsi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hovaten" Type="nvarchar" MaxLength="50" />
+    <Property Name="chucvu" Type="nvarchar" MaxLength="50" />
+    <Property Name="bophan" Type="nvarchar" MaxLength="50" />
+    <Property Name="capbac" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_hoso" Type="int" />
+  </EntityType>
+  <EntityType Name="chitietbacsi">
+    <Key>
+      <PropertyRef Name="id_thongtinbs" />
+    </Key>
+    <Property Name="id_thongtinbs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sdt" Type="int" />
+    <Property Name="namsinh" Type="int" />
+    <Property Name="cmnd" Type="int" />
+    <Property Name="quatrinhdaotao" Type="nvarchar" MaxLength="254" />
+    <Property Name="quatrinhcongtac" Type="nvarchar" MaxLength="254" />
+    <Property Name="kinhnghiem" Type="nvarchar" MaxLength="254" />
+    <Property Name="id_khoa" Type="int" />
+    <Property Name="id_bacsi" Type="int" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="datlichkham">
+    <Key>
+      <PropertyRef Name="id_benhnhan" />
+    </Key>
+    <Property Name="id_benhnhan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysinh" Type="date" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="5" />
+    <Property Name="sodienthoai" Type="int" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="motatrieuchung" Type="nvarchar" MaxLength="254" />
+    <Property Name="ngaykham" Type="date" />
+    <Property Name="id_hoso" Type="int" />
+    <Property Name="hinhdaidien" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Hosobenhnhan">
+    <Key>
+      <PropertyRef Name="id_hoso" />
+    </Key>
+    <Property Name="id_hoso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cmnd" Type="nvarchar" MaxLength="30" />
+    <Property Name="dantoc" Type="nvarchar" MaxLength="30" />
+    <Property Name="nghenghiep" Type="nvarchar" MaxLength="30" />
+    <Property Name="chohientai" Type="nvarchar" MaxLength="100" />
+    <Property Name="cannang" Type="int" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="30" />
+    <Property Name="chieucao" Type="int" />
+    <Property Name="tieusu" Type="nvarchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ma_user" />
+    </Key>
+    <Property Name="ma_user" Type="int" Nullable="false" />
+    <Property Name="name_user" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tintuc">
+    <Key>
+      <PropertyRef Name="id_tintuc" />
+    </Key>
+    <Property Name="id_tintuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenbaiviet" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaydang" Type="datetime" />
+    <Property Name="hinhanh" Type="nvarchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="tintuc_chitiet">
+    <Key>
+      <PropertyRef Name="id_tintuc_chitiet" />
+    </Key>
+    <Property Name="id_tintuc_chitiet" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="noidung" Type="nvarchar(max)" />
+    <Property Name="mota" Type="nvarchar(max)" />
+    <Property Name="id_tintuc" Type="int" />
+  </EntityType>
+  <Association Name="FK_bacsi_Hosobenhnhan">
+    <End Role="Hosobenhnhan" Type="Self.Hosobenhnhan" Multiplicity="0..1" />
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hosobenhnhan">
+        <PropertyRef Name="id_hoso" />
+      </Principal>
+      <Dependent Role="bacsi">
+        <PropertyRef Name="id_hoso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chitietbacsi_bacsi">
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="0..1" />
+    <End Role="chitietbacsi" Type="Self.chitietbacsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Principal>
+      <Dependent Role="chitietbacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_datlichkham_Hosobenhnhan">
+    <End Role="Hosobenhnhan" Type="Self.Hosobenhnhan" Multiplicity="0..1" />
+    <End Role="datlichkham" Type="Self.datlichkham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hosobenhnhan">
+        <PropertyRef Name="id_hoso" />
+      </Principal>
+      <Dependent Role="datlichkham">
+        <PropertyRef Name="id_hoso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tintuc_chitiet_tintuc">
+    <End Role="tintuc" Type="Self.tintuc" Multiplicity="0..1" />
+    <End Role="tintuc_chitiet" Type="Self.tintuc_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tintuc">
+        <PropertyRef Name="id_tintuc" />
+      </Principal>
+      <Dependent Role="tintuc_chitiet">
+        <PropertyRef Name="id_tintuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
+    <EntitySet Name="bacsi" EntityType="Self.bacsi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chitietbacsi" EntityType="Self.chitietbacsi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="datlichkham" EntityType="Self.datlichkham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hosobenhnhan" EntityType="Self.Hosobenhnhan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tintuc" EntityType="Self.tintuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tintuc_chitiet" EntityType="Self.tintuc_chitiet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_bacsi_Hosobenhnhan" Association="Self.FK_bacsi_Hosobenhnhan">
+      <End Role="Hosobenhnhan" EntitySet="Hosobenhnhan" />
+      <End Role="bacsi" EntitySet="bacsi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chitietbacsi_bacsi" Association="Self.FK_chitietbacsi_bacsi">
+      <End Role="bacsi" EntitySet="bacsi" />
+      <End Role="chitietbacsi" EntitySet="chitietbacsi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datlichkham_Hosobenhnhan" Association="Self.FK_datlichkham_Hosobenhnhan">
+      <End Role="Hosobenhnhan" EntitySet="Hosobenhnhan" />
+      <End Role="datlichkham" EntitySet="datlichkham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tintuc_chitiet_tintuc" Association="Self.FK_tintuc_chitiet_tintuc">
+      <End Role="tintuc" EntitySet="tintuc" />
+      <End Role="tintuc_chitiet" EntitySet="tintuc_chitiet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_DKKHAMBENH_ONLINEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bacsi">
+    <Key>
+      <PropertyRef Name="id_bacsi" />
+    </Key>
+    <Property Name="id_bacsi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hovaten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="chucvu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bophan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="capbac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_hoso" Type="Int32" />
+    <NavigationProperty Name="Hosobenhnhan" Relationship="Self.FK_bacsi_Hosobenhnhan" FromRole="bacsi" ToRole="Hosobenhnhan" />
+    <NavigationProperty Name="chitietbacsis" Relationship="Self.FK_chitietbacsi_bacsi" FromRole="bacsi" ToRole="chitietbacsi" />
+    <Property Name="id_thongtinbs" Type="Int32" />
+  </EntityType>
+  <EntityType Name="chitietbacsi">
+    <Key>
+      <PropertyRef Name="id_thongtinbs" />
+    </Key>
+    <Property Name="id_thongtinbs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sdt" Type="Int32" />
+    <Property Name="namsinh" Type="Int32" />
+    <Property Name="cmnd" Type="Int32" />
+    <Property Name="quatrinhdaotao" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="quatrinhcongtac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="kinhnghiem" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="id_khoa" Type="Int32" />
+    <Property Name="id_bacsi" Type="Int32" />
+    <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bacsi" Relationship="Self.FK_chitietbacsi_bacsi" FromRole="chitietbacsi" ToRole="bacsi" />
+  </EntityType>
+  <EntityType Name="datlichkham">
+    <Key>
+      <PropertyRef Name="id_benhnhan" />
+    </Key>
+    <Property Name="id_benhnhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysinh" Type="DateTime" Precision="0" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="sodienthoai" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="ngaykham" Type="DateTime" Precision="0" />
+    <Property Name="id_hoso" Type="Int32" />
+    <Property Name="hinhdaidien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hosobenhnhan" Relationship="Self.FK_datlichkham_Hosobenhnhan" FromRole="datlichkham" ToRole="Hosobenhnhan" />
+  </EntityType>
+  <EntityType Name="Hosobenhnhan">
+    <Key>
+      <PropertyRef Name="id_hoso" />
+    </Key>
+    <Property Name="id_hoso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cmnd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="dantoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nghenghiep" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="chohientai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cannang" Type="Int32" />
+    <Property Name="ghichu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="chieucao" Type="Int32" />
+    <Property Name="tieusu" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bacsis" Relationship="Self.FK_bacsi_Hosobenhnhan" FromRole="Hosobenhnhan" ToRole="bacsi" />
+    <NavigationProperty Name="datlichkhams" Relationship="Self.FK_datlichkham_Hosobenhnhan" FromRole="Hosobenhnhan" ToRole="datlichkham" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ma_user" />
+    </Key>
+    <Property Name="ma_user" Type="Int32" Nullable="false" />
+    <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tintuc">
+    <Key>
+      <PropertyRef Name="id_tintuc" />
+    </Key>
+    <Property Name="id_tintuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenbaiviet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaydang" Type="DateTime" Precision="3" />
+    <Property Name="hinhanh" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tintuc_chitiet" Relationship="Self.FK_tintuc_chitiet_tintuc" FromRole="tintuc" ToRole="tintuc_chitiet" />
+  </EntityType>
+  <EntityType Name="tintuc_chitiet">
+    <Key>
+      <PropertyRef Name="id_tintuc_chitiet" />
+    </Key>
+    <Property Name="id_tintuc_chitiet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_tintuc" Type="Int32" />
+    <NavigationProperty Name="tintuc" Relationship="Self.FK_tintuc_chitiet_tintuc" FromRole="tintuc_chitiet" ToRole="tintuc" />
+  </EntityType>
+  <Association Name="FK_bacsi_Hosobenhnhan">
+    <End Role="Hosobenhnhan" Type="Self.Hosobenhnhan" Multiplicity="0..1" />
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hosobenhnhan">
+        <PropertyRef Name="id_hoso" />
+      </Principal>
+      <Dependent Role="bacsi">
+        <PropertyRef Name="id_hoso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chitietbacsi_bacsi">
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="0..1" />
+    <End Role="chitietbacsi" Type="Self.chitietbacsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Principal>
+      <Dependent Role="chitietbacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_datlichkham_Hosobenhnhan">
+    <End Role="Hosobenhnhan" Type="Self.Hosobenhnhan" Multiplicity="0..1" />
+    <End Role="datlichkham" Type="Self.datlichkham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hosobenhnhan">
+        <PropertyRef Name="id_hoso" />
+      </Principal>
+      <Dependent Role="datlichkham">
+        <PropertyRef Name="id_hoso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tintuc_chitiet_tintuc">
+    <End Role="tintuc" Type="Self.tintuc" Multiplicity="0..1" />
+    <End Role="tintuc_chitiet" Type="Self.tintuc_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tintuc">
+        <PropertyRef Name="id_tintuc" />
+      </Principal>
+      <Dependent Role="tintuc_chitiet">
+        <PropertyRef Name="id_tintuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bacsis" EntityType="Self.bacsi" />
+    <EntitySet Name="chitietbacsis" EntityType="Self.chitietbacsi" />
+    <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
+    <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
+    <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tintucs" EntityType="Self.tintuc" />
+    <EntitySet Name="tintuc_chitiet" EntityType="Self.tintuc_chitiet" />
+    <AssociationSet Name="FK_bacsi_Hosobenhnhan" Association="Self.FK_bacsi_Hosobenhnhan">
+      <End Role="Hosobenhnhan" EntitySet="Hosobenhnhans" />
+      <End Role="bacsi" EntitySet="bacsis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chitietbacsi_bacsi" Association="Self.FK_chitietbacsi_bacsi">
+      <End Role="bacsi" EntitySet="bacsis" />
+      <End Role="chitietbacsi" EntitySet="chitietbacsis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datlichkham_Hosobenhnhan" Association="Self.FK_datlichkham_Hosobenhnhan">
+      <End Role="Hosobenhnhan" EntitySet="Hosobenhnhans" />
+      <End Role="datlichkham" EntitySet="datlichkhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tintuc_chitiet_tintuc" Association="Self.FK_tintuc_chitiet_tintuc">
+      <End Role="tintuc" EntitySet="tintucs" />
+      <End Role="tintuc_chitiet" EntitySet="tintuc_chitiet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

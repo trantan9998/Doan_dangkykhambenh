@@ -1,0 +1,380 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D020F613-EDF7-4519-A04B-735ED7B425D0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>doan_qldkonline</RootNamespace>
+    <AssemblyName>doan_qldkonline</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevOne.Security.Cryptography.BCrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\ql_website\css\login.css" />
+    <Content Include="Areas\ql_website\css\print.css" />
+    <Content Include="Areas\ql_website\css\sb-admin-2.min.css" />
+    <Content Include="Areas\ql_website\css\style4.css" />
+    <Content Include="Areas\ql_website\css\stype.css" />
+    <Content Include="Areas\ql_website\hinhbaiviet\32.jpg" />
+    <Content Include="Areas\ql_website\img\1-12138.jpg" />
+    <Content Include="Areas\ql_website\img\2017-11-08large-data-breach.jpg" />
+    <Content Include="Areas\ql_website\img\5c5c4564aa8b90f2a01d7d72879e8449.jpg" />
+    <Content Include="Areas\ql_website\img\bacsi.png" />
+    <Content Include="Areas\ql_website\img\bg.jpeg" />
+    <Content Include="Areas\ql_website\img\bradcam2.png" />
+    <Content Include="Areas\ql_website\img\bradcam3.png" />
+    <Content Include="Areas\ql_website\img\email-bot.png" />
+    <Content Include="Areas\ql_website\img\emergency-2.png" />
+    <Content Include="Areas\ql_website\img\fsdf.PNG" />
+    <Content Include="Areas\ql_website\img\iconn.png" />
+    <Content Include="Areas\ql_website\img\login.png" />
+    <Content Include="Areas\ql_website\img\powerpoint-chen-anh.jpg" />
+    <Content Include="Areas\ql_website\img\report-bot %281%29.png" />
+    <Content Include="Areas\ql_website\img\sidebar-4.jpg" />
+    <Content Include="Areas\ql_website\img\sidebar-5.jpg" />
+    <Content Include="Areas\ql_website\img\undraw_posting_photo.svg" />
+    <Content Include="Areas\ql_website\js\ckeditor.js" />
+    <Content Include="Content\abc.js" />
+    <Content Include="Content\bacsi_chitiet.css" />
+    <Content Include="Content\bacsi_chitiet.js" />
+    <Content Include="Content\footer.css" />
+    <Content Include="Content\gioithieu.css" />
+    <Content Include="Content\goi_khamsuckhoe.css" />
+    <Content Include="Content\goi_khamsuckhoe.js" />
+    <Content Include="Content\layout_user_profile.css" />
+    <Content Include="Content\menu_con.css" />
+    <Content Include="Content\menu_con.js" />
+    <Content Include="Content\panner.css" />
+    <Content Include="Content\search.css" />
+    <Content Include="datlichkham\bootstrap.min.css" />
+    <Content Include="datlichkham\bootstrap.min.js" />
+    <Content Include="datlichkham\dangky_benhnhan.css" />
+    <Content Include="datlichkham\demo.css" />
+    <Content Include="datlichkham\jquery-2.2.4.min.js" />
+    <Content Include="datlichkham\jquery.bootstrap.js" />
+    <Content Include="datlichkham\jquery.validate.min.js" />
+    <Content Include="datlichkham\material-bootstrap-wizard.css" />
+    <Content Include="datlichkham\material-bootstrap-wizard.js" />
+    <Content Include="Content\stype_trangchu.css" />
+    <Content Include="Global.asax" />
+    <Content Include="hinh\1.png" />
+    <Content Include="hinh\2.png" />
+    <Content Include="hinh\banner.png" />
+    <Content Include="hinh\banner2.png" />
+    <Content Include="hinh\bradcam.png" />
+    <Content Include="hinh\bradcam2.png" />
+    <Content Include="hinh\bradcam3.png" />
+    <Content Include="hinh\emergency-1.png" />
+    <Content Include="hinh_tintuc\5710.jpg_wh860.jpg" />
+    <Content Include="hinh_tintuc\67831995_504258863662722_546726298576224256_o.jpg" />
+    <Content Include="hinh_tintuc\anh67.png" />
+    <Content Include="hinh_tintuc\Annotation 2019-06-27 080530.jpg" />
+    <Content Include="hinh_tintuc\bacgroup2.jpg" />
+    <Content Include="hinh_tintuc\background-dep-ppt_110341618.jpg" />
+    <Content Include="hinh_tintuc\backgroup.jpg" />
+    <Content Include="hinh_tintuc\bg-banner.jpg" />
+    <Content Include="hinh_tintuc\bg-registration-form-2.jpg" />
+    <Content Include="hinh_tintuc\bg_register.jpg" />
+    <Content Include="hinh_tintuc\dangky_flaticon.jpg" />
+    <Content Include="hinh_tintuc\giatro.PNG" />
+    <Content Include="hinh_tintuc\tam-nhin.PNG" />
+    <Content Include="Models\data.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>data.edmx</DependentUpon>
+      <LastGenOutput>data.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\data.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>data.edmx</DependentUpon>
+      <LastGenOutput>data.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ql_website\Controllers\AdminController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\LoginController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\QL_bacsiController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\QL_BaivietController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\QL_hosobenhnhanController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\QL_TaikhoanController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\ThongkeController.cs" />
+    <Compile Include="Areas\ql_website\ql_websiteAreaRegistration.cs" />
+    <Compile Include="Controllers\GiohangController.cs" />
+    <Compile Include="Controllers\KhoaController.cs" />
+    <Compile Include="Models\bacsi.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Chitiet_HoaDon.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dangnhap.cs" />
+    <Compile Include="Models\Dangkykham.cs" />
+    <Compile Include="Models\data.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\datlichkham.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\giohang.cs" />
+    <Compile Include="Models\goi_kham_suc_khoe.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hashing.cs" />
+    <Compile Include="Controllers\Taikhoan_userController.cs" />
+    <Compile Include="Controllers\TrangchuController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOADON.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hosobenhnhan.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khoa.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khoangoai.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khoanoi.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LOGIN.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\login_admin.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tintuc.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\ql_website\Views\web.config" />
+    <Content Include="Areas\ql_website\Views\Shared\Layout_admin01.cshtml" />
+    <Content Include="Areas\ql_website\Views\Admin\Thongtin.cshtml" />
+    <Content Include="Areas\ql_website\Views\Login\Index.cshtml" />
+    <Content Include="Areas\ql_website\Views\Admin\Map.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\quanlybacsi.cshtml" />
+    <Content Include="Areas\ql_website\Views\thongke\thongke.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\chitiet.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Baiviet\danhsachbaiviet.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Baiviet\Create.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Baiviet\Delete.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Baiviet\Details.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Baiviet\Edit.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\dsdangky_online.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Details.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Edit.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Delete.cshtml" />
+    <EntityDeploy Include="Models\data.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>data.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\data.edmx.diagram">
+      <DependentUpon>data.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="Views\layout\layout_trangchu.cshtml" />
+    <Content Include="Views\Trangchu\dichvu.cshtml" />
+    <Content Include="Views\Trangchu\Trangchu.cshtml" />
+    <Content Include="Views\Trangchu\tintuc.cshtml" />
+    <Content Include="Views\Trangchu\tuvan.cshtml" />
+    <Content Include="Views\layout\menu.cshtml" />
+    <Content Include="Views\layout\banner.cshtml" />
+    <Content Include="Views\layout\menu_con.cshtml" />
+    <Content Include="Views\Taikhoan_user\login.cshtml" />
+    <Content Include="Views\Taikhoan_user\DangKi.cshtml" />
+    <Content Include="Views\layout\footer.cshtml" />
+    <Content Include="Views\Taikhoan_user\thongtin_benhnhan.cshtml" />
+    <Content Include="Views\Trangchu\tintucchitiet.cshtml" />
+    <Content Include="Views\layout\layout_user_profile.cshtml" />
+    <Content Include="Views\Taikhoan_user\VerifyAccount.cshtml" />
+    <Content Include="Views\Khoa\khoanoi.cshtml" />
+    <Content Include="Views\Khoa\chitietbacsi.cshtml" />
+    <Content Include="Views\Khoa\khoangoai.cshtml" />
+    <Content Include="Views\Khoa\khoa.cshtml" />
+    <Content Include="Views\Khoa\bacsy.cshtml" />
+    <Content Include="Views\Trangchu\tintucpartial.cshtml" />
+    <Content Include="Views\Trangchu\goikham_partial.cshtml" />
+    <Content Include="Views\Trangchu\goikham_chitiet.cshtml" />
+    <Content Include="Views\Giohang\giohang.cshtml" />
+    <Content Include="Views\Giohang\giohangpartial.cshtml" />
+    <Content Include="Views\Giohang\suagiohang.cshtml" />
+    <Content Include="Views\Taikhoan_user\thongtin_username.cshtml" />
+    <Content Include="Views\Khoa\timkiem.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\ql_website\Models\" />
+    <Folder Include="Areas\ql_website\Views\QL_Taikhoan\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2674</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2675/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

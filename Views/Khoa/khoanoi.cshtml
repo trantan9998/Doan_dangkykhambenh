@@ -1,0 +1,52 @@
+﻿@using doan_qldkonline.Models;
+@{
+    /**/
+
+    ViewBag.Title = "khoanoi";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+    QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+    var khoanoi = (from a in db.bacsis where a.id_khoa == 1 select a).ToList();
+}
+@model List<bacsi>
+<div style="font-size:18px;">
+   <h1>KHOA NỘI</h1> <br />
+    Khoa Nội là một chuyên khoa mũi nhọn được Bệnh viện Đa khoa Phương Đông đặc biệt chú trọng. <br />
+    Bệnh viện ABC là một bệnh viện tiên phong trong việc ứng dụng các phương pháp điều trị nội khoa hoàn toàn mới, những phương pháp tiến bộ đang được áp dụng ở nhiều nước phát triển, mang lại kết quả điều trị thành công ở nhiều bệnh nhân. 
+    <br />
+    Các chuyên khoa ở Khoa Nội, gồm: Nội tim mạch – Nội hô hấp – Nội tiêu hóa – Gan mật, viêm gan B – Nội cơ xương khớp – Nội thần kinh – Bệnh nhiệt đới – Nội tiết & Tiểu đường
+    <br />
+    Để chăm sóc sức khỏe tốt nhất cho bệnh nhân đồng thời hỗ trợ tư vấn chăm sóc sức khỏe chuyên sâu cho các bệnh nhân ở mọi lứa tuổi, Khoa Nội chung bệnh viện Phương Đông phát triển đội ngũ bác sĩ giàu kinh nghiệm từng có nhiều năm làm việc tại các bệnh viện hàng đầu cả nước.
+<img src="https://www.victoriavn.com/images/cacchuyenkhoa/N%E1%BB%98I_TH%E1%BA%A6N_KINH.JPG" width="600px" height="300px">
+</div>    
+<hr />
+<h3 style="text-align:center;color:forestgreen;margin-top:1px;"><b>ĐỘI NGŨ BÁC SĨ KHOA NỘI </b></h3>
+<hr />
+<div class="row text-center @*slideanim*@">
+    @foreach (var item in khoanoi)
+    {
+        <div class="col-sm-3">
+            <div class="thumbnail" style="background-color:azure;">
+                <p class="card">
+                    @*<img src="@Url.Content(item.hinhanh)"><br />*@
+                    <img src="~/hinh_tintuc/background-dep-ppt_110341618.jpg" />
+                </p>
+                <p class="card-text">
+                    BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.hovaten)</b><br />
+                    @Html.DisplayFor(modelItem => item.namsinh)<br />
+                    @Html.DisplayFor(modelItem => item.chucvu)
+
+                </p>
+
+
+                <div style="background-color:forestgreen; height:40px;padding:10px;">
+                    <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    }
+</div>
+

@@ -1,0 +1,65 @@
+﻿@using doan_qldkonline.Models;
+@model List<giohang>
+@{
+    ViewBag.Title = "suagiohang";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+<center>
+    <h1 style="color:darkred">🛒 GIỎ HÀNG CỦA BẠN:</h1>
+    <br />
+    <table border="0" style="color: midnightblue;width: 95%; font-size: 25px;text-align: center; background-color:aliceblue;">
+        <tr style="color:darkblue; background-color:lavender;">
+            <td style="width:100px">MÃ SẢN PHẨM</td>
+
+            <td>ẢNH BÌA</td>
+
+            <td>GÓI KHÁM</td>
+            <td style="width:50px;">ĐƠN GIÁ</td>
+
+
+            <td>SỐ LƯỢNG</td>
+
+
+            <td style="width:90px;">THÀNH TIỀN</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.i_goikham</td>
+
+                <td><a href="@Url.Action("xemchitiet","Home",new { @i_gk=item.i_goikham})"><img src="@Url.Content("~/hinh/balolaptop/"+item.hinhanh)" style="width:90px;height:90px;" /></a></td>
+
+
+                <td>@item.ten_goikham</td>
+
+
+                @* chỉnh sửa giỏ hàng *@
+                @using (Html.BeginForm("capnhapgiohang", "giohang", new { @i_gk = item.i_goikham }))
+                {
+                    <td>@string.Format("{0:0,0}", item.dongia) VND</td>
+
+                    <td style="background-color:azure;"> @Html.TextBox("txtsoluong", item.soluong) </td>
+
+                    <td>@string.Format("{0:0,0}", item.Thanhtien) VND</td>
+
+                    <td>
+                        <center><input type="submit" value="✔ CẬP NHẬP " style="width:170px;font-size:22px;background-color:lavender;color:darkblue"></center>
+
+                        @*xóa giỏ hàng*@
+                        <button style="font-size:22px;width:170px;border-color:slategray;background-color:lavender;"> @Html.ActionLink(" 🔴XÓA", "xoasanpham", new { @i_gk = item.i_goikham })</button>
+
+                    </td>
+
+                }
+
+            </tr>
+        }
+    </table>
+    <br />
+
+
+    <br />
+</center>
+<br /><br />
+<center>

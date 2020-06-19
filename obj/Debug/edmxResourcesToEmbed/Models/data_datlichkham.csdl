@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_DKKHAMBENH_ONLINEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bacsi">
+    <Key>
+      <PropertyRef Name="id_bacsi" />
+    </Key>
+    <Property Name="id_bacsi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hovaten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="chucvu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bophan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="Int32" />
+    <Property Name="namsinh" Type="Int32" />
+    <Property Name="cmnd" Type="Int32" />
+    <Property Name="hinhanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quatrinhcongtac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="kinhnghiem" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="id_khoa" Type="Int32" />
+    <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="id_khoangoai" Type="Int32" />
+    <Property Name="id_khoanoi" Type="Int32" />
+    <Property Name="id_benhnhan" Type="Int32" />
+    <NavigationProperty Name="khoa" Relationship="Self.FK_bacsi_khoa" FromRole="bacsi" ToRole="khoa" />
+    <NavigationProperty Name="datlichkhams" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_datlichkham_bacsi" FromRole="bacsi" ToRole="datlichkham" />
+  </EntityType>
+  <EntityType Name="datlichkham">
+    <Key>
+      <PropertyRef Name="id_benhnhan" />
+    </Key>
+    <Property Name="id_benhnhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysinh" Type="DateTime" Precision="0" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="sodienthoai" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="ngaykham" Type="DateTime" Precision="0" />
+    <Property Name="hinhdaidien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_bacsi" Type="Int32" />
+    <NavigationProperty Name="bacsi" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_datlichkham_bacsi" FromRole="datlichkham" ToRole="bacsi" />
+  </EntityType>
+  <EntityType Name="Hosobenhnhan">
+    <Key>
+      <PropertyRef Name="id_hoso" />
+    </Key>
+    <Property Name="id_hoso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cmnd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="dantoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nghenghiep" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="chohientai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cannang" Type="Int32" />
+    <Property Name="ghichu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="chieucao" Type="Int32" />
+    <Property Name="tieusu" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="id_khoa" Type="Int32" />
+    <Property Name="chandoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ketqua" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_benhnhan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="khoa">
+    <Key>
+      <PropertyRef Name="id_khoa" />
+    </Key>
+    <Property Name="id_khoa" Type="Int32" Nullable="false" />
+    <Property Name="id_khoangoai" Type="Int32" />
+    <Property Name="id_khoanoi" Type="Int32" />
+    <NavigationProperty Name="bacsis" Relationship="Self.FK_bacsi_khoa" FromRole="khoa" ToRole="bacsi" />
+    <NavigationProperty Name="khoangoai" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoangoai" FromRole="khoa" ToRole="khoangoai" />
+    <NavigationProperty Name="khoanoi" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoanoi" FromRole="khoa" ToRole="khoanoi" />
+  </EntityType>
+  <EntityType Name="khoangoai">
+    <Key>
+      <PropertyRef Name="id_khoangoai" />
+    </Key>
+    <Property Name="id_khoangoai" Type="Int32" Nullable="false" />
+    <Property Name="hohap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tieuhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timmach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="truyennhiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="khoas" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoangoai" FromRole="khoangoai" ToRole="khoa" />
+  </EntityType>
+  <EntityType Name="khoanoi">
+    <Key>
+      <PropertyRef Name="id_khoanoi" />
+    </Key>
+    <Property Name="id_khoanoi" Type="Int32" Nullable="false" />
+    <Property Name="gan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tụy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="duongtieuhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="chanthuong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="khoas" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoanoi" FromRole="khoanoi" ToRole="khoa" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ma_user" />
+    </Key>
+    <Property Name="ma_user" Type="Int32" Nullable="false" />
+    <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tintuc">
+    <Key>
+      <PropertyRef Name="id_tintuc" />
+    </Key>
+    <Property Name="id_tintuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenbaiviet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaydang" Type="DateTime" Precision="0" />
+    <Property Name="hinhanh" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEOTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEOdescriptison" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_bacsi_khoa">
+    <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoa">
+        <PropertyRef Name="id_khoa" />
+      </Principal>
+      <Dependent Role="bacsi">
+        <PropertyRef Name="id_khoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities7" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bacsis" EntityType="Self.bacsi" />
+    <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
+    <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
+    <EntitySet Name="khoas" EntityType="Self.khoa" />
+    <EntitySet Name="khoangoais" EntityType="Self.khoangoai" />
+    <EntitySet Name="khoanois" EntityType="Self.khoanoi" />
+    <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tintucs" EntityType="Self.tintuc" />
+    <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="bacsi" EntitySet="bacsis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_khoa_khoangoai" Association="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoangoai">
+      <End Role="khoangoai" EntitySet="khoangoais" />
+      <End Role="khoa" EntitySet="khoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_khoa_khoanoi" Association="QL_DKKHAMBENH_ONLINEModel.FK_khoa_khoanoi">
+      <End Role="khoanoi" EntitySet="khoanois" />
+      <End Role="khoa" EntitySet="khoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datlichkham_bacsi" Association="QL_DKKHAMBENH_ONLINEModel.FK_datlichkham_bacsi">
+      <End Role="bacsi" EntitySet="bacsis" />
+      <End Role="datlichkham" EntitySet="datlichkhams" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_khoa_khoangoai">
+    <End Type="QL_DKKHAMBENH_ONLINEModel.khoangoai" Role="khoangoai" Multiplicity="0..1" />
+    <End Type="QL_DKKHAMBENH_ONLINEModel.khoa" Role="khoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoangoai">
+        <PropertyRef Name="id_khoangoai" />
+      </Principal>
+      <Dependent Role="khoa">
+        <PropertyRef Name="id_khoangoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_khoa_khoanoi">
+    <End Type="QL_DKKHAMBENH_ONLINEModel.khoanoi" Role="khoanoi" Multiplicity="0..1" />
+    <End Type="QL_DKKHAMBENH_ONLINEModel.khoa" Role="khoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoanoi">
+        <PropertyRef Name="id_khoanoi" />
+      </Principal>
+      <Dependent Role="khoa">
+        <PropertyRef Name="id_khoanoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_datlichkham_bacsi">
+    <End Type="QL_DKKHAMBENH_ONLINEModel.bacsi" Role="bacsi" Multiplicity="0..1" />
+    <End Type="QL_DKKHAMBENH_ONLINEModel.datlichkham" Role="datlichkham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Principal>
+      <Dependent Role="datlichkham">
+        <PropertyRef Name="id_bacsi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

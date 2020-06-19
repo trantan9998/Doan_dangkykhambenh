@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <section class="probootstrap-section probootstrap-bg" style="background-image: url('../../hinh_tintuc/bg-banner.jpg');">
+        <div class="container text-center">
+            <h2 class="heading probootstrap-animate fadeIn probootstrap-animated" data-animate-effect="fadeIn">BỆNH VIỆN ABC</h2>
+            <p class="sub-heading probootstrap-animate fadeIn probootstrap-animated" data-animate-effect="fadeIn">"Lương y như từ mẫu"</p>
+            
+            <button class="btn btn-warning btn-rounded" ><a href="@Url.Action("Dangki","Taikhoan_user")" style="text-decoration:none;color:white"><b>ĐĂNG KÝ KHÁM BỆNH</b></a></button>
+            <button type="button" class="btn btn-primary btn-rounded">TƯ VẤN</button>
+
+
+        </div>
+        @*<div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-1">
+                <div class="input-group">
+                    <input name="search_param" value="all" id="search_param" type="hidden">
+                    <input class="form-control" name="x" placeholder="Bạn muốn tìm gì?" type="text">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Tùy chọn</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="http://placesforlove.com">Bác sỹ</a></li>
+                            <li><a href="http://placesforlove.com">Khoa</a></li>
+                            <li><a href="http://placesforlove.com">Tin tức</a></li>
+                        </ul>
+                    </div>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span> TÌM KIẾM</button>
+                    </span>
+                </div>
+            </div>
+        </div>*@
+
+
+
+        @*<div class="container" style="width:400px;">
+            <br>
+
+            <div class="center">
+                <form class="form-inline md-form mr-auto mb-4">
+                    @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
+                    {
+                        <input class="form-control searchbar" type="text" placeholder="vui lòng nhập chịu chứng của bạn...">
+                        @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Chịu chứng của bạn..." })
+                    }
+                    <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+                </form>
+                @*<div class="md-form mt-0">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+
+                </div>
+
+
+            </div>
+
+        </div>*@
+       
+
+    </section>
+    
+    <link href="~/Content/panner.css" rel="stylesheet" />
+</body>
+</html>

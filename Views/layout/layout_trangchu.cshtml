@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com -->
+    <title>Website bệnh viện đa khoa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="~/Content/stype_trangchu.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @RenderPage("menu_con.cshtml")
+    @RenderPage("menu.cshtml")
+    @RenderPage("banner.cshtml")
+    @*<div class="jumbotron text-center" style="background-image: url('../../Areas/ql_website/img/emergency-2.png') ;height:100px">
+            <div>
+                <span style="float:left;margin-top:-10em;">
+                    <img src="~/Areas/ql_website/img/bacsi.png" style="width:20em;height:20em;" />
+                </span>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-txt" placeholder="BẠN MU">
+                <a class="search-btn">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>*@
+
+    <!-- Container (Pricing Section) -->
+    <div id="pricing" class="container-fluid">
+        @RenderBody()
+
+    </div>
+
+
+    @RenderPage("footer.cshtml")
+
+
+    <!-- Container (Contact Section) -->
+    <!-- Image of location/map -->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5e7610c8eec7650c3321a77e/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+
+</body>
+</html>
+<script src="~/Content/abc.js"></script>
+<link href="~/Content/abc.css" rel="stylesheet" />

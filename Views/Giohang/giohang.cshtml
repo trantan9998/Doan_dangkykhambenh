@@ -1,0 +1,57 @@
+﻿@using doan_qldkonline.Models
+@model List<giohang>
+@{
+    ViewBag.Title = "giohang";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+
+<table border="0" style="background-color:aliceblue;color: midnightblue;width: 95%;font-size: 25px; text-align: center;">
+    <tr style="color:darkblue; background-color:lavender;">
+        <td style="width:100px">MÃ GÓI KHÁM</td>
+
+        <td>ẢNH BÌA</td>
+
+        <td>GÓI KHÁM</td>
+
+        <td>SỐ LƯỢNG</td>
+
+        <td>ĐƠN GIÁ</td>
+
+        <td>THÀNH TIỀN</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:black">
+            <td>@item.i_goikham</td>
+
+            <td><a href="@Url.Action("xemchitiet","Home",new { @mabalo=item.i_goikham})"><img src="@Url.Content("~/hinh/balolaptop/"+item.hinhanh)" style="width:90px;height:90px;" /></a></td>
+
+            <td>@item.ten_goikham</td>
+
+            <td>@item.soluong (Gói khám)</td>
+
+            <td style="color:darkred">@string.Format("{0:0,0}", item.dongia) VND</td>
+
+            <td style="color:darkred">@string.Format("{0:0,0}", item.Thanhtien) VND</td>
+        </tr>
+    }
+
+
+
+</table>
+<br />
+
+<center>
+    <b style="border-radius:10%;font-size:30px;width:700px"> TỔNG GÓI KHÁM CỦA BẠN: <font color="red">@string.Format("{0:0,0}", @ViewBag.tongthanhtien) VND</font></b>
+
+    @using (Html.BeginForm("dathang", "giohang"))
+    {
+        <center><input type="submit" value="THANH TOÁN" style="font-size:30px;color:darkblue;width:240px;background-color:orange;"></center>
+        <button style="float:right;font-size:24px;background-color:aliceblue;">@Html.ActionLink("chỉnh sửa giỏ hàng", "suagiohang")</button>
+
+    }
+
+    <br />
+   
+</center>

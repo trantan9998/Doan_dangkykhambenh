@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/menu.css" rel="stylesheet" />
+</head>
+<body>
+    @*<nav class="navbar navbar-inverse" style="font-family:Arial">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>*@
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top"  style="background-color:#0B0B3B ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">LOGO</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Trangchu","Trangchu")">Trang chủ</a></li>
+                    <li><a href="@Url.Action("dichvu","Trangchu")">Giới thiệu</a></li>
+                    <li><a href="@Url.Action("tintuc","Trangchu")">Tin tức</a></li>
+                    <li><a href="@Url.Action("bacsy","Khoa")">Bác sĩ</a></li>
+                    <li><a href="@Url.Action("khoa","Khoa")">Chuyên khoa</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    @*<li class="article"> <a href="@Url.Action("login","Taikhoan_user")" title="Đăng nhập"><span>Login  <i class="fa fa-user-secret"></i></span></a></li>*@
+
+
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="float:right">
+                    <li style="float:right;background-color:brown"><a href="@Url.Action("login","Taikhoan_user")"><b>ĐĂNG NHẬP</b></a></li>
+
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li style="background-color:brown"><a href="@Url.Action("Dangki","Taikhoan_user")">ĐĂNG KÝ KHÁM</a></li>*@
+
+                    <form class="form-inline md-form mr-auto mb-4" style="margin-top:8px;margin-right:16px;">
+                        @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
+                        {
+                            @*<input class="form-control searchbar" type="text" placeholder="vui lòng nhập chịu chứng của bạn...">*@
+                            <div class="form-control searchbar" style="background-color:midnightblue">
+                                @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Chịu chứng của bạn..." })
+                            </div>
+                            <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">🔎</button>
+
+                        }
+                    </form>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+   
+    <link href="~/Content/menu_con.css" rel="stylesheet" />
+    <script src="~/Content/menu_con.js"></script>
+</body>
+</html>

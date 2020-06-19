@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_DKKHAMBENH_ONLINEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="datlichkham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysinh" Type="datetime" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="5" />
+    <Property Name="sodienthoai" Type="int" />
+    <Property Name="nghenghiep" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="quan_huyen" Type="nvarchar" MaxLength="50" />
+    <Property Name="tinh_thanhpho" Type="nvarchar" MaxLength="50" />
+    <Property Name="motatrieuchung" Type="nvarchar" MaxLength="254" />
+    <Property Name="ngaykham" Type="date" />
+    <Property Name="thoigiankham" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Hosobenhnhan">
+    <Key>
+      <PropertyRef Name="ma_benhnhan" />
+    </Key>
+    <Property Name="ma_benhnhan" Type="int" Nullable="false" />
+    <Property Name="tenbenhnhan" Type="nvarchar" MaxLength="100" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="namsinh" Type="int" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="150" />
+    <Property Name="sdt" Type="nvarchar" MaxLength="15" />
+    <Property Name="cmnd" Type="nvarchar" MaxLength="30" />
+    <Property Name="dantoc" Type="nvarchar" MaxLength="30" />
+    <Property Name="nghenghiep" Type="nvarchar" MaxLength="30" />
+    <Property Name="thongtinlienlac" Type="nvarchar" MaxLength="100" />
+    <Property Name="cannang" Type="int" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ma_user" />
+    </Key>
+    <Property Name="ma_user" Type="int" Nullable="false" />
+    <Property Name="name_user" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="quanlybacsy">
+    <Key>
+      <PropertyRef Name="id_bacsi" />
+    </Key>
+    <Property Name="id_bacsi" Type="int" Nullable="false" />
+    <Property Name="hovaten" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysinh" Type="date" />
+    <Property Name="cmnd" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
+    <EntitySet Name="datlichkham" EntityType="Self.datlichkham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hosobenhnhan" EntityType="Self.Hosobenhnhan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="quanlybacsy" EntityType="Self.quanlybacsy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

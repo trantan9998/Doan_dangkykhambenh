@@ -1,0 +1,35 @@
+﻿@using doan_qldkonline.Models
+@model List<bacsi>
+@{
+    ViewBag.Title = "bacsy";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+
+<div class="row text-center @*slideanim*@">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="thumbnail" style="background-color:azure;">
+                <p class="card">
+                    @*<img src="@Url.Content(item.hinhanh)"><br />*@
+                    <img src="~/hinh_tintuc/background-dep-ppt_110341618.jpg" />
+                </p>
+                <p class="card-text">
+                    BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.hovaten)</b><br />
+                    @Html.DisplayFor(modelItem => item.namsinh)<br />
+                    @Html.DisplayFor(modelItem => item.chucvu)
+
+                </p>
+
+             
+                <div style="background-color:forestgreen; height:40px;padding:10px;">
+                    <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
+
+                </div>
+
+            </div>
+           
+        </div>
+       
+    }
+</div>

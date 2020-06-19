@@ -1,0 +1,137 @@
+﻿/*****Reset css********/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    color: #101010;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p, label {
+    font-family: 'GT-Walsheim', sans-serif;
+    color: #101010;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'GT-Walsheim', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, h7, strong {
+    font-family: 'GT-Walsheim', serif;
+}
+
+input, select, textarea, span {
+    font-family: 'GT-Walsheim', sans-serif;
+}
+
+
+#home-banner #carousel-example-generic {
+    height: auto;
+}
+
+    #home-banner #carousel-example-generic .carousel-inner .item {
+        padding: 4% 0;
+    }
+
+    #home-banner #carousel-example-generic .carousel-inner .text-wrap h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 0 1rem 0;
+    }
+
+    #home-banner #carousel-example-generic .carousel-inner .text-wrap {
+        padding: 8% 0 0 0;
+    }
+
+        #home-banner #carousel-example-generic .carousel-inner .text-wrap p {
+            margin: 0 0 1rem 0;
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+    #home-banner #carousel-example-generic .carousel-control {
+        width: 2%;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+    }
+
+    #home-banner #carousel-example-generic .carousel-inner .text-wrap .button-wrap .redamore.btn {
+        background: #00ffe2;
+        border-radius: 0;
+        padding: 10px 20px;
+        color: #fff;
+    }
+
+
+/******Responsive starts Here******/
+@media screen and (width:1280px) {
+}
+
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : landscape) {
+}
+
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : portrait) {
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+}
+
+@media screen and (width:1024px) {
+}
+
+@media screen and (max-width:767px) {
+}
+
+@media screen and (max-width:576px) {
+    #home-banner #carousel-example-generic .carousel-inner .text-wrap {
+        text-align: center;
+    }
+
+        #home-banner #carousel-example-generic .carousel-inner .text-wrap h2 {
+            font-size: 19px;
+            margin: 0 0 .5rem 0;
+        }
+
+        #home-banner #carousel-example-generic .carousel-inner .text-wrap .button-wrap .redamore.btn {
+            padding: 7px 14px;
+            font-size: 14px;
+        }
+}
+
+/*************************Phones start here************************************/
+/**********IPHONE 6 PLUS ****************/

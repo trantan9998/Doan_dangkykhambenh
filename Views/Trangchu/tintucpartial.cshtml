@@ -1,0 +1,34 @@
+﻿@using doan_qldkonline.Models
+@model List<tintuc>
+@{
+    ViewBag.Title = "tintuc";
+    Layout = null;
+}
+<div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <h3 style="color:forestgreen"><b>Tin tức y khoa</b></h3>
+            <hr />
+        </div>
+    </div>
+    <div class="row text-center" >
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3" style="border-radius:30px;">
+                <div class="thumbnail" style="background-color:lavender;">
+                    <img src="@Url.Content(item.hinhanh)"><br />
+
+                    <h5 class="card-title">
+                        @Html.DisplayFor(modelItem => item.tenbaiviet)
+                    </h5>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.ngaydang)
+                    </p>
+                    <a href="@Url.Action("tintucchitiet",new { @id_tt = item.id_tintuc})">XEM CHI TIẾT</a>
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

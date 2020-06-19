@@ -1,0 +1,68 @@
+﻿@model doan_qldkonline.Models.tintuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tintuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenbaiviet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenbaiviet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaydang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaydang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhanh)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noidung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noidung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEOTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEOTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEOdescriptison)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEOdescriptison)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_tintuc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

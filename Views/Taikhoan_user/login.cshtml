@@ -1,0 +1,59 @@
+﻿@model doan_qldkonline.Models.Dangkykham
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Asset_Layout/Login/style.css" rel="stylesheet" media="all" type="text/css" />
+
+</head>
+<body>
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 ads">
+                <img src="~/Areas/ql_website/img/bacsi.png" />
+            </div>
+            <div class="col-md-6 login-form">
+                <h4 style="color:red">@ViewBag.Message</h4>  
+                <h3>BỆNH VIỆN ABC</h3>
+                @using (Html.BeginForm())
+                {
+
+                <form>
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email" })
+                        <p style="color: red">@Html.ValidationMessageFor(model => model.email)</p>
+
+                    </div>
+                    <div class="form-group">
+
+                        @Html.PasswordFor(model => model.matkhau, new { @class = "form-control", @placeholder = "Password" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            Lưu mật khẩu: 
+                            @Html.EditorFor(model => model.RememberMe)
+
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">ĐĂNG NHẬP</button>
+                    </div>
+                </form>
+
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

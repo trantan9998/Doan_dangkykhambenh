@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TRANG QUẢN TRỊ</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link href="~/Areas/ql_website/css/style4.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar" style="background-color:#222D32; color: #9EBDC7;">
+            <div class="sidebar-header" style="background-color:#1A2226;color:white">
+                <h3>Administrator </h3>
+                <h3 class="glyphicon glyphicon-user">
+                    @{
+
+                        if (Session["taikhoan"] == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <a href="#" style="text-decoration:none;">
+
+                                <font color="aqua">
+                                    @Session["taikhoan"]
+
+                                </font>
+                            </a>
+                        }
+                    }
+                </h3>
+
+                <strong style="font-size:15px">ADMIN</strong>
+            </div>
+            
+            <ul class="list-unstyled @*components*@">
+                    
+
+                <li style="background-color:#1A2226;font-size:16px;">
+                    <span>
+                        CHỨC NĂNG HỆ THỐNG
+                    </span>
+                </li>
+
+                <li style="margin-top:10px;">
+                    <a href="@Url.Action("thongke","Thongke")">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Trang chủ
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        Thiết lập website
+                    </a>
+                </li>
+
+                <li class="bg-grey">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Quản lý hồ sơ
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="@Url.Action("dsdangky_online","QL_hosobenhnhan")">đăng ký online</a></li>
+                        <li><a href="#">Đăng ký offline</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("quanlybacsi","QL_bacsi")">
+                        <i class="glyphicon glyphicon-send"></i>
+                        Quản lý Bác sỹ
+                    </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-duplicate"></i>
+                        Quản lý khoa
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Khoa nội</a></li>
+                        <li><a href="#">Khoa ngoại</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-link"></i>
+                        Quản lý tài khoản
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("danhsachbaiviet","QL_Baiviet")">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        Quản lý bài viết
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://dashboard.tawk.to/#/chat">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        Quản lý Tin nhắn
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+            @*<div class="input-group">
+                <input type="text" class="form-control" placeholder="Search ..">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>*@
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                            <span>THU GỌN</span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                            <li><a href="@Url.Action("Map","Admin")">MAP</a></li>
+                            <li><a href="@Url.Action("Thongtin","Admin")">THÔNG TIN</a></li>
+                            <li>
+                                <div class="dropdown" style="padding:10px;">
+                                    <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-log-in "> TÀI KHOẢN</span>
+                                    </a>
+                                    <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item " href="#"><center>Thông tin</center></a>
+                                         <a class="dropdown-item" href="#" >
+                                       <h4 class="glyphicon glyphicon-user" style="text-align:center;background-color:darkred;width:100%;height:30px;color:aliceblue;font-style:italic;padding:1px;">@Html.ActionLink(" ĐĂNG XUẤT", "index", "Login")</h4> 
+                                         </a>
+
+                                        <br />
+                                    </div>
+                                   
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@*@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="~/Content/menu_con.css" rel="stylesheet" />
+    <script src="~/Content/menu_con.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <ul id="navigation">
+            <li class="home"><a href="" title="Home"><span>Home <i class="fa fa-home"></i></span></a></li>
+
+            <li class="about"><a href="@Url.Action("login","Taikhoan_user")" title="About"><span>Login_ <i class="fa fa-user-circle-o"></i></span></a></li>
+            @*<li class="about"><a href="@Url.Action("login","Taikhoan_user")" title="About"><span>Login_ <i class="fa fa-user-circle-o"></i></span></a></li>*@
+            @*<li class="search">
+            Welcome @HttpContext.Current.User.Identity.Name
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Logout", "Taikhoan_user", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                }
+            }
+        </li>*@
+            @*<li class="contact">
+                <a href="@Url.Action("giohang","giohang")">@Html.Action("giohangpartial", "giohang")<i class="fa fa-user-secret"></i> </a>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>*@
