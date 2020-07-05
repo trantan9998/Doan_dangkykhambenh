@@ -28,6 +28,21 @@
     <Property Name="soluong" Type="int" />
     <Property Name="dongia" Type="float" />
   </EntityType>
+  <EntityType Name="dangkykhambenh">
+    <Key>
+      <PropertyRef Name="id_benhnhan" />
+    </Key>
+    <Property Name="id_benhnhan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hovaten" Type="nvarchar" MaxLength="254" />
+    <Property Name="namsinh" Type="float" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="5" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="254" />
+    <Property Name="ngaykham" Type="date" />
+    <Property Name="giokham" Type="nvarchar" MaxLength="50" />
+    <Property Name="motatrieuchung" Type="nvarchar" MaxLength="254" />
+    <Property Name="khac" Type="nvarchar" MaxLength="254" />
+    <Property Name="sodienthoai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="datlichkham">
     <Key>
       <PropertyRef Name="id_benhnhan" />
@@ -210,6 +225,7 @@
   <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
     <EntitySet Name="bacsi" EntityType="Self.bacsi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dangkykhambenh" EntityType="Self.dangkykhambenh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="datlichkham" EntityType="Self.datlichkham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="goi_kham_suc_khoe" EntityType="Self.goi_kham_suc_khoe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />

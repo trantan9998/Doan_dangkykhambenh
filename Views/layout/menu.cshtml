@@ -27,10 +27,20 @@
                 </ul>
             </div>
         </nav>*@
+        
+        <!-- Collapsible content -->
+    <nav class="navbar navbar-inverse navbar-fixed-top text-info" style="background-color:white;">
+        <form class="form-inline m-auto" style="font-size:22px;">
+            <div style="float:left">
+                <div style="font-size:12px; border:dashed;color:white;border-color:darkgoldenrod">
+                    <img src="~/hinh/dien-thoai.png" width="20px"/>
+                    Đường dây nóng: <span>0966 375 555</span>
+                </div>
+            </div>
+          <a href="@Url.Action("login","Taikhoan_user")" style="background-color:chocolate;border: groove;color:aliceblue;margin-right:50px;text-decoration:none;font-size:18px;"><b>ĐĂNG NHẬP</b></a>
 
-
-    <nav class="navbar navbar-inverse navbar-fixed-top"  style="background-color:#0B0B3B ">
-        <div class="container">
+        </form>
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -39,47 +49,53 @@
                 </button>
                 <a class="navbar-brand" href="#">LOGO</a>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse" id="myNavbar" >
+                <ul class="nav navbar-nav" >
                     <li><a href="@Url.Action("Trangchu","Trangchu")">Trang chủ</a></li>
                     <li><a href="@Url.Action("dichvu","Trangchu")">Giới thiệu</a></li>
                     <li><a href="@Url.Action("tintuc","Trangchu")">Tin tức</a></li>
                     <li><a href="@Url.Action("bacsy","Khoa")">Bác sĩ</a></li>
                     <li><a href="@Url.Action("khoa","Khoa")">Chuyên khoa</a></li>
                     <li><a href="#contact">Liên hệ</a></li>
+                    <li>
+
+                        @*<div>
+                            @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
+                            {
+                                @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Chịu chứng của bạn..." })
+                            }
+                        </div>*@
+                    </li>
                     @*<li class="article"> <a href="@Url.Action("login","Taikhoan_user")" title="Đăng nhập"><span>Login  <i class="fa fa-user-secret"></i></span></a></li>*@
 
 
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right" style="float:right">
-                    <li style="float:right;background-color:brown"><a href="@Url.Action("login","Taikhoan_user")"><b>ĐĂNG NHẬP</b></a></li>
+                <ul class="nav navbar-nav navbar-right" style="float:right;font-size:17px;padding:10px;">
+                    @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
+                    {
+                        @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Triệu chứng của bạn..." })
+                        <button style="border-radius:5px;background-color:lavender">
+                            <img src="~/hinh/tim-kiem.PNG" width="20px"/>
+                        </button>
+
+                    }
 
                 </ul>
-                
+
                 <ul class="nav navbar-nav navbar-right">
                     @*<li style="background-color:brown"><a href="@Url.Action("Dangki","Taikhoan_user")">ĐĂNG KÝ KHÁM</a></li>*@
 
-                    <form class="form-inline md-form mr-auto mb-4" style="margin-top:8px;margin-right:16px;">
-                        @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
-                        {
-                            @*<input class="form-control searchbar" type="text" placeholder="vui lòng nhập chịu chứng của bạn...">*@
-                            <div class="form-control searchbar" style="background-color:midnightblue">
-                                @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Chịu chứng của bạn..." })
-                            </div>
-                            <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">🔎</button>
 
-                        }
-                    </form>
+
 
                 </ul>
 
             </div>
         </div>
-    </nav>
 
-   
-    <link href="~/Content/menu_con.css" rel="stylesheet" />
-    <script src="~/Content/menu_con.js"></script>
+    </nav>
+    <link href="~/Content/search.css" rel="stylesheet" />
+    <script src="~/Content/search.js"></script>
 </body>
 </html>

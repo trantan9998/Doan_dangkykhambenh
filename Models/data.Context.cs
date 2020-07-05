@@ -37,5 +37,6 @@ namespace doan_qldkonline.Models
         public virtual DbSet<goi_kham_suc_khoe> goi_kham_suc_khoe { get; set; }
         public virtual DbSet<Chitiet_HoaDon> Chitiet_HoaDon { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
+        public virtual DbSet<dangkykhambenh> dangkykhambenhs { get; set; }
     }
 }

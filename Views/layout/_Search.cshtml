@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/search.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar-fixed-top">
+        <form class="form-inline m-auto">
+            @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
+            {
+                <div style="width:500px;">
+                    @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "Chịu chứng của bạn..." })
+                </div>
+
+            }
+        </form>
+        <!-- Collapsible content -->
+    </nav>
+</body>
+</html>

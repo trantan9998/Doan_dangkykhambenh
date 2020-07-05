@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6 login-form">
                 <h4 style="color:red">@ViewBag.Message</h4>  
-                <h3>BỆNH VIỆN ABC</h3>
+                <h3>BỆNH VIỆN ĐA KHOA</h3>
                 @using (Html.BeginForm())
                 {
 
@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <div>
-                            Lưu mật khẩu: 
+                            Lưu mật khẩu:
                             @Html.EditorFor(model => model.RememberMe)
 
                             @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
@@ -48,6 +48,9 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">ĐĂNG NHẬP</button>
+                    </div>
+                    <div class="form-group">
+                        <a href="@Url.Action("Dangki","Taikhoan_user")" class="btn btn-danger btn-lg btn-block" >TÔI CHƯA CÓ TÀI KHOẢN</a>
                     </div>
                 </form>
 

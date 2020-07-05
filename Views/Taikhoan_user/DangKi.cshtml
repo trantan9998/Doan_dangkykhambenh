@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>ĐĂNG KÝ KHÁM BỆNH</title>
+    <title>ĐĂNG KÝ TÀI KHOẢN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL DESIGN ICONIC FONT -->
     <!-- STYLE CSS -->
@@ -17,16 +17,10 @@
 <body>
     <section class="section">
         <!--Section heading-->
-        <h2 class="section-heading h1 pt-4">ĐĂNG KÝ KHÁM BỆNH </h2>
-        <!--Section description-->
-        <p class="section-description">
-            Vui lòng điền đầy đủ thông tin vào form
-        </p>
-        <hr />
+        
         <div class="row">
             <!--Grid column-->
             <div class="col-md-6 col-xl-12">
-
                 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
                 {
                     if (ViewBag.Message != null)
@@ -41,14 +35,18 @@
                     using (Html.BeginForm("DangKi", "Taikhoan_user", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-
+                        <h2 class="section-heading h1 pt-4">ĐĂNG KÝ TÀI KHOẢN</h2>
+                        <!--Section description-->
+                        <p class="section-description" style="color:darkorange">
+                            Vui lòng điền đầy đủ thông tin vào form bên dưới
+                        </p>
+                        <hr />
                         <form style="font-display:swap;">
                             <!--Grid row-->
-                            <div class="row">
+                            <div>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                                 <!--Grid column-->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="md-form">
                                         <label for="name" class="">Họ Và Tên *</label>
                                         @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control" } })
@@ -61,13 +59,26 @@
                                 <div class="col-md-6">
                                     <div class="md-form">
                                         <label for="email" class="">Số Điện Thoại *</label>
-                                         @*<input name="sodienthoais" type="text" class="form-control"/>*@                                    
+                                        @*<input name="sodienthoais" type="text" class="form-control"/>*@
                                         @Html.EditorFor(model => model.sodienthoai, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.sodienthoai, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+
+                                <div class="col-md-12">
                                     <div class="md-form">
+                                        <label for="subject" class="">Địa chỉ *</label>
+                                        @*<input name="diachis" type="text" class="form-control" />*@
+                                        @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6 ">
+                                    <div class="md-form">
+
                                         <label for="name" class="">Email *</label>
                                         @*<input name="emails" type="email" class="form-control" />*@
                                         @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
@@ -79,6 +90,7 @@
                                 <!--Grid column-->
                                 <div class="col-md-6">
                                     <div class="md-form">
+
                                         <label for="email" class="">Mật Khẩu *</label>
                                         @*<input name="matkhaus" type="password" class="form-control" />*@
                                         @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @class = "form-control" } })
@@ -89,68 +101,57 @@
                             </div>
                             <!--Grid row-->
                             <!--Grid row-->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        <label for="subject" class="">Địa chỉ *</label>
-                                        @*<input name="diachis" type="text" class="form-control" />*@
-                                        @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
                             <!--Grid row-->
                             <!--Grid row-->
-                            <div class="row">
-                                <!--Grid column-->
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        <label for="message">Mô tả triệu chứng *</label>
-                                        @*<input name="motatrieuchungs" type="text" class="form-control"/>*@
-                                        @Html.EditorFor(model => model.motatrieuchung, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.motatrieuchung, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+                            @*<div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            <div class="md-form">
+                                <label for="message">Mô tả triệu chứng *</label>
+                                <input name="motatrieuchungs" type="text" class="form-control"/>
+                                @Html.EditorFor(model => model.motatrieuchung, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.motatrieuchung, "", new { @class = "text-danger" })
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="md-form">
-                                        <label for="name" class="">Ngày Khám *</label>
-                                        @*<input name="ngaykhams" type="date" class="form-control">*@
-                                        @Html.EditorFor(model => model.ngaykham, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.ngaykham, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <!--Grid column-->
-                                <!--Grid column-->
-                                <div class="col-md-6">
-                                    <div class="md-form">
-                                        <label for="email" class="">Giờ khám *</label>
-                                        @*<input name="giokhams" type="time" class="form-control">*@
-                                        @Html.EditorFor(model => model.giokham, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.giokham, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <label for="name" class="">Ngày Khám *</label>
+                                <input name="ngaykhams" type="date" class="form-control">
+                                @Html.EditorFor(model => model.ngaykham, new { htmlAttributes = new {@type="date", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ngaykham, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <label for="email" class="">Giờ khám *</label>
+                                <input name="giokhams" type="time" class="form-control">
+                                @Html.EditorFor(model => model.giokham, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.giokham, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
 
-                                <br />
-                            </div>
+                        <br />
+                    </div>*@
                             @*<div class="row">
 
-                                <div class="col-md-6">
-                                    <div class="md-form">
-                                        <label for="email" class="">BÁC SỸ</label>
-                                        <input name="id_bacsi" type="text" class="form-control">
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <label for="email" class="">BÁC SỸ</label>
+                                <input name="id_bacsi" type="text" class="form-control">
 
-                                        @html.dropdownlist("id_bacsi", (ienumerable<selectlistitem>)viewbag.bacsi,"chọn bác sỹ")
+                                @html.dropdownlist("id_bacsi", (ienumerable<selectlistitem>)viewbag.bacsi,"chọn bác sỹ")
 
-                                    </div>
-                                </div>
-                            </div>*@
-                                <hr />
-                                <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd ' name='finish' value='ĐĂNG KÝ KHÁM' style="margin-left:200px;" />
+                            </div>
+                        </div>
+                    </div>*@
+                            <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd ' name='finish' value='ĐĂNG KÝ' style="margin-top:40px;margin-left:200px;padding:10px;font-size:15px;" />
 
-                                <!--Grid row-->
+                            <!--Grid row-->
                         </form>
                         <br />
 
@@ -167,12 +168,12 @@
 
             </div>
           
-            <div class="col-md-4 col-xl-3" >
+            <div class="col-md-3 col-xl-3" >
                 <ul class="contact-icons">
-                    <li>
-                        <img src="~/hinh_tintuc/dangky_flaticon.jpg" width="500">
+                    <li style="list-style: none;">
+                        <img src="~/hinh/dangky.png" style="width:400px;margin-left:100px;"/>
+                        @*<img src="~/hinh_tintuc/dangky_flaticon.jpg" >*@
                     </li>
-
                 </ul>
             </div>
             <!--Grid column-->

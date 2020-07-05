@@ -159,5 +159,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="dangkykhambenhs">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
+        <MappingFragment StoreEntitySet="dangkykhambenh">
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="khac" ColumnName="khac" />
+          <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
+          <ScalarProperty Name="giokham" ColumnName="giokham" />
+          <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="namsinh" ColumnName="namsinh" />
+          <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+          <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -2,8 +2,9 @@
 
 .profile-head {
     width: 100%;
-    background-color:lightslategray;
+    background-color:lavender;
     float: left;
+    border:dotted;
     padding: 15px 5px;
     border-radius: 10px;
 }

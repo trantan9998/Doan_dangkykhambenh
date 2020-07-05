@@ -102,10 +102,42 @@ namespace doan_qldkonline.Controllers
         //    ViewBag.thongbaoemail = "Vui lòng Xác thực Email để hoàn tất hồ sơ!";
         //    return View();
         //}
+        [HttpGet]
+        public ActionResult dangkykhambenh()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult dangkykhambenh([Bind(Exclude = "id_benhnhan")]dangkykhambenh dkkhambenh)
+        {
+            if (ModelState.IsValid)
+            {
+                using (QL_DKKHAMBENH_ONLINEEntities dbs = new QL_DKKHAMBENH_ONLINEEntities())
+                {
+                    dbs.dangkykhambenhs.Add(dkkhambenh);
+                    dbs.SaveChanges();
+                    ViewBag.message = "bạn đã đăng ký thành công, vui lòng chờ bộ phận tư vấn liên hệ";
+                }
+                //return RedirectToAction("dangkykhambenh");
 
+            }
+            else
+            {
+                ViewBag.message2 = "VUI LÒNG KIỂM TRA LẠI THÔNG TIN";
+            }
+            return View();
 
+            //try
+            //{
+            //    db.dangkykhambenhs.Add(dkkhambenh); db.SaveChanges();
+            //    return RedirectToAction("dangkykhambenh");
 
-
-
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
+        }
     }
 }

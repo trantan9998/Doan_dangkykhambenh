@@ -1,9 +1,4 @@
-﻿.form-control-borderless {
-    border: none;
+﻿nav form {
+    background-color:darkred;
+    text-align:right;
 }
-
-    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-        border: none;
-        outline: none;
-        box-shadow: none;
-    }

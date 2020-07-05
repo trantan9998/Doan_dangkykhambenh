@@ -33,6 +33,21 @@
           <Property Name="soluong" Type="int" />
           <Property Name="dongia" Type="float" />
         </EntityType>
+        <EntityType Name="dangkykhambenh">
+          <Key>
+            <PropertyRef Name="id_benhnhan" />
+          </Key>
+          <Property Name="id_benhnhan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hovaten" Type="nvarchar" MaxLength="254" />
+          <Property Name="namsinh" Type="float" />
+          <Property Name="gioitinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="254" />
+          <Property Name="ngaykham" Type="date" />
+          <Property Name="giokham" Type="nvarchar" MaxLength="50" />
+          <Property Name="motatrieuchung" Type="nvarchar" MaxLength="254" />
+          <Property Name="khac" Type="nvarchar" MaxLength="254" />
+          <Property Name="sodienthoai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="datlichkham">
           <Key>
             <PropertyRef Name="id_benhnhan" />
@@ -215,6 +230,7 @@
         <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
           <EntitySet Name="bacsi" EntityType="Self.bacsi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dangkykhambenh" EntityType="Self.dangkykhambenh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datlichkham" EntityType="Self.datlichkham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="goi_kham_suc_khoe" EntityType="Self.goi_kham_suc_khoe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
@@ -426,6 +442,7 @@
             <End Role="datlichkham" EntitySet="datlichkhams" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
+          <EntitySet Name="dangkykhambenhs" EntityType="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh" />
         </EntityContainer>
         <EntityType Name="goi_kham_suc_khoe">
           <Key>
@@ -501,6 +518,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="dangkykhambenh">
+          <Key>
+            <PropertyRef Name="id_benhnhan" />
+          </Key>
+          <Property Name="id_benhnhan" Type="Int32" Nullable="false" />
+          <Property Name="hovaten" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="namsinh" Type="Double" />
+          <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="ngaykham" Type="DateTime" Precision="0" />
+          <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="khac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -662,6 +694,22 @@
                 <ScalarProperty Name="tinhtrang_goikham" ColumnName="tinhtrang_goikham" />
                 <ScalarProperty Name="dathanhtoan" ColumnName="dathanhtoan" />
                 <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dangkykhambenhs">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
+              <MappingFragment StoreEntitySet="dangkykhambenh">
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="khac" ColumnName="khac" />
+                <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
+                <ScalarProperty Name="giokham" ColumnName="giokham" />
+                <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="namsinh" ColumnName="namsinh" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

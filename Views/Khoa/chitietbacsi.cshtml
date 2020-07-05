@@ -4,15 +4,14 @@
     ViewBag.Title = "chitietbacsi";
     Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
-
 <div class="container" style="margin-top: 30px;">
     <div class="profile-head">
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md- col-sm-4 col-xs-12">
-            <img src="http://www.newlifefamilychiropractic.net/wp-content/uploads/2014/07/300x300.gif" class="img-responsive" />
+            <img src="@Url.Content("~/hinh_bacsi/"+ Model.hinhanh)" style="margin-left:80px;">           
             <h6>
                 Bác sĩ: @Html.DisplayFor(model => model.hovaten) <br />
-                <b>@Html.DisplayFor(model => model.khoa.Ten_khoa)</b>
+                @*<b>@Html.DisplayFor(model => model.khoa.Ten_khoa)</b>*@
 
             </h6>
             
@@ -20,22 +19,27 @@
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md-5 col-sm-5 col-xs-12">
             <div style="float:right">
-                <button><h3><a href="@Url.Action("Dangki","Taikhoan_user")" style="text-decoration:none">ĐẶT LỊCH KHÁM</a></h3></button>
+                <h3><a href="@Url.Action("login","Taikhoan_user")" style="text-decoration:none;background-color:blue">ĐẶT LỊCH HẸN</a></h3>
                 <hr />
-
             </div>
             <h5></h5>
             <p>
-                Chức vụ: @Html.DisplayFor(model => model.chucvu)
+                Chức danh: @Html.DisplayFor(model => model.chucvu)
             </p>
+            <p>
+                Năm sinh: @Html.DisplayFor(model => model.namsinh)
+            </p>
+
             <ul>
                 <li>
-                    <span class="glyphicon glyphicon-briefcase"></span>
+                    Bộ phận: @Html.DisplayFor(model => model.bophan)
+
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-phone"></span>
                     @Html.DisplayFor(model => model.sdt)
                 </li>
+
                 <li>
                     <span class="glyphicon glyphicon-map-marker"></span>@Html.DisplayFor(model => model.diachi)
                 </li>
@@ -49,61 +53,37 @@
     <!--profile-head close-->
 </div>
 
+
 <div>
     <hr />
-    <dl class="dl-horizontal">
-     
-
-
+    <h3>
+        THÔNG TIN CHI TIẾT:
+    </h3>
+    <dl style="margin-left:140px;">
         <dt>
-            @Html.DisplayNameFor(model => model.bophan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.bophan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.namsinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.namsinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cmnd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cmnd)
-        </dd>
-
-      
-
-        <dt>
-            @Html.DisplayNameFor(model => model.quatrinhcongtac)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.quatrinhcongtac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.kinhnghiem)
+            KINH NGHIỆM:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.kinhnghiem)
 
         </dd>
+        <dt>
+            QUÁ TRÌNH CÔNG TÁC:
+        </dt>
 
-  
+        <dd>
+            @Html.DisplayFor(model => model.quatrinhcongtac)
+        </dd>
 
 
 
 
-  
+
+
+
+
+
 
     </dl>
 </div>

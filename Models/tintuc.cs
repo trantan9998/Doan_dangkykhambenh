@@ -17,8 +17,8 @@ namespace doan_qldkonline.Models
         public int id_tintuc { get; set; }
         public string tenbaiviet { get; set; }
         public Nullable<System.DateTime> ngaydang { get; set; }
-        public HttpPostedFileBase ImageFile { get; set; }
         public string hinhanh { get; set; }
+        public HttpPostedFileBase ImageFile { get; set;}
         public string noidung { get; set; }
         public string SEOTitle { get; set; }
         public string SEOdescriptison { get; set; }
