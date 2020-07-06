@@ -38,7 +38,6 @@
             <div class="col-md-10">
                 <input type="file" name="ImageFile" required />
                 <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple />
-
                 @*@Html.EditorFor(model => model.hinhanh, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.hinhanh, "", new { @class = "text-danger" })
             </div>

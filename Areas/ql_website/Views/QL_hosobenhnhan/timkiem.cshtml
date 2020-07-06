@@ -1,0 +1,77 @@
+﻿@model IEnumerable<doan_qldkonline.Models.dangkykhambenh>
+
+@{
+    ViewBag.Title = "timkiem";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="background-color:chocolate;color:white;25px;">Bệnh nhân đăng ký trực tuyến \</h3>
+
+@using (Html.BeginForm("timkiem", "QL_hosobenhnhan", FormMethod.Get))
+{
+    @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "nhập số điện thoại..." })
+    <button style="border-radius:5px;background-color:lavender">
+        <img src="~/hinh/tim-kiem.PNG" width="20px" />
+    </button>
+
+}
+<hr />
+@if (Model.Count() == 0)
+{
+    <center>
+        <h1 style="color:red">Không có tìm thấy bệnh nhân</h1>
+    </center>
+}
+else
+{
+
+    <table class="table table-striped table-bordered">
+        <tr style="background-color:lavender">
+            <th>
+                @Html.DisplayNameFor(model => model.id_benhnhan)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hovaten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.namsinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gioitinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sodienthoai)
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.id_benhnhan)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hovaten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.namsinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gioitinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sodienthoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_benhnhan }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_benhnhan }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_benhnhan })
+                </td>
+            </tr>
+        }
+    </table>
+}
+

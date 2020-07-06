@@ -5,28 +5,28 @@
     Layout = null;
 }
 
-<div class="container" style="width:100%;background-color:steelblue">
+<div class="container" style="width:100%;background-color:#A9BCF5;border-radius:10px;">
     <div class="row">
         <div class="col-md-12 ">
             <h3 style="color:white"><b>Các gói khám sức khỏe</b></h3>
             <hr />
         </div>
     </div>
-    <div class="row">
+    <div class="row" >
         <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel" data-interval="1000">
             <div class="MultiCarousel-inner">
                 @foreach (var item in Model)
                 {
-                    <div class="item">
-                        <div class="pad15">
+                    <div class="item" >
+                        <div class="pad15" style="border-radius:5%;">
                             <h5 class="card-title">
-                                <img src="@Url.Content(item.hinhanh)" width="160px" height="150px"><br />
-
+                                <img src="@Url.Content(item.hinhanh)" width="200px" height="170px"><br />
+                                <hr />
                                 @Html.DisplayFor(modelItem => item.ten_goikham)
                             </h5>
-                            <p class="card-text">
+                            @*<p class="card-text">
                                 @Html.DisplayFor(modelItem => item.soluong)
-                            </p>
+                            </p>*@
                             <a href="@Url.Action("goikham_chitiet",new { @id_gk = item.id_goikham})">XEM CHI TIẾT</a>
                         </div>
                     </div>

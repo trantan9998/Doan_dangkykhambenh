@@ -1,0 +1,83 @@
+﻿@model IEnumerable<doan_qldkonline.Models.bacsi>
+
+@{
+    /**/
+
+    ViewBag.Title = "timkiem_bacsi";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="background-color:lightslategray;color:white;">Bác sĩ \</h3>
+
+@using (Html.BeginForm("timkiem", "QL_bacsi", FormMethod.Get))
+{
+    @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "nhập số điện thoại..." })
+    <button style="border-radius:5px;background-color:lavender">
+        <img src="~/hinh/tim-kiem.PNG" width="20px" />
+    </button>
+}
+<hr />
+@if (Model.Count() == 0)
+{
+    <center>
+        <h1 style="color:red">Không có tìm thấy bác sĩ</h1>
+    </center>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <tr style="background-color:lightblue">
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hovaten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.chucvu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bophan)
+            </th>
+            <th>
+                KHOA
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.hovaten)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.hinhanh)" width="100" height="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.chucvu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bophan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_khoa)
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_bacsi }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_bacsi }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_bacsi })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+

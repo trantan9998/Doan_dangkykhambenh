@@ -11,7 +11,7 @@ namespace doan_qldkonline.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
     public partial class goi_kham_suc_khoe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +28,9 @@ namespace doan_qldkonline.Models
         public string mota { get; set; }
         public string chitiet { get; set; }
         public string hinhanh { get; set; }
-    
+        public HttpPostedFileBase ImageFile { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chitiet_HoaDon> Chitiet_HoaDon { get; set; }
     }

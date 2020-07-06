@@ -4,71 +4,145 @@
     ViewBag.Title = "goikham_chitiet";
     Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="news-title">
+                                        <h2>
+                                            @Html.DisplayFor(model => model.ten_goikham)
+                                        </h2>
+                                        
+                                    </div>
+                                    <div class="news-cats">
+                                        <ul class="list-unstyled list-inline mb-1">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-folder-o text-danger"></i>
+                                                <a href="#"><small>gói khám</small> </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-folder-o text-danger"></i>
+                                                <a href="#"><small>TRANTAN</small> </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-folder-o text-danger"></i>
+                                                <a href="#"><small>4th July 2020</small></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr>
+                                    <div class="news-image">
+                                        <img src="@Url.Content(Model.hinhanh)" width="450" height="290" multiple style="margin-left:220px;border:dotted" />
+                                        <p class="text-muted" style="margin-left:360px;">
+                                            GIÁ: <b style="font-size:20px;">@Html.DisplayFor(model => model.gia)</b> VND<br />
+                                            SỐ LƯỢNG GÓI KHÁM:<b> @Html.DisplayFor(model => model.soluong)</b>
 
-<h2>goikham_chitiet</h2>
-<div>
-    <h4>goi_kham_suc_khoe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ten_goikham)
-        </dt>
+                                           
+                                        </p>
+                                    </div>
+                                    <div class="news-content">
+                                        <p>
+                                            @Html.DisplayFor(model => model.mota)
 
-        <dd>
-            @Html.DisplayFor(model => model.ten_goikham)
-        </dd>
+                                        </p>
+                                        <br />
+                                        <p>
+                                            @Html.DisplayFor(model => model.gioithieu)
+                                        </p>
+                                        <p>
+                                            @Html.DisplayFor(model => model.chitiet)
+                                        </p>
+                                    </div>
+                                    <hr>
+                                   
+                                    <div class="news-tags">
+                                        <h5>COMMNET:</h5>
+                                        @*<button type="button" class="btn btn-sm btn-secondary">
+                                            Education <span class="badge badge-light">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary">
+                                            Entertainment <span class="badge badge-light">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary">
+                                            Automobile <span class="badge badge-light">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary">
+                                            Insurance <span class="badge badge-light">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary">
+                                            Energy <span class="badge badge-light">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary">
+                                            Health <span class="badge badge-light">4</span>
+                                        </button>*@
+                                    </div>
+                                    <hr>
+                                    <div class="news-author">
+                                        <div class="row">
+                                            <div class="col-md-auto">
+                                                <a href="#" title="Biswajit Saha"><img src="//www.gravatar.com/avatar/021e64775176cc4c7018e5e867f17de2?s=250&d=mm&r=x" alt="Author image" class="rounded-circle" style="width:100px"></a>
+                                            </div>
+                                            <div class="col">
+                                                <div class="auth-title">
+                                                    <h4 class="author h4"><a href="/author/biswajit/">Biswajit Saha</a></h4>
+                                                    <div class="bio">
+                                                        Developer at GBJ solution. I love to travel, make new friends. I prefer tea over coffee.
+                                                    </div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li class="list-inline-item"><a href="https://twitter.com/gbjsolution" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                        <li class="list-inline-item"><a href="https://www.facebook.com/gbjsolution" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                        <li class="list-inline-item"><a href="http://gbjsolution.com" target="_blank"><i class="fa fa-globe"></i></a></li>
+                                                        <li class="list-inline-item"><i class="fa fa-map-marker"></i> India</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gia)
-        </dt>
+        </div>
+        <div class="col-md-3">
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>DANH MỤC TÙY CHỌN</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group">
+                            <a href="@Url.Action("bacsy","Khoa")" class="list-group-item list-group-item-action active ">BÁC SĨ</a>
+                            <a href="@Url.Action("khoangoai","Khoa")" class="list-group-item list-group-item-action">KHOA NGOẠI</a>
+                            <a href="@Url.Action("khoanoi","Khoa")" class="list-group-item list-group-item-action">KHOA NỘI</a>
+                            <a href="@Url.Action("tuvan","Tranghu")" class="list-group-item list-group-item-action">TƯ VẤN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="http://www.3forty.media/cannix/wp-content/uploads/2018/04/clem-onojeghuo-228522-unsplash-1-768x1153.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.gia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.gioithieu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.gioithieu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.soluong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.soluong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.mota)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mota)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.chitiet)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.chitiet)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hinhanh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hinhanh)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-@using (Html.BeginForm("themgiohang", "giohang", new { @i_gk = Model.id_goikham, strURL = Request.Url.ToString() }))
-{
-    <a href="@Url.Action("giohang","Giohang")"> <input type="submit" style="cursor:pointer;font-size:30px;background-color:orange;border-radius:5%;width:290px; height:50px;color:darkblue;" value=" MUA GÓI KHÁM" id="btngiohang"></a>
-}

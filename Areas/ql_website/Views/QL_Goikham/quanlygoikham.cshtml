@@ -1,0 +1,61 @@
+﻿@model IEnumerable<doan_qldkonline.Models.goi_kham_suc_khoe>
+
+@{
+    ViewBag.Title = "quanlygoikham";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h2>quanlygoikham</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered">
+    <tr style="background-color:forestgreen;color:white; ">
+        <th style="width:8px;">
+            @Html.DisplayNameFor(model => model.id_goikham)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ten_goikham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.soluong)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.hinhanh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_goikham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten_goikham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gia)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.soluong)
+        </td>       
+        <td>
+            <img src="@Url.Content(item.hinhanh)" width="100" height="100" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id_goikham }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id_goikham }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id_goikham })
+        </td>
+    </tr>
+}
+
+</table>

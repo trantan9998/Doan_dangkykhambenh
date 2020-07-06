@@ -541,7 +541,6 @@
     <Content Include="Areas\ql_website\img\sidebar-5.jpg" />
     <Content Include="Areas\ql_website\img\undraw_posting_photo.svg" />
     <Content Include="Areas\ql_website\js\ckeditor.js" />
-    <Content Include="Content\abc.js" />
     <Content Include="Content\bacsi_chitiet.css" />
     <Content Include="Content\bacsi_chitiet.js" />
     <Content Include="Content\footer.css" />
@@ -551,6 +550,8 @@
     <Content Include="Content\layout_user_profile.css" />
     <Content Include="Content\panner.css" />
     <Content Include="Content\search.css" />
+    <Content Include="Content\stype_trangchu.css" />
+    <Content Include="Content\tintuc_chitiet.css" />
     <Content Include="datlichkham\bootstrap.min.css" />
     <Content Include="datlichkham\bootstrap.min.js" />
     <Content Include="datlichkham\dangky_benhnhan.css" />
@@ -560,7 +561,6 @@
     <Content Include="datlichkham\jquery.validate.min.js" />
     <Content Include="datlichkham\material-bootstrap-wizard.css" />
     <Content Include="datlichkham\material-bootstrap-wizard.js" />
-    <Content Include="Content\stype_trangchu.css" />
     <Content Include="Global.asax" />
     <Content Include="hinh\1.png" />
     <Content Include="hinh\2.png" />
@@ -574,6 +574,7 @@
     <Content Include="hinh\emergency-1.png" />
     <Content Include="hinh\phone2.png" />
     <Content Include="hinh\tim-kiem.PNG" />
+    <Content Include="hinh_bacsi\aaa.jpg" />
     <Content Include="hinh_tintuc\5710.jpg_wh860.jpg" />
     <Content Include="hinh_tintuc\67831995_504258863662722_546726298576224256_o.jpg" />
     <Content Include="hinh_tintuc\anh67.png" />
@@ -607,6 +608,7 @@
     <Compile Include="Areas\ql_website\Controllers\LoginController.cs" />
     <Compile Include="Areas\ql_website\Controllers\QL_bacsiController.cs" />
     <Compile Include="Areas\ql_website\Controllers\QL_BaivietController.cs" />
+    <Compile Include="Areas\ql_website\Controllers\QL_GoikhamController.cs" />
     <Compile Include="Areas\ql_website\Controllers\QL_hosobenhnhanController.cs" />
     <Compile Include="Areas\ql_website\Controllers\QL_TaikhoanController.cs" />
     <Compile Include="Areas\ql_website\Controllers\ThongkeController.cs" />
@@ -688,16 +690,11 @@
     <Content Include="Areas\ql_website\Views\Admin\Map.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_bacsi\quanlybacsi.cshtml" />
     <Content Include="Areas\ql_website\Views\thongke\thongke.cshtml" />
-    <Content Include="Areas\ql_website\Views\QL_bacsi\chitiet.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_Baiviet\danhsachbaiviet.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_Baiviet\Create.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_Baiviet\Delete.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_Baiviet\Details.cshtml" />
     <Content Include="Areas\ql_website\Views\QL_Baiviet\Edit.cshtml" />
-    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\dsdangky_online.cshtml" />
-    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Details.cshtml" />
-    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Edit.cshtml" />
-    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Delete.cshtml" />
     <EntityDeploy Include="Models\data.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>data.Designer.cs</LastGenOutput>
@@ -720,6 +717,21 @@
     <Content Include="Areas\ql_website\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\ql_website\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\ql_website\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\dsdangky_online.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Edit.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Details.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\Delete.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\Details.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\Edit.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\Create.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\Delete.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_hosobenhnhan\timkiem.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_bacsi\timkiem.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Goikham\quanlygoikham.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Goikham\Details.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Goikham\Create.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Goikham\Edit.cshtml" />
+    <Content Include="Areas\ql_website\Views\QL_Goikham\Delete.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\layout\layout_trangchu.cshtml" />
     <Content Include="Views\Trangchu\dichvu.cshtml" />
@@ -761,7 +773,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ql_website\Models\" />
     <Folder Include="Areas\ql_website\Views\QL_Taikhoan\" />
-    <Folder Include="hinh_bacsi\" />
+    <Folder Include="hinh_goikham\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -11,7 +11,8 @@ namespace doan_qldkonline.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.Web;
     public partial class bacsi
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,6 +29,8 @@ namespace doan_qldkonline.Models
         public Nullable<int> namsinh { get; set; }
         public Nullable<int> cmnd { get; set; }
         public string hinhanh { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
+
         public string quatrinhcongtac { get; set; }
         public string kinhnghiem { get; set; }
         public Nullable<int> id_khoa { get; set; }

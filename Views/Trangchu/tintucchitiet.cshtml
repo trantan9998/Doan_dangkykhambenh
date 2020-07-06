@@ -4,63 +4,63 @@
     ViewBag.Title = "tintucchitiet";
     Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
+<div class="container">
+    <div class="row">
+        <!-- HEADER -->
+        <div class="header">
+            @*<img style="width:100%" src="http://www.limontasport.com/wp-content/uploads/2016/03/limonta-sport-slider-1-2-1800x720.jpg" />
+            <div class="triangulo"></div>
+            <div class="profile">
+                <img class="photo-author img-circle" src="http://www.bordeaux-tourism.co.uk/var/ezwebin_site/storage/images/media/images/regards-bordelais/jean-poutge/profil-jean/12599-2-fre-FR/Profil-Jean_format_360x360.jpg" />
+            </div>*@
+            <h5 class="sub-title">
+                @Html.DisplayNameFor(model => model.ngaydang):             
+                @Html.DisplayFor(model => model.ngaydang)
+            </h5>
+            <h2 class="title">
+                @Html.DisplayFor(model => model.SEOTitle)
+            </h2>
+        </div>
+        <!-- INFO -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>
+                    @Html.DisplayFor(model => model.tenbaiviet)
+                </h3>
+                <h4 style="line-height: 25px;">
+                    @Html.DisplayFor(model => model.SEOdescriptison)
+                </h4>
+            </div>
+            @*<div >
 
-<h2>tintucchitiet</h2>
+            </div>*@
+        </div>
+        <div class="row row-eq-height" style="padding-right:15px">
+            <div class="col-xs-9 text">
+                <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple /><hr />
+                @Html.DisplayFor(model => model.noidung)
 
-<div>
-    <h4>tintuc</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tenbaiviet)
-        </dt>
+            </div>
+     
+            <!-- Sidebar // advertising -->
+            <div class="col-xs-3 side">
+                <img style="max-width: 100%" src="http://youthnesia.id//assets/img/images/Advertise-here.png" alt="Photograph" />
+                <small>
+         
+                    <p style="margin-bottom:0px;margin-top:25px;"><b>DANH MỤC BÀI VIẾT</b></p>
+                    <ul class="list-group">
+                        <li class="list-group-item"><big><b>1.</b></big><a> TIN VỀ Y ĐA KHOA </a></li>
+                        <li class="list-group-item"><big><b>2.</b></big><a> TIN VỀ PHÒNG KHÁM </a></li>
+                        <li class="list-group-item"><big><b>3.</b></big><a> TIN VỀ CÁC LOẠI BỆNH VỀ DA</a></li>
+                        <li class="list-group-item"><big><b>4.</b></big><a> TIN VỀ PHÒNG NGỪA CÚM</a></li>
+                        <li class="list-group-item"><big><b>5.</b></big><a> THUỐC NAM</a></li>
+                    </ul>
+                </small>
 
-        <dd>
-            @Html.DisplayFor(model => model.tenbaiviet)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ngaydang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ngaydang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hinhanh)
-        </dt>
-
-        <dd>
-            <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.noidung)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.noidung)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SEOTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SEOTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SEOdescriptison)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SEOdescriptison)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+

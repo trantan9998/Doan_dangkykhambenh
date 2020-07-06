@@ -8,13 +8,15 @@
     <div class="profile-head">
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md- col-sm-4 col-xs-12">
-            <img src="@Url.Content("~/hinh_bacsi/"+ Model.hinhanh)" style="margin-left:80px;">           
+            <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple style="margin-left:80px;" />
+
+            @*<img src="@Url.Content("~/hinh_bacsi/"+ Model.hinhanh)" style="margin-left:80px;">*@
             <h6>
                 Bác sĩ: @Html.DisplayFor(model => model.hovaten) <br />
                 @*<b>@Html.DisplayFor(model => model.khoa.Ten_khoa)</b>*@
 
             </h6>
-            
+
         </div>
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md-5 col-sm-5 col-xs-12">

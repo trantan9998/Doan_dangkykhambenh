@@ -43,6 +43,8 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public ActionResult Create(tintuc imageModel)
         {
             string filename = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
@@ -86,12 +88,10 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             return View(tt);
         }
 
-      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(tintuc imageModel)
         {
-
             if (ModelState.IsValid)
             {
                 string filename = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);

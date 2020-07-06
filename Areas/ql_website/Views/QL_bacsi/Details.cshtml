@@ -1,0 +1,108 @@
+﻿@model doan_qldkonline.Models.bacsi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<div>
+    <h4>THÔNG TIN HỒ SƠ /</h4>
+    <div>
+        <button style="float:right;background-color:chocolate;color:white"><h4>@Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.id_bacsi })</h4> </button><br />
+    </div>
+    <hr />
+
+    <dl class="dl-horizontal" style="background-color:lavender;border-radius:20px;">
+        <dd>
+            <img src="@Url.Content(Model.hinhanh)" width="180" height="190" multiple style="border:dotted" />
+        </dd>
+
+        <dd style="margin-left:220px;">
+            @Html.DisplayFor(model => model.hovaten)
+        </dd>
+
+        <h2>THÔNG TIN CHI TIẾT</h2>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chucvu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chucvu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bophan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bophan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sdt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sdt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namsinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namsinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cmnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmnd)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.hinhanh)
+            </dt>*@
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quatrinhcongtac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quatrinhcongtac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kinhnghiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kinhnghiem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.khoa.Ten_khoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khoa.Ten_khoa)
+        </dd>
+
+    </dl>
+    <dl></dl>
+</div>
+<p style="background-color:brown; width:100px;color:aliceblue">
+    ⬅@Html.ActionLink("QUAY LẠI", "quanlybacsi")
+</p>

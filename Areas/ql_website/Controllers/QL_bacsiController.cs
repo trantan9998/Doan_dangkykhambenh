@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data;
+using System.Data.Entity;
 using System.IO;
+using System.Linq;
 using System.Net;
-using doan_qldkonline.Models;
+using System.Web;
 using System.Web.Mvc;
+using doan_qldkonline.Models;
 
 namespace doan_qldkonline.Areas.ql_website.Controllers
 {
@@ -21,18 +23,81 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         {
             return View(db.bacsis.ToList());
         }
-        public ActionResult chitiet(int? id_bacsi)
+        public ActionResult timkiem(string timkiem)
         {
-            if (id_bacsi == null)
+            return View(db.bacsis.Where(x => x.hovaten.Contains(timkiem) || timkiem == null).ToList());
+        }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            bacsi ct = db.bacsis.Find(id_bacsi);
-            if (ct == null)
+            bacsi bs = db.bacsis.Find(id);
+            if (bs == null)
             {
                 return HttpNotFound();
             }
-            return View(id_bacsi);
+            return View(bs);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(bacsi imageModel)
+        {
+            string filename = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
+            string extension = Path.GetExtension(imageModel.ImageFile.FileName);
+            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+            imageModel.hinhanh = "~/hinh_bacsi/" + filename;
+            filename = Path.Combine(Server.MapPath("~/hinh_bacsi/"), filename);
+            imageModel.ImageFile.SaveAs(filename);
+            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            {
+                db.bacsis.Add(imageModel);
+                db.SaveChanges();   
+            }
+            ModelState.Clear();
+            //ViewBag.message = "Bạn đã thêm thành công";
+            return View();
+        }
+
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            bacsi dk = db.bacsis.Find(id);
+            if (dk == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dk);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(bacsi imageModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string filename = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
+                string extension = Path.GetExtension(imageModel.ImageFile.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                imageModel.hinhanh = "~/hinh_bacsi/" + filename;
+                filename = Path.Combine(Server.MapPath("~/hinh_bacsi/"), filename);
+                imageModel.ImageFile.SaveAs(filename);
+                db.Entry(imageModel).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
+
+            return View(imageModel);
         }
         //[HttpGet]
         //public ActionResult Create_bacsi()
@@ -56,6 +121,39 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         //    ModelState.Clear();
         //    return Redirect("danhsachbaiviet");
         //}
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            bacsi tt = db.bacsis.Find(id);
+            if (tt == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tt);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            bacsi bs = db.bacsis.SingleOrDefault(n => n.id_bacsi == id);
+            if (ModelState.IsValid)
+            {
+                db.bacsis.Remove(bs);
+                db.SaveChanges();
+            }
+            return RedirectToAction("quanlybacsi");
+        }
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
     }
 }

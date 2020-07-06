@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using doan_qldkonline.Models;
 
 namespace doan_qldkonline.Areas.ql_website.Controllers
@@ -21,28 +23,51 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         }
         public ActionResult dsdangky_online()
         {
-            return View(db.datlichkhams.ToList());
+            return View(db.dangkykhambenhs.ToList());
         }
-
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            datlichkham tt = db.datlichkhams.Find(id);
-            if (tt == null)
+            dangkykhambenh dkkb = db.dangkykhambenhs.Find(id);
+            if (dkkb == null)
             {
                 return HttpNotFound();
             }
-            return View(tt);
+            return View(dkkb);
         }
-        
-        public ViewResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            datlichkham dlk = db.datlichkhams.FirstOrDefault(p => p.id_benhnhan == id);
-            return View(dlk);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dangkykhambenh dk = db.dangkykhambenhs.Find(id);
+            if (dk == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dk);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(dangkykhambenh dangkykhambenhh)
+        {
+            if (ModelState.IsValid)
+            {
+              
+                db.Entry(dangkykhambenhh).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("dsdangky_online");
+            }
+            return View(dangkykhambenhh);
+        }
+       
+        
+       
         //public ActionResult Edit(int? id)
         //{
 
@@ -57,18 +82,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         //    }
         //    return View(dlk);
         //}
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(datlichkham dlk)
-        {
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(dlk).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("dsdangky_online");
-            }
-            return View(dlk);
-        }
+     
 
 
         public ActionResult Delete(int? id)
@@ -77,7 +91,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            datlichkham tt = db.datlichkhams.Find(id);
+            dangkykhambenh tt = db.dangkykhambenhs.Find(id);
             if (tt == null)
             {
                 return HttpNotFound();
@@ -87,10 +101,10 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            datlichkham dlk = db.datlichkhams.SingleOrDefault(n => n.id_benhnhan == id);
+            dangkykhambenh dlk = db.dangkykhambenhs.SingleOrDefault(n => n.id_benhnhan == id);
             if (ModelState.IsValid)
             {
-                db.datlichkhams.Remove(dlk);
+                db.dangkykhambenhs.Remove(dlk);
                 db.SaveChanges();
             }
             return RedirectToAction("dsdangky_online");
@@ -102,6 +116,76 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult timkiem(string timkiem)
+        {
+            return View(db.dangkykhambenhs.Where(x => x.sodienthoai.Contains(timkiem) || timkiem == null).ToList());
+        }
+        public ActionResult XuatFileExcel()
+        {
+
+            var dh = db.dangkykhambenhs.ToList();
+            var gv = new GridView();
+            //===================================================
+            DataTable dt = new DataTable();
+            //Add Datacolumn
+            dt.Columns.Add("mã bệnh nhân", typeof(string));
+            dt.Columns.Add("họ và tên", typeof(string));
+            dt.Columns.Add("năm sinh", typeof(string));
+            dt.Columns.Add("giới tính", typeof(string));
+            dt.Columns.Add("địa chỉ", typeof(string));     
+            dt.Columns.Add("Số điện thoại", typeof(string));     
+            dt.Columns.Add("ngày khám", typeof(string));
+            //dt.Columns.Add("ngờ khám", typeof(string));
+            dt.Columns.Add("mô tả triệu chứng", typeof(string));
+            dt.Columns.Add("Khác", typeof(string));
+
+
+
+
+            //Add in the datarow
+
+
+            foreach (var item in dh)
+            {
+                DataRow newRow = dt.NewRow();
+
+                newRow["mã bệnh nhân"] = item.id_benhnhan;
+                newRow["họ và tên"] = item.hovaten;
+                newRow["năm sinh"] = item.namsinh;
+                newRow["giới tính"] = item.gioitinh;
+                newRow["địa chỉ"] = item.diachi;
+                newRow["số điện thoại"] = item.sodienthoai;
+                newRow["ngày khám"] = item.ngaykham;
+                //newRow["giờ khám"] = item.giokham;
+                newRow["mô tả triệu chứng"] = item.motatrieuchung;
+                newRow["Khác"] = item.khac;
+
+
+                dt.Rows.Add(newRow);
+            }
+            gv.DataSource = dt;
+            gv.DataBind();
+
+            Response.ClearContent();
+            Response.Buffer = true;
+
+            Response.AddHeader("content-disposition", "attachment; filename=danh-sach.xls");
+            Response.ContentType = "application/ms-excel";
+
+            Response.Charset = "";
+            Response.ContentEncoding = System.Text.Encoding.UTF8;
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            objHtmlTextWriter.WriteLine("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
+
+            gv.RenderControl(objHtmlTextWriter);
+
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+            return Redirect("/ql_website/dsdangky_online");
         }
     }
 }

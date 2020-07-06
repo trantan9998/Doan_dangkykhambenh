@@ -1,4 +1,4 @@
-﻿@model doan_qldkonline.Models.datlichkham
+﻿@model doan_qldkonline.Models.dangkykhambenh
 
 @{
     ViewBag.Title = "Delete";
@@ -7,25 +7,25 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 style="color:red">BẠN CHẮC CHẮN XÓA THÔNG TIN BỆNH NHÂN NÀY ⛔</h3>
 <div>
-    <h4>datlichkham</h4>
+    <h4>dangkykhambenh</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.hoten)
+            @Html.DisplayNameFor(model => model.hovaten)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hoten)
+            @Html.DisplayFor(model => model.hovaten)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ngaysinh)
+            @Html.DisplayNameFor(model => model.namsinh)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ngaysinh)
+            @Html.DisplayFor(model => model.namsinh)
         </dd>
 
         <dt>
@@ -37,35 +37,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sodienthoai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sodienthoai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.diachi)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.diachi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.motatrieuchung)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.motatrieuchung)
         </dd>
 
         <dt>
@@ -77,19 +53,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.hinhdaidien)
+            @Html.DisplayNameFor(model => model.giokham)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hinhdaidien)
+            @Html.DisplayFor(model => model.giokham)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.matkhau)
+            @Html.DisplayNameFor(model => model.motatrieuchung)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.matkhau)
+            @Html.DisplayFor(model => model.motatrieuchung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.khac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sodienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sodienthoai)
         </dd>
 
     </dl>
@@ -98,8 +90,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="XÓA BỎ" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "dsdangky_online")
         </div>
     }
 </div>

@@ -10,7 +10,7 @@
     <title></title>
     <link href="~/Content/menu.css" rel="stylesheet" />
 </head>
-<body>
+<body >
     @*<nav class="navbar navbar-inverse" style="font-family:Arial">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -26,39 +26,32 @@
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
-        </nav>*@
-        
+        </nav>*@      
         <!-- Collapsible content -->
-    <nav class="navbar navbar-inverse navbar-fixed-top text-info" style="background-color:white;">
-        <form class="form-inline m-auto" style="font-size:22px;">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#0A0A2A;color:green">
+        <form class="form-inline m-auto" style="font-size:20px;">
             <div style="float:left">
-                <div style="font-size:12px; border:dashed;color:white;border-color:darkgoldenrod">
+                <div style="font-size:13px; border:dashed; color:white; border-color:darkgoldenrod">
                     <img src="~/hinh/dien-thoai.png" width="20px"/>
                     Đường dây nóng: <span>0966 375 555</span>
                 </div>
             </div>
-          <a href="@Url.Action("login","Taikhoan_user")" style="background-color:chocolate;border: groove;color:aliceblue;margin-right:50px;text-decoration:none;font-size:18px;"><b>ĐĂNG NHẬP</b></a>
+          <a href="@Url.Action("login","Taikhoan_user")" style="background-color:chocolate;color:aliceblue;margin-right:40px;border-bottom-style:double;text-decoration:none;font-size:15px;">Đăng nhập</a>
 
         </form>
         <div class="container" >
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-header">          
                 <a class="navbar-brand" href="#">LOGO</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar" >
                 <ul class="nav navbar-nav" >
-                    <li><a href="@Url.Action("Trangchu","Trangchu")">Trang chủ</a></li>
+                    <li><a href="@Url.Action("Trangchu","Trangchu")" >Trang chủ</a></li>
                     <li><a href="@Url.Action("dichvu","Trangchu")">Giới thiệu</a></li>
                     <li><a href="@Url.Action("tintuc","Trangchu")">Tin tức</a></li>
                     <li><a href="@Url.Action("bacsy","Khoa")">Bác sĩ</a></li>
                     <li><a href="@Url.Action("khoa","Khoa")">Chuyên khoa</a></li>
                     <li><a href="#contact">Liên hệ</a></li>
                     <li>
-
                         @*<div>
                             @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
                             {
@@ -83,19 +76,12 @@
 
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    @*<li style="background-color:brown"><a href="@Url.Action("Dangki","Taikhoan_user")">ĐĂNG KÝ KHÁM</a></li>*@
-
-
-
-
-                </ul>
-
             </div>
         </div>
 
     </nav>
     <link href="~/Content/search.css" rel="stylesheet" />
     <script src="~/Content/search.js"></script>
+    <link href="~/Content/stype_trangchu.css" rel="stylesheet" />
 </body>
 </html>

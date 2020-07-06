@@ -1,164 +1,97 @@
-﻿@model doan_qldkonline.Models.datlichkham
+﻿@model doan_qldkonline.Models.dangkykhambenh
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
-<div id="invoice">
+<div>
+    <h3>THÔNG TIN BỆNH NHÂN </h3>
     <div class="toolbar hidden-print">
         <div class="text-right">
             <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
             <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
         </div>
-        <hr>
     </div>
-    <div class="invoice overflow-auto">
-        <div style="min-width: 600px">
-            <header>
-                <div class="row">
-                    <div class="col">
-                            <h2 style="color:forestgreen">Bệnh viện ABC</h2>
-                    
-                    </div>
-                    <div class="col company-details">
-                        <h2 class="name">
-                                LIÊN HỆ
-                        </h2>
-                        <div>đại học thủ dầu một</div>
-                        <div>0966375505</div>
-                        <div>Trantan598497@gmail.com</div>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <div class="row contacts">
-                    <div class="col invoice-to">
-                        <div class="text-gray-light">GỬI TỚI:</div>
-                        <h2 class="to">
-                            @Html.DisplayFor(model => model.hoten)
-                        </h2>
-                        <div class="address">
-                            🏚: @Html.DisplayFor(model => model.diachi)
-                        </div>
-                        <div class="email">
-                            ✉: @Html.DisplayFor(model => model.email)
-                        </div>
-                    </div>
-                    <div class="col invoice-details">
-                        <h1 class="invoice-id">NGÀY ĐĂNG KÝ KHÁM</h1>
-                        <div class="date">
-                            @Html.DisplayFor(model => model.ngaykham)
-                        </div>
-                    </div>
-                </div>
-                <div class="notices">
-                    <div>Chú Thích:</div>
-                    <div class="notice">Bạn vui lòng kiểm tra lại thông tin!</div>
-                </div>
-                <dl class="dl-horizontal">
-                    <h3>THÔNG TIN BỆNH NHÂN ĐĂNG KÝ</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hovaten)
+        </dt>
 
-                    <dt>
-                        Họ Và Tên:
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.hovaten)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.hoten)
+        <dt>
+            @Html.DisplayNameFor(model => model.namsinh)
+        </dt>
 
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.namsinh)
+        </dd>
 
-                    <dt>
-                        Ngày Sinh:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.gioitinh)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ngaysinh)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.gioitinh)
+        </dd>
 
-                    <dt>
-                        Giới tính:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.diachi)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.gioitinh)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
 
-                    <dt>
-                        Số Điện Thoại
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaykham)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.sodienthoai)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ngaykham)
+        </dd>
 
-                    <dt>
-                        Email:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.giokham)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.email)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.giokham)
+        </dd>
 
-                    <dt>
-                        Địa chỉ:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.motatrieuchung)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.diachi)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.motatrieuchung)
+        </dd>
 
-                    <dt>
-                        Mô tả triệu chứng:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.khac)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.motatrieuchung)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.khac)
+        </dd>
 
-                    <dt>
-                        Ngày Khám:
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.sodienthoai)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ngaykham)
-                    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.sodienthoai)
+        </dd>
 
-                    <dt>
-                        Avatar:
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.hinhdaidien)
-                    </dd>
-
-                    @*<dt>
-                @Html.DisplayNameFor(model => model.matkhau)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.matkhau)
-            </dd>*@
-                </dl>
-
-
-            </main>
-            <footer>
-                Bệnh viện đa khoa ABC
-            </footer>
-        </div>
-        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
-        <div></div>
-    </div>
+    </dl>
 </div>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_benhnhan }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="~/Areas/ql_website/css/print.css" rel="stylesheet" />
-<script>
-    $('#printInvoice').click(function () {
-        Popup($('.invoice')[0].outerHTML);
-        function Popup(data) {
-            window.print();
-            return true;
-        }
-    });
-</script>
+   

@@ -4,7 +4,6 @@
     color: #818181;
 }
 
-
 h2 {
     font-size: 24px;
     text-transform: uppercase;
@@ -131,7 +130,7 @@ h4 {
 
 .navbar {
     margin-bottom: 0;
-    background-color: #f4511e;
+    background-color: white;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -141,17 +140,17 @@ h4 {
 }
 
     .navbar li a, .navbar .navbar-brand {
-        color: #fff !important;
+        color: black !important;
     }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #f4511e !important;
-    background-color: #fff !important;
+    background-color: lavender !important;
 }
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
-    color: #fff !important;
+    color: black !important;
 }
 
 footer .glyphicon {
@@ -213,4 +212,3 @@ footer .glyphicon {
         font-size: 150px;
     }
 }
-
