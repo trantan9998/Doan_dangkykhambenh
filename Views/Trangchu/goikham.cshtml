@@ -1,0 +1,38 @@
+﻿@using doan_qldkonline.Models
+@model List<goi_kham_suc_khoe>
+@{
+    ViewBag.Title = "goikham";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
+}
+<div style="margin-top:-50px;margin-bottom:40px;border-radius:10px;height:30px;">
+    <h3 style="color:orangered;font-style:unset"><b>CÁC GÓI KHÁM SỨC KHỎE /</b></h3>
+    <h3>Chúng tôi chuyên đưa ra các dịch vụ khám tổng quát cho bệnh nhân với đội ngũ Bác sĩ giỏi và các trang thiết bị máy móc hiện đại</h3>
+</div>
+<br />
+<hr />
+<div class="row text-center @*slideanim*@">
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-3">
+       
+        <div class="thumbnail" style="background-color:ghostwhite;">
+            <p class="card">
+                <img src="@Url.Content(item.hinhanh)" style="width:200px;height:210px;">
+            </p>
+            <p class="card-text">
+                <b style="color:maroon"> @Html.DisplayFor(modelItem => item.ten_goikham)</b><br />
+                SL: @Html.DisplayFor(modelItem => item.soluong)<br />
+            </p>
+            <div style="background-color:darkblue; height:40px;padding:10px;">
+                <a href="@Url.Action("goikham_chitiet",new { @id_gk = item.id_goikham})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    }
+</div>
+
+

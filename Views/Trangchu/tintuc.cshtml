@@ -5,28 +5,32 @@
     Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
 
-<div class="row">
-    <div class="col-md-12 text-center">
-        <h3 style="color:forestgreen"><b>Tin Tức y khoa</b></h3>
-        <hr />
-    </div>
-</div><div class="row text-center @*slideanim*@">
+<div style="margin-top:-50px;margin-bottom:40px;border-radius:10px;height:30px;">
+    <h3 style="color:brown;font-style:unset"><b>TỔNG HỢP CÁC BÀI VIẾT VỀ Y KHOA /</b></h3>
+    <h3>Những bài viết có nội dung được đề cập vào lĩnh vực y khoa giúp cho mọi người tăng sự hiểu biết về nhiều loại bệnh để phòng tránh</h3>
+</div>
+<br />
+<hr />
+<div class="row text-center @*slideanim*@">
     @foreach (var item in Model)
     {
-        <div class="col-sm-3" style="border-radius:30px;">
-            <div class="thumbnail" style="background-color:lavender;">
-                <img src="@Url.Content(item.hinhanh)"><br />
 
-                <h5 class="card-title">
-                    @Html.DisplayFor(modelItem => item.tenbaiviet)
-                </h5>
-                <p class="card-text">
-                    @Html.DisplayFor(modelItem => item.ngaydang)
+        <div class="col-sm-3">
+            <div class="thumbnail" style="background-color:ghostwhite;">
+                <p class="card">
+                    <img src="@Url.Content(item.hinhanh)" style="width:200px;height:210px;">
                 </p>
-                <a href="@Url.Action("tintucchitiet",new { @id_tt = item.id_tintuc})">XEM CHI TIẾT</a>
+                <p class="card-text">
+                    BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.tenbaiviet)</b><br />
+                    @Html.DisplayFor(modelItem => item.ngaydang)<br />
+                </p>
+                <div style="background-color:darkblue; height:40px;padding:10px;">
+                    <a href="@Url.Action("tintucchitiet",new { @id_tt = item.id_tintuc})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
 
+                </div>
 
             </div>
+
         </div>
     }
 </div>

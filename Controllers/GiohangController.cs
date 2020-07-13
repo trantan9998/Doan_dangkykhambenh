@@ -9,7 +9,7 @@ namespace doan_qldkonline.Controllers
 {
     public class GiohangController : Controller
     { //lấy giỏ hàng 
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         public List<giohang> layhoadon()
         {
             List<giohang> lstgiohang = Session["giohang"] as List<giohang>;
@@ -20,7 +20,6 @@ namespace doan_qldkonline.Controllers
                 Session["giohang"] = lstgiohang;
             }
             return lstgiohang;
-
         }
         //thêm giỏ hàng 
         public ActionResult themgiohang(int i_gk, string strURL)

@@ -10,8 +10,8 @@
     <title></title>
 </head>
 <body>
-    <div class="footer">
-        <div class="footer1">
+    <div class="footer" >
+        <div class="footer1" style="background-color:#0B243B">
             <div class="container-fluid">
 
                 <div class="container ">
@@ -26,10 +26,12 @@
                         <div class="col-sm-4">
                             <h2 style="color:lightblue">MENU</h2>
                             <p>
-                                <i class="fa fa-home"></i>  <a href="#">TRANG CHỦ</a><br>
-                                <i class="fa fa-map-marker"></i>    <a href="#"> LIÊN HỆ</a><br>
-                                <i class="fa fa-briefcase"></i>  <a href="#">DỊCH VỤ</a><br>
-                                <i class="fa fa-user-o"></i>  <a href="~/ql_website/Login/Index"> ADMIN</a><br>
+                      
+                                <i class="fa fa-home"></i>  <a href="@Url.Action("Trangchu","Trangchu")">TRANG CHỦ</a><br>
+                                <i class="fa fa-map-marker"></i>    <a href="@Url.Action("dichvu","Trangchu")""> GIỚI THIỆU</a><br>
+                                <i class="fa fa-briefcase"></i>  <a href="@Url.Action("tintuc","Trangchu")">TIN TỨC</a><br>
+                                <i class="fa fa-user-circle"></i>  <a href="@Url.Action("bacsy","Khoa")">BÁC SĨ</a><br>
+                                <i class="fa fa-address-book"> </i> <a href="@Url.Action("goikham","Trangchu")">GÓI KHÁM SỨC KHỎE</a><br>
 
 
                             </p>
@@ -38,10 +40,11 @@
                         <div class="col-sm-4 ">
                             <h2 style="color:lightblue">LIÊN HỆ</h2>
                             <p>
-
                                 <i class="fa fa-phone"></i>    <a href="tel:0966375505"> 0966375505</a><br>
-                                <i class="fa fa-envelope"></i>    <a href="mailto:trantan598497@gmail.com"> Trantan598497@gmail.com</a><br>
-                                <i class="fa fa-map-marker"></i>   THU DAU MOT UNIVERCITY
+                                <i class="fa fa-envelope"></i>    <a href="mailto:trantan598497@gmail.com">Trantan598497@gmail.com</a><br>
+                                <i class="fa fa-map-marker"></i>   THU DAU MOT UNIVERCITY<br />
+                                <i class="fa fa-lock"></i>  <a href="/ql_website/Login/Index">   ADMIN</a><br>
+
                             </p>
 
                             <br>

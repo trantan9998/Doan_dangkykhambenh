@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QL_DKKHAMBENH_ONLINEModelStoreContainer" CdmEntityContainer="QL_DKKHAMBENH_ONLINEEntities">
+  <EntityContainerMapping StorageEntityContainer="QL_DKKHAMBENH_ONLINEModelStoreContainer" CdmEntityContainer="QL_DKKHAMBENH_ONLINEEntities1">
     <EntitySetMapping Name="bacsis">
       <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.bacsi">
         <MappingFragment StoreEntitySet="bacsi">
@@ -17,13 +17,39 @@
           <ScalarProperty Name="id_khoa" ColumnName="id_khoa" />
           <ScalarProperty Name="diachi" ColumnName="diachi" />
           <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
+          <ScalarProperty Name="ngaylamviec" ColumnName="ngaylamviec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chitiet_HoaDon">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon">
+        <MappingFragment StoreEntitySet="Chitiet_HoaDon">
+          <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
+          <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dangkykhambenhs">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
+        <MappingFragment StoreEntitySet="dangkykhambenh">
+          <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
+          <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+          <ScalarProperty Name="namsinh" ColumnName="namsinh" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+          <ScalarProperty Name="giokham" ColumnName="giokham" />
+          <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
+          <ScalarProperty Name="khac" ColumnName="khac" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="datlichkhams">
       <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.datlichkham">
         <MappingFragment StoreEntitySet="datlichkham">
-          <ScalarProperty Name="giokham" ColumnName="giokham" />
           <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
           <ScalarProperty Name="hoten" ColumnName="hoten" />
           <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
@@ -33,11 +59,37 @@
           <ScalarProperty Name="diachi" ColumnName="diachi" />
           <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
           <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+          <ScalarProperty Name="giokham" ColumnName="giokham" />
           <ScalarProperty Name="hinhdaidien" ColumnName="hinhdaidien" />
           <ScalarProperty Name="matkhau" ColumnName="matkhau" />
           <ScalarProperty Name="id_bacsi" ColumnName="id_bacsi" />
           <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
           <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="goi_kham_suc_khoe">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe">
+        <MappingFragment StoreEntitySet="goi_kham_suc_khoe">
+          <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
+          <ScalarProperty Name="ten_goikham" ColumnName="ten_goikham" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="gioithieu" ColumnName="gioithieu" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
+          <ScalarProperty Name="dathanhtoan" ColumnName="dathanhtoan" />
+          <ScalarProperty Name="tinhtrang_goikham" ColumnName="tinhtrang_goikham" />
+          <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+          <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,6 +149,8 @@
           <ScalarProperty Name="ma_user" ColumnName="ma_user" />
           <ScalarProperty Name="name_user" ColumnName="name_user" />
           <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="quyen" ColumnName="quyen" />
+          <ScalarProperty Name="id_bacsi" ColumnName="id_bacsi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -111,6 +165,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Thietlap_Trangchu">
+      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Thietlap_Trangchu">
+        <MappingFragment StoreEntitySet="Thietlap_Trangchu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tieude1" ColumnName="tieude1" />
+          <ScalarProperty Name="mota1" ColumnName="mota1" />
+          <ScalarProperty Name="noidung1" ColumnName="noidung1" />
+          <ScalarProperty Name="hinhanh1" ColumnName="hinhanh1" />
+          <ScalarProperty Name="tieude2" ColumnName="tieude2" />
+          <ScalarProperty Name="mota2" ColumnName="mota2" />
+          <ScalarProperty Name="noidung2" ColumnName="noidung2" />
+          <ScalarProperty Name="hinhanh2" ColumnName="hinhanh2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tintucs">
       <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.tintuc">
         <MappingFragment StoreEntitySet="tintuc">
@@ -121,57 +190,6 @@
           <ScalarProperty Name="noidung" ColumnName="noidung" />
           <ScalarProperty Name="SEOTitle" ColumnName="SEOTitle" />
           <ScalarProperty Name="SEOdescriptison" ColumnName="SEOdescriptison" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="goi_kham_suc_khoe">
-      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe">
-        <MappingFragment StoreEntitySet="goi_kham_suc_khoe">
-          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
-          <ScalarProperty Name="chitiet" ColumnName="chitiet" />
-          <ScalarProperty Name="mota" ColumnName="mota" />
-          <ScalarProperty Name="soluong" ColumnName="soluong" />
-          <ScalarProperty Name="gioithieu" ColumnName="gioithieu" />
-          <ScalarProperty Name="gia" ColumnName="gia" />
-          <ScalarProperty Name="ten_goikham" ColumnName="ten_goikham" />
-          <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Chitiet_HoaDon">
-      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon">
-        <MappingFragment StoreEntitySet="Chitiet_HoaDon">
-          <ScalarProperty Name="dongia" ColumnName="dongia" />
-          <ScalarProperty Name="soluong" ColumnName="soluong" />
-          <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
-          <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HOADONs">
-      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.HOADON">
-        <MappingFragment StoreEntitySet="HOADON">
-          <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
-          <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
-          <ScalarProperty Name="tinhtrang_goikham" ColumnName="tinhtrang_goikham" />
-          <ScalarProperty Name="dathanhtoan" ColumnName="dathanhtoan" />
-          <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dangkykhambenhs">
-      <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
-        <MappingFragment StoreEntitySet="dangkykhambenh">
-          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
-          <ScalarProperty Name="khac" ColumnName="khac" />
-          <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
-          <ScalarProperty Name="giokham" ColumnName="giokham" />
-          <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="namsinh" ColumnName="namsinh" />
-          <ScalarProperty Name="hovaten" ColumnName="hovaten" />
-          <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

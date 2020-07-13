@@ -22,6 +22,7 @@
           <Property Name="id_khoa" Type="int" />
           <Property Name="diachi" Type="nvarchar" MaxLength="254" />
           <Property Name="id_benhnhan" Type="int" />
+          <Property Name="ngaylamviec" Type="nvarchar" MaxLength="254" />
         </EntityType>
         <EntityType Name="Chitiet_HoaDon">
           <Key>
@@ -141,9 +142,11 @@
           <Key>
             <PropertyRef Name="ma_user" />
           </Key>
-          <Property Name="ma_user" Type="int" Nullable="false" />
+          <Property Name="ma_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name_user" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="quyen" Type="int" />
+          <Property Name="id_bacsi" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -154,6 +157,20 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Thietlap_Trangchu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tieude1" Type="nvarchar" MaxLength="254" />
+          <Property Name="mota1" Type="nvarchar" MaxLength="254" />
+          <Property Name="noidung1" Type="nvarchar(max)" />
+          <Property Name="hinhanh1" Type="nvarchar" MaxLength="50" />
+          <Property Name="tieude2" Type="nvarchar(max)" />
+          <Property Name="mota2" Type="nvarchar(max)" />
+          <Property Name="noidung2" Type="nvarchar(max)" />
+          <Property Name="hinhanh2" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tintuc">
           <Key>
@@ -227,6 +244,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LOGIN_bacsi">
+          <End Role="bacsi" Type="Self.bacsi" Multiplicity="0..1" />
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bacsi">
+              <PropertyRef Name="id_bacsi" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_bacsi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
           <EntitySet Name="bacsi" EntityType="Self.bacsi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" Schema="dbo" store:Type="Tables" />
@@ -240,6 +269,7 @@
           <EntitySet Name="khoanoi" EntityType="Self.khoanoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thietlap_Trangchu" EntityType="Self.Thietlap_Trangchu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tintuc" EntityType="Self.tintuc" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
             <End Role="khoa" EntitySet="khoa" />
@@ -260,6 +290,10 @@
           <AssociationSet Name="FK_HOADON_datlichkham" Association="Self.FK_HOADON_datlichkham">
             <End Role="datlichkham" EntitySet="datlichkham" />
             <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGIN_bacsi" Association="Self.FK_LOGIN_bacsi">
+            <End Role="bacsi" EntitySet="bacsi" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -283,8 +317,37 @@
           <Property Name="id_khoa" Type="Int32" />
           <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="id_benhnhan" Type="Int32" />
+          <Property Name="ngaylamviec" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="khoa" Relationship="Self.FK_bacsi_khoa" FromRole="bacsi" ToRole="khoa" />
           <NavigationProperty Name="datlichkhams" Relationship="Self.FK_datlichkham_bacsi" FromRole="bacsi" ToRole="datlichkham" />
+          <NavigationProperty Name="LOGINs" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi" FromRole="bacsi" ToRole="LOGIN" />
+        </EntityType>
+        <EntityType Name="Chitiet_HoaDon">
+          <Key>
+            <PropertyRef Name="id_hoadon" />
+            <PropertyRef Name="id_goikham" />
+          </Key>
+          <Property Name="id_hoadon" Type="Int32" Nullable="false" />
+          <Property Name="id_goikham" Type="Int32" Nullable="false" />
+          <Property Name="soluong" Type="Int32" />
+          <Property Name="dongia" Type="Double" />
+          <NavigationProperty Name="goi_kham_suc_khoe" Relationship="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="Chitiet_HoaDon" ToRole="goi_kham_suc_khoe" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK_Chitiet_HoaDon_HOADON" FromRole="Chitiet_HoaDon" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="dangkykhambenh">
+          <Key>
+            <PropertyRef Name="id_benhnhan" />
+          </Key>
+          <Property Name="id_benhnhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hovaten" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="namsinh" Type="Double" />
+          <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="ngaykham" Type="DateTime" Precision="0" />
+          <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="khac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="datlichkham">
           <Key>
@@ -299,14 +362,40 @@
           <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="ngaykham" Type="DateTime" Precision="0" />
+          <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="hinhdaidien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="id_bacsi" Type="Int32" />
           <Property Name="ActivationCode" Type="Guid" />
           <Property Name="IsEmailVerified" Type="Boolean" />
           <NavigationProperty Name="bacsi" Relationship="Self.FK_datlichkham_bacsi" FromRole="datlichkham" ToRole="bacsi" />
-          <NavigationProperty Name="HOADONs" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham" FromRole="datlichkham" ToRole="HOADON" />
-          <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_datlichkham" FromRole="datlichkham" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="goi_kham_suc_khoe">
+          <Key>
+            <PropertyRef Name="id_goikham" />
+          </Key>
+          <Property Name="id_goikham" Type="Int32" Nullable="false" />
+          <Property Name="ten_goikham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Double" />
+          <Property Name="gioithieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="soluong" Type="Int32" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Chitiet_HoaDon" Relationship="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="goi_kham_suc_khoe" ToRole="Chitiet_HoaDon" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="id_hoadon" />
+          </Key>
+          <Property Name="id_hoadon" Type="Int32" Nullable="false" />
+          <Property Name="dathanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tinhtrang_goikham" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ngaydat" Type="DateTime" Precision="0" />
+          <Property Name="id_benhnhan" Type="Int32" />
+          <NavigationProperty Name="Chitiet_HoaDon" Relationship="Self.FK_Chitiet_HoaDon_HOADON" FromRole="HOADON" ToRole="Chitiet_HoaDon" />
+          <NavigationProperty Name="datlichkham" Relationship="Self.FK_HOADON_datlichkham" FromRole="HOADON" ToRole="datlichkham" />
         </EntityType>
         <EntityType Name="Hosobenhnhan">
           <Key>
@@ -359,9 +448,12 @@
           <Key>
             <PropertyRef Name="ma_user" />
           </Key>
-          <Property Name="ma_user" Type="Int32" Nullable="false" />
+          <Property Name="ma_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quyen" Type="Int32" />
+          <Property Name="id_bacsi" Type="Int32" />
+          <NavigationProperty Name="bacsi" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi" FromRole="LOGIN" ToRole="bacsi" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -372,6 +464,20 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Thietlap_Trangchu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tieude1" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="mota1" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="noidung1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanh1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tieude2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mota2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="noidung2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanh2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tintuc">
           <Key>
@@ -409,82 +515,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="bacsis" EntityType="Self.bacsi" />
-          <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
-          <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
-          <EntitySet Name="khoas" EntityType="Self.khoa" />
-          <EntitySet Name="khoangoais" EntityType="Self.khoangoai" />
-          <EntitySet Name="khoanois" EntityType="Self.khoanoi" />
-          <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="tintucs" EntityType="Self.tintuc" />
-          <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
-            <End Role="khoa" EntitySet="khoas" />
-            <End Role="bacsi" EntitySet="bacsis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_datlichkham_bacsi" Association="Self.FK_datlichkham_bacsi">
-            <End Role="bacsi" EntitySet="bacsis" />
-            <End Role="datlichkham" EntitySet="datlichkhams" />
-          </AssociationSet>
-          <EntitySet Name="goi_kham_suc_khoe" EntityType="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe" />
-          <EntitySet Name="Chitiet_HoaDon" EntityType="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" />
-          <EntitySet Name="HOADONs" EntityType="QL_DKKHAMBENH_ONLINEModel.HOADON" />
-          <AssociationSet Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe" Association="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe">
-            <End Role="goi_kham_suc_khoe" EntitySet="goi_kham_suc_khoe" />
-            <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Chitiet_HoaDon_HOADON" Association="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON">
-            <End Role="HOADON" EntitySet="HOADONs" />
-            <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HOADON_datlichkham" Association="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham">
-            <End Role="datlichkham" EntitySet="datlichkhams" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
-          <EntitySet Name="dangkykhambenhs" EntityType="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh" />
-        </EntityContainer>
-        <EntityType Name="goi_kham_suc_khoe">
-          <Key>
-            <PropertyRef Name="id_goikham" />
-          </Key>
-          <Property Name="id_goikham" Type="Int32" Nullable="false" />
-          <Property Name="ten_goikham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="gia" Type="Double" />
-          <Property Name="gioithieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="soluong" Type="Int32" />
-          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="hinhanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Chitiet_HoaDon" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="goi_kham_suc_khoe" ToRole="Chitiet_HoaDon" />
-        </EntityType>
-        <EntityType Name="Chitiet_HoaDon">
-          <Key>
-            <PropertyRef Name="id_hoadon" />
-            <PropertyRef Name="id_goikham" />
-          </Key>
-          <Property Name="id_hoadon" Type="Int32" Nullable="false" />
-          <Property Name="id_goikham" Type="Int32" Nullable="false" />
-          <Property Name="soluong" Type="Int32" />
-          <Property Name="dongia" Type="Double" />
-          <NavigationProperty Name="goi_kham_suc_khoe" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="Chitiet_HoaDon" ToRole="goi_kham_suc_khoe" />
-          <NavigationProperty Name="HOADON" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON" FromRole="Chitiet_HoaDon" ToRole="HOADON" />
-        </EntityType>
-        <EntityType Name="HOADON">
-          <Key>
-            <PropertyRef Name="id_hoadon" />
-          </Key>
-          <Property Name="id_hoadon" Type="Int32" Nullable="false" />
-          <Property Name="dathanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="tinhtrang_goikham" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ngaydat" Type="DateTime" Precision="0" />
-          <Property Name="id_benhnhan" Type="Int32" />
-          <NavigationProperty Name="Chitiet_HoaDon" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON" FromRole="HOADON" ToRole="Chitiet_HoaDon" />
-          <NavigationProperty Name="datlichkham" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham" FromRole="HOADON" ToRole="datlichkham" />
-        </EntityType>
         <Association Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe">
-          <End Type="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe" Role="goi_kham_suc_khoe" Multiplicity="1" />
-          <End Type="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" Role="Chitiet_HoaDon" Multiplicity="*" />
+          <End Role="goi_kham_suc_khoe" Type="Self.goi_kham_suc_khoe" Multiplicity="1" />
+          <End Role="Chitiet_HoaDon" Type="Self.Chitiet_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="goi_kham_suc_khoe">
               <PropertyRef Name="id_goikham" />
@@ -495,8 +528,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Chitiet_HoaDon_HOADON">
-          <End Type="QL_DKKHAMBENH_ONLINEModel.HOADON" Role="HOADON" Multiplicity="1" />
-          <End Type="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" Role="Chitiet_HoaDon" Multiplicity="*" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="Chitiet_HoaDon" Type="Self.Chitiet_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HOADON">
               <PropertyRef Name="id_hoadon" />
@@ -507,8 +540,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HOADON_datlichkham">
-          <End Type="QL_DKKHAMBENH_ONLINEModel.datlichkham" Role="datlichkham" Multiplicity="0..1" />
-          <End Type="QL_DKKHAMBENH_ONLINEModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <End Role="datlichkham" Type="Self.datlichkham" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="datlichkham">
               <PropertyRef Name="id_benhnhan" />
@@ -518,27 +551,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="dangkykhambenh">
-          <Key>
-            <PropertyRef Name="id_benhnhan" />
-          </Key>
-          <Property Name="id_benhnhan" Type="Int32" Nullable="false" />
-          <Property Name="hovaten" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-          <Property Name="namsinh" Type="Double" />
-          <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-          <Property Name="ngaykham" Type="DateTime" Precision="0" />
-          <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-          <Property Name="khac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-          <Property Name="sodienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bacsis" EntityType="Self.bacsi" />
+          <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" />
+          <EntitySet Name="dangkykhambenhs" EntityType="Self.dangkykhambenh" />
+          <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
+          <EntitySet Name="goi_kham_suc_khoe" EntityType="Self.goi_kham_suc_khoe" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
+          <EntitySet Name="khoas" EntityType="Self.khoa" />
+          <EntitySet Name="khoangoais" EntityType="Self.khoangoai" />
+          <EntitySet Name="khoanois" EntityType="Self.khoanoi" />
+          <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Thietlap_Trangchu" EntityType="Self.Thietlap_Trangchu" />
+          <EntitySet Name="tintucs" EntityType="Self.tintuc" />
+          <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
+            <End Role="khoa" EntitySet="khoas" />
+            <End Role="bacsi" EntitySet="bacsis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_datlichkham_bacsi" Association="Self.FK_datlichkham_bacsi">
+            <End Role="bacsi" EntitySet="bacsis" />
+            <End Role="datlichkham" EntitySet="datlichkhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe" Association="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe">
+            <End Role="goi_kham_suc_khoe" EntitySet="goi_kham_suc_khoe" />
+            <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chitiet_HoaDon_HOADON" Association="Self.FK_Chitiet_HoaDon_HOADON">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_datlichkham" Association="Self.FK_HOADON_datlichkham">
+            <End Role="datlichkham" EntitySet="datlichkhams" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGIN_bacsi" Association="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi">
+            <End Role="bacsi" EntitySet="bacsis" />
+            <End Role="LOGIN" EntitySet="LOGINs" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_LOGIN_bacsi">
+          <End Type="QL_DKKHAMBENH_ONLINEModel.bacsi" Role="bacsi" Multiplicity="0..1" />
+          <End Type="QL_DKKHAMBENH_ONLINEModel.LOGIN" Role="LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bacsi">
+              <PropertyRef Name="id_bacsi" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_bacsi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QL_DKKHAMBENH_ONLINEModelStoreContainer" CdmEntityContainer="QL_DKKHAMBENH_ONLINEEntities">
+        <EntityContainerMapping StorageEntityContainer="QL_DKKHAMBENH_ONLINEModelStoreContainer" CdmEntityContainer="QL_DKKHAMBENH_ONLINEEntities1">
           <EntitySetMapping Name="bacsis">
             <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.bacsi">
               <MappingFragment StoreEntitySet="bacsi">
@@ -555,13 +625,39 @@
                 <ScalarProperty Name="id_khoa" ColumnName="id_khoa" />
                 <ScalarProperty Name="diachi" ColumnName="diachi" />
                 <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
+                <ScalarProperty Name="ngaylamviec" ColumnName="ngaylamviec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chitiet_HoaDon">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon">
+              <MappingFragment StoreEntitySet="Chitiet_HoaDon">
+                <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
+                <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="dongia" ColumnName="dongia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dangkykhambenhs">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
+              <MappingFragment StoreEntitySet="dangkykhambenh">
+                <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="namsinh" ColumnName="namsinh" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+                <ScalarProperty Name="giokham" ColumnName="giokham" />
+                <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
+                <ScalarProperty Name="khac" ColumnName="khac" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="datlichkhams">
             <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.datlichkham">
               <MappingFragment StoreEntitySet="datlichkham">
-                <ScalarProperty Name="giokham" ColumnName="giokham" />
                 <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
                 <ScalarProperty Name="hoten" ColumnName="hoten" />
                 <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
@@ -571,11 +667,37 @@
                 <ScalarProperty Name="diachi" ColumnName="diachi" />
                 <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
                 <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
+                <ScalarProperty Name="giokham" ColumnName="giokham" />
                 <ScalarProperty Name="hinhdaidien" ColumnName="hinhdaidien" />
                 <ScalarProperty Name="matkhau" ColumnName="matkhau" />
                 <ScalarProperty Name="id_bacsi" ColumnName="id_bacsi" />
                 <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
                 <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goi_kham_suc_khoe">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe">
+              <MappingFragment StoreEntitySet="goi_kham_suc_khoe">
+                <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
+                <ScalarProperty Name="ten_goikham" ColumnName="ten_goikham" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="gioithieu" ColumnName="gioithieu" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
+                <ScalarProperty Name="dathanhtoan" ColumnName="dathanhtoan" />
+                <ScalarProperty Name="tinhtrang_goikham" ColumnName="tinhtrang_goikham" />
+                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+                <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -635,6 +757,8 @@
                 <ScalarProperty Name="ma_user" ColumnName="ma_user" />
                 <ScalarProperty Name="name_user" ColumnName="name_user" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="quyen" ColumnName="quyen" />
+                <ScalarProperty Name="id_bacsi" ColumnName="id_bacsi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -649,6 +773,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Thietlap_Trangchu">
+            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Thietlap_Trangchu">
+              <MappingFragment StoreEntitySet="Thietlap_Trangchu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tieude1" ColumnName="tieude1" />
+                <ScalarProperty Name="mota1" ColumnName="mota1" />
+                <ScalarProperty Name="noidung1" ColumnName="noidung1" />
+                <ScalarProperty Name="hinhanh1" ColumnName="hinhanh1" />
+                <ScalarProperty Name="tieude2" ColumnName="tieude2" />
+                <ScalarProperty Name="mota2" ColumnName="mota2" />
+                <ScalarProperty Name="noidung2" ColumnName="noidung2" />
+                <ScalarProperty Name="hinhanh2" ColumnName="hinhanh2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tintucs">
             <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.tintuc">
               <MappingFragment StoreEntitySet="tintuc">
@@ -659,57 +798,6 @@
                 <ScalarProperty Name="noidung" ColumnName="noidung" />
                 <ScalarProperty Name="SEOTitle" ColumnName="SEOTitle" />
                 <ScalarProperty Name="SEOdescriptison" ColumnName="SEOdescriptison" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="goi_kham_suc_khoe">
-            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe">
-              <MappingFragment StoreEntitySet="goi_kham_suc_khoe">
-                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
-                <ScalarProperty Name="chitiet" ColumnName="chitiet" />
-                <ScalarProperty Name="mota" ColumnName="mota" />
-                <ScalarProperty Name="soluong" ColumnName="soluong" />
-                <ScalarProperty Name="gioithieu" ColumnName="gioithieu" />
-                <ScalarProperty Name="gia" ColumnName="gia" />
-                <ScalarProperty Name="ten_goikham" ColumnName="ten_goikham" />
-                <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Chitiet_HoaDon">
-            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon">
-              <MappingFragment StoreEntitySet="Chitiet_HoaDon">
-                <ScalarProperty Name="dongia" ColumnName="dongia" />
-                <ScalarProperty Name="soluong" ColumnName="soluong" />
-                <ScalarProperty Name="id_goikham" ColumnName="id_goikham" />
-                <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HOADONs">
-            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.HOADON">
-              <MappingFragment StoreEntitySet="HOADON">
-                <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
-                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
-                <ScalarProperty Name="tinhtrang_goikham" ColumnName="tinhtrang_goikham" />
-                <ScalarProperty Name="dathanhtoan" ColumnName="dathanhtoan" />
-                <ScalarProperty Name="id_hoadon" ColumnName="id_hoadon" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dangkykhambenhs">
-            <EntityTypeMapping TypeName="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh">
-              <MappingFragment StoreEntitySet="dangkykhambenh">
-                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
-                <ScalarProperty Name="khac" ColumnName="khac" />
-                <ScalarProperty Name="motatrieuchung" ColumnName="motatrieuchung" />
-                <ScalarProperty Name="giokham" ColumnName="giokham" />
-                <ScalarProperty Name="ngaykham" ColumnName="ngaykham" />
-                <ScalarProperty Name="diachi" ColumnName="diachi" />
-                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-                <ScalarProperty Name="namsinh" ColumnName="namsinh" />
-                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
-                <ScalarProperty Name="id_benhnhan" ColumnName="id_benhnhan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,6 +17,7 @@
     <Property Name="id_khoa" Type="int" />
     <Property Name="diachi" Type="nvarchar" MaxLength="254" />
     <Property Name="id_benhnhan" Type="int" />
+    <Property Name="ngaylamviec" Type="nvarchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Chitiet_HoaDon">
     <Key>
@@ -136,9 +137,11 @@
     <Key>
       <PropertyRef Name="ma_user" />
     </Key>
-    <Property Name="ma_user" Type="int" Nullable="false" />
+    <Property Name="ma_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name_user" Type="varchar" MaxLength="50" />
     <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="quyen" Type="int" />
+    <Property Name="id_bacsi" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -149,6 +152,20 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Thietlap_Trangchu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tieude1" Type="nvarchar" MaxLength="254" />
+    <Property Name="mota1" Type="nvarchar" MaxLength="254" />
+    <Property Name="noidung1" Type="nvarchar(max)" />
+    <Property Name="hinhanh1" Type="nvarchar" MaxLength="50" />
+    <Property Name="tieude2" Type="nvarchar(max)" />
+    <Property Name="mota2" Type="nvarchar(max)" />
+    <Property Name="noidung2" Type="nvarchar(max)" />
+    <Property Name="hinhanh2" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tintuc">
     <Key>
@@ -222,6 +239,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LOGIN_bacsi">
+    <End Role="bacsi" Type="Self.bacsi" Multiplicity="0..1" />
+    <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Principal>
+      <Dependent Role="LOGIN">
+        <PropertyRef Name="id_bacsi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QL_DKKHAMBENH_ONLINEModelStoreContainer">
     <EntitySet Name="bacsi" EntityType="Self.bacsi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" Schema="dbo" store:Type="Tables" />
@@ -235,6 +264,7 @@
     <EntitySet Name="khoanoi" EntityType="Self.khoanoi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Thietlap_Trangchu" EntityType="Self.Thietlap_Trangchu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tintuc" EntityType="Self.tintuc" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
       <End Role="khoa" EntitySet="khoa" />
@@ -255,6 +285,10 @@
     <AssociationSet Name="FK_HOADON_datlichkham" Association="Self.FK_HOADON_datlichkham">
       <End Role="datlichkham" EntitySet="datlichkham" />
       <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGIN_bacsi" Association="Self.FK_LOGIN_bacsi">
+      <End Role="bacsi" EntitySet="bacsi" />
+      <End Role="LOGIN" EntitySet="LOGIN" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

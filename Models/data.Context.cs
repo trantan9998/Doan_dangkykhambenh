@@ -13,10 +13,10 @@ namespace doan_qldkonline.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QL_DKKHAMBENH_ONLINEEntities : DbContext
+    public partial class QL_DKKHAMBENH_ONLINEEntities1 : DbContext
     {
-        public QL_DKKHAMBENH_ONLINEEntities()
-            : base("name=QL_DKKHAMBENH_ONLINEEntities")
+        public QL_DKKHAMBENH_ONLINEEntities1()
+            : base("name=QL_DKKHAMBENH_ONLINEEntities1")
         {
         }
     
@@ -26,17 +26,18 @@ namespace doan_qldkonline.Models
         }
     
         public virtual DbSet<bacsi> bacsis { get; set; }
+        public virtual DbSet<Chitiet_HoaDon> Chitiet_HoaDon { get; set; }
+        public virtual DbSet<dangkykhambenh> dangkykhambenhs { get; set; }
         public virtual DbSet<datlichkham> datlichkhams { get; set; }
+        public virtual DbSet<goi_kham_suc_khoe> goi_kham_suc_khoe { get; set; }
+        public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<Hosobenhnhan> Hosobenhnhans { get; set; }
         public virtual DbSet<khoa> khoas { get; set; }
         public virtual DbSet<khoangoai> khoangoais { get; set; }
         public virtual DbSet<khoanoi> khoanois { get; set; }
         public virtual DbSet<LOGIN> LOGINs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Thietlap_Trangchu> Thietlap_Trangchu { get; set; }
         public virtual DbSet<tintuc> tintucs { get; set; }
-        public virtual DbSet<goi_kham_suc_khoe> goi_kham_suc_khoe { get; set; }
-        public virtual DbSet<Chitiet_HoaDon> Chitiet_HoaDon { get; set; }
-        public virtual DbSet<HOADON> HOADONs { get; set; }
-        public virtual DbSet<dangkykhambenh> dangkykhambenhs { get; set; }
     }
 }

@@ -25,7 +25,8 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         public ActionResult Map()
         {
             return View();
-        }     
+        }
+          
 
     }
     

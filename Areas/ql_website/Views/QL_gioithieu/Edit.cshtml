@@ -1,0 +1,99 @@
+﻿@model doan_qldkonline.Models.Thietlap_Trangchu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="color:darkblue">CHỈNH SỬA NỘI DUNG</h3>
+
+@using (Html.BeginForm("Edit", "QL_gioithieu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+         @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+
+    <h3>GIỚI THIỆU THỨ 1</h3>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.tieude1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tieude1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tieude1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.mota1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.mota1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.mota1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.noidung1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.noidung1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.noidung1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hinhanh1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <img src="@Url.Content(Model.hinhanh1)" width="250" height="250" multiple />
+            <input type="file" name="ImageFile1" required />
+            @Html.ValidationMessageFor(model => model.hinhanh1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+    <h3>GIỚI THIỆU THỨ 2</h3>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.tieude2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tieude2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tieude2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.mota2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.mota2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.mota2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.noidung2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.noidung2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.noidung2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hinhanh2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <img src="@Url.Content(Model.hinhanh2)" width="250" height="250" multiple />
+            <input type="file" name="ImageFile2" required />
+            @Html.ValidationMessageFor(model => model.hinhanh2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+    <div class="form-group text-center ">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="LƯU LẠI" class="btn btn-primary" style="font-size:20px;" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

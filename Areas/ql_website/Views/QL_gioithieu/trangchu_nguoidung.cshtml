@@ -1,0 +1,58 @@
+﻿@model IEnumerable<doan_qldkonline.Models.Thietlap_Trangchu>
+
+@{
+    ViewBag.Title = "trangchu_nguoidung";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="background-color:forestgreen;color:white;border-radius:10px;">Quản lý nội dung giới thiệu - Trang chủ \</h3>
+<button style="background-color:darkgreen;border-radius:10px;padding-top:10px;float:right">
+    <p style="color:aliceblue;">
+        @Html.ActionLink("Tạo mới nội dung", "Create")
+    </p>
+</button>
+<hr />
+<table class="table table-striped table-bordered">
+    <tr style="background-color:chocolate;color:white">
+        <th>
+            @Html.DisplayNameFor(model => model.tieude1)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.hinhanh1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tieude2)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.hinhanh2)
+        </th>
+        <th style="width:150px;">CHỨC NĂNG</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tieude1)
+            </td>
+            <td>
+                <img src="@Url.Content(item.hinhanh1)" width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tieude2)
+            </td>
+
+            <td>
+                <img src="@Url.Content(item.hinhanh2)" width="100" height="100" />
+            </td>
+            <td>
+                <button style="width:150px;color:goldenrod"> @Html.ActionLink("XEM THÔNG TIN", "Details", new { id = item.id }) </button> <br />
+                <button style="width:150px;color:darkblue"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id })</button>  <br />
+                <button style="width:150px;color:red"> @Html.ActionLink("LOẠI BỎ", "Delete", new { id = item.id })</button>
+            </td>
+        </tr>
+    }
+
+</table>

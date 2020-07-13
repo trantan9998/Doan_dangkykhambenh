@@ -5,14 +5,14 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h2 style="text-align:center">QUẢN LÝ BÀI VIẾT</h2>
+<h3 style="background-color:brown;border-radius:10px;color:white;">QUẢN LÝ BÀI VIẾT \</h3>
 <button style="background-color:forestgreen;border:dotted; ">
-    <p style="color:white;font-size:20px;width:100px;height:20px;">
-        @Html.ActionLink("THÊM MỚI", "Create")
+    <p style="color:white;font-size:20px;width:150px;height:20px;">
+        @Html.ActionLink("TẠO BÀI VIÊT", "Create")
     </p>
 </button>
 <hr />
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" id="myTable">
     <tr style="background-color: aliceblue">
         <th>
             STT
@@ -20,22 +20,19 @@
         <th>
             @Html.DisplayNameFor(model => model.tenbaiviet)
         </th>
-        <th>
+        <th style="width:170px;">
             @Html.DisplayNameFor(model => model.ngaydang)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.hinhanh)
         </th>
-
-        <th></th>
+        <th style="width:150px;"> Chức năng</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                
-            </td>
+            <td></td>
             <td>
                 @Html.DisplayFor(modelItem => item.tenbaiviet)
             </td>
@@ -48,15 +45,19 @@
             </td>
 
 
-            <td style="width:150px;">
-                <span style="border:groove;background-color:darkgoldenrod;color:aliceblue;width:100px;text-align:center">@Html.ActionLink("XEM CHI TIẾT", "Details", new { id = item.id_tintuc })</span> <br />
-                <span style="border:groove;background-color:lightslategray;color:aliceblue;width:100px;text-align:center"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_tintuc })</span> <br />
-                <span style="border:groove;background-color:darkred;color:aliceblue;width:100px;text-align:center">@Html.ActionLink("XÓA BỎ", "Delete", new { id = item.id_tintuc })</span>
+            <td>
+                <button style="width:150px;color:goldenrod"> @Html.ActionLink("XEM THÔNG TIN", "Details", new { id = item.id_tintuc }) </button> <br />
+                <button style="width:150px;color:darkblue"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_tintuc })</button>  <br />
+                <button style="width:150px;color:red"> @Html.ActionLink("LOẠI BỎ", "Delete", new { id = item.id_tintuc })</button>
             </td>
         </tr>
     }
 
 </table>
+
+
+
+
 <style type="text/css">
     table {
         width: 50%;
@@ -70,3 +71,54 @@
                 content: counter(row-num);
             }
 </style>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
+
+<script src="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+
+
+@*@section scripts{
+       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+       <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#tabletintuc").DataTable(
+                    {
+                        "ajax": {
+                            "url": "/danhsachbaiviet/GetList",
+                            "type": "GET",
+                            "datatype": "json"
+                        },
+                        "columns": [
+                            {
+                                "data": "tenbaiviet"
+                            },
+                            {
+                                "data": "ngaydang"
+                            },
+                            {
+                                "data": "hinhanh"
+                            },
+                            {
+                                "data": "noidung"
+                            },
+                             {
+                                "data": "SEOTitle"
+                            },
+                              {
+                                "data": "SEOdescription"
+                            }
+
+                        ]
+                    });
+            });
+        </script>
+    }*@
+

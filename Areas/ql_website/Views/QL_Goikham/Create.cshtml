@@ -5,14 +5,13 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h2>Create</h2>
+<h2 style="color:forestgreen">TẠO MỚI GÓI KHÁM</h2>
 
 @using (Html.BeginForm("Create", "QL_Goikham", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
    
     <div class="form-horizontal">
-        <h4>goi_kham_suc_khoe</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

@@ -13,35 +13,24 @@ namespace doan_qldkonline.Controllers
    
     public class Taikhoan_userController : Controller
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         // GET: Taikhoan_user
         public ActionResult thongtin_username()
         {
-            return View();
+            return View(db.datlichkhams.ToList());
         }
       
         [HttpGet]
         public ActionResult DangKi()
         {
-            ViewBag.bacsi = new SelectList(db.bacsis.ToList().OrderBy(n => n.id_bacsi), "id_bacsi", "id_bacsi");
-
+            //ViewBag.bacsi = new SelectList(db.bacsis.ToList().OrderBy(n => n.id_bacsi), "id_bacsi", "id_bacsi");
             return View();
         }
         [HttpPost]
          [ValidateAntiForgeryToken] // ktra validation
         public ActionResult DangKi([Bind(Exclude = "IsEmailVerified,ActivationCode")] datlichkham dlk, FormCollection f)
         {
-            string message = "";
-            //dlk.hoten = f["hotens"];
-            //dlk.sodienthoai = f["sodienthoais"];
-            //dlk.email = f["emails"];
-            //dlk.matkhau = f["matkhaus"];
-            //dlk.diachi = f["diachis"];
-            //dlk.motatrieuchung = f["motatrieuchungs"];
-            //dlk.ngaykham = DateTime.Parse(f["ngaykhams"].ToString());
-            //dlk.giokham = f["giokhams"];
-            //dlk.id_bacsi = int.Parse(Session["id_bacsi"].ToString());
-           
+            string message = "";        
             // Model Validation 
             bool Status = false;
 
@@ -56,7 +45,6 @@ namespace doan_qldkonline.Controllers
                     return View(dlk);
                 }
 
-
                 #region Generate Activation Code 
                 dlk.ActivationCode = Guid.NewGuid();
                 #endregion
@@ -68,7 +56,7 @@ namespace doan_qldkonline.Controllers
                 dlk.IsEmailVerified = false;
 
                 #region Save to Database
-                using (QL_DKKHAMBENH_ONLINEEntities dc = new QL_DKKHAMBENH_ONLINEEntities())
+                using (QL_DKKHAMBENH_ONLINEEntities1 dc = new QL_DKKHAMBENH_ONLINEEntities1())
                 {
                     dc.datlichkhams.Add(dlk);
                     dc.SaveChanges();
@@ -88,16 +76,45 @@ namespace doan_qldkonline.Controllers
 
             ViewBag.Message = message;
             ViewBag.Status = Status;
-            ViewBag.bacsi = new SelectList(db.bacsis.ToList().OrderBy(n => n.id_bacsi), "id_bacsi", "id_bacsi");
+            //ViewBag.bacsi = new SelectList(db.bacsis.ToList().OrderBy(n => n.id_bacsi), "id_bacsi", "id_bacsi");
             return View(dlk);
         }
-        
+
+        [HttpGet]
+        public ActionResult dangkybacsi(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            datlichkham dk = db.datlichkhams.Find(id);
+            if (dk == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dk);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult dangkybacsi(/*[Bind(Exclude = "id_benhnhan")]*/datlichkham dlk)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(dlk).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                //ViewBag.message = "BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG";
+                return RedirectToAction("dangkybacsi");
+            }
+            return View(dlk);
+        }
+
+
 
         [HttpGet]
         public ActionResult VerifyAccount(string id)
         {
             bool Status = false;
-            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 db.Configuration.ValidateOnSaveEnabled = false; // This line I have added here to avoid 
                                                                 // Confirm password does not match issue on save changes
@@ -141,7 +158,7 @@ namespace doan_qldkonline.Controllers
             //    ViewBag.thongbao = "😒 vui lòng kiểm tra lại tài khoản!";
             //return View();
             string message = "";
-            using (QL_DKKHAMBENH_ONLINEEntities dc = new QL_DKKHAMBENH_ONLINEEntities())
+            using (QL_DKKHAMBENH_ONLINEEntities1 dc = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 var v = dc.datlichkhams.Where(a => a.email == dlk.email).FirstOrDefault();
                 if (v != null)
@@ -162,14 +179,17 @@ namespace doan_qldkonline.Controllers
                         //cookie.HttpOnly = true;
                         //Response.Cookies.Add(cookie);
 
-
                         if (Url.IsLocalUrl(ReturnUrl))
                         {
                             return Redirect(ReturnUrl);
                         }
                         else
                         {
-                            return RedirectToAction("thongtin_username", "Taikhoan_user");
+                            Session["email"] = v.email;
+                            Session["hovaten"] = v.hoten;
+                            Session["sodienthoai"] = v.sodienthoai;
+                            Session["diachi"] = v.diachi;
+                            return RedirectToAction("thongtindangky", "datlichhen"/*, new { @ID = Session["thongtin"] }*/);
                         }
                     }
                     else
@@ -185,12 +205,12 @@ namespace doan_qldkonline.Controllers
             ViewBag.Message = message;
             return View();
         }
-        [Authorize]
-        [HttpPost]
+        //[Authorize]
+        //[HttpPost]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("login", "Taikhoan_user");
+            return RedirectToAction("Trangchu","Trangchu");
         }
 
 
@@ -209,7 +229,7 @@ namespace doan_qldkonline.Controllers
         [NonAction]
         public bool IsEmailExist(string email)
         {
-            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 var v = db.datlichkhams.Where(a => a.email == email).FirstOrDefault();
                 return v != null;

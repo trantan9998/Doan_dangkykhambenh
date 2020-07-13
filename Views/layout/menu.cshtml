@@ -28,18 +28,18 @@
             </div>
         </nav>*@      
         <!-- Collapsible content -->
-    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#0A0A2A;color:green">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:white;">
         <form class="form-inline m-auto" style="font-size:20px;">
             <div style="float:left">
                 <div style="font-size:13px; border:dashed; color:white; border-color:darkgoldenrod">
                     <img src="~/hinh/dien-thoai.png" width="20px"/>
-                    Đường dây nóng: <span>0966 375 555</span>
+                    Đường dây nóng: <span>0966 375 505</span>
                 </div>
             </div>
           <a href="@Url.Action("login","Taikhoan_user")" style="background-color:chocolate;color:aliceblue;margin-right:40px;border-bottom-style:double;text-decoration:none;font-size:15px;">Đăng nhập</a>
 
         </form>
-        <div class="container" >
+        <div class="container" style="opacity:0.9">
             <div class="navbar-header">          
                 <a class="navbar-brand" href="#">LOGO</a>
             </div>
@@ -50,7 +50,8 @@
                     <li><a href="@Url.Action("tintuc","Trangchu")">Tin tức</a></li>
                     <li><a href="@Url.Action("bacsy","Khoa")">Bác sĩ</a></li>
                     <li><a href="@Url.Action("khoa","Khoa")">Chuyên khoa</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="@Url.Action("goikham","Trangchu")">Gói khám</a></li>
+                    <li><a href="@Url.Action("lienhe","Trangchu")">Liên hệ</a></li>
                     <li>
                         @*<div>
                             @using (Html.BeginForm("timkiem", "Khoa", FormMethod.Get))
@@ -78,7 +79,6 @@
 
             </div>
         </div>
-
     </nav>
     <link href="~/Content/search.css" rel="stylesheet" />
     <script src="~/Content/search.js"></script>

@@ -1,0 +1,61 @@
+﻿
+
+@model doan_qldkonline.Models.datlichkham
+
+@{
+    ViewBag.Title = "datlichhen";
+    Layout = "~/Views/layout/layout_user_profile.cshtml";
+}
+
+<h2>THÔNG TIN ĐĂNG KÝ</h2>
+<span>Cám ơn bạn đã quan tâm đến bệnh viện ABC. Vui lòng gửi thông tin chi tiết để chúng tôi xác nhận và nhận thông tin khám qua mail.</span>
+@using (Html.BeginForm("datlichhen", "datlichhen", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.motatrieuchung, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-10">
+                <input id="motatrieuchung" name="motatrieuchung" class="form-control" required> 
+                @*@Html.EditorFor(model => model.motatrieuchung, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.motatrieuchung, "", new { @class = "text-danger" })*@
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ngaykham, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" id="ngaykham" name="ngaykham" class="form-control" required>
+                @*@Html.EditorFor(model => model.ngaykham, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.ngaykham, "", new { @class = "text-danger" })*@
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.giokham, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="time" id="giokham" name="giokham" class="form-control" required>
+                @*@Html.EditorFor(model => model.giokham, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.giokham, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="GỬI" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="background-color:darkgreen;text-align:center;border-radius:10px;">
+               <a href="@Url.Action("bacsy","Khoa")" style="text-decoration:none;color:white">TÔI MUỐN TÌM BÁC SĨ</a>
+            </div>
+        </div>
+        @ViewBag.message
+    </div>
+}

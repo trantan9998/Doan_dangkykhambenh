@@ -1,4 +1,5 @@
-﻿@model IEnumerable<doan_qldkonline.Models.login_admin>
+﻿@using doan_qldkonline.Models;
+@model login_admin
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +13,14 @@
 <!------ Include the above in your HEAD tag ---------->
 <body>
 
-    @using (@Html.BeginForm())
+    @using (@Html.BeginForm("Index", "Login", FormMethod.Post))
     {
         <div class="container h-100 ">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="card">
                     <h3 class="card-header text-center text-info">ADMIN</h3>
                     <div class="card-body">
-                        @*<div class="alert alert-danger" role="alert">
-                                thông báo lỗi
-                            </div>*@
+                     
                         <form data-toggle="validator" role="form" method="post" action="#">
                             <input type="hidden" class="hide" id="csrf_token" name="csrf_token" value="C8nPqbqTxzcML7Hw0jLRu41ry5b9a10a0e2bc2">
                             <div class="row">
@@ -32,7 +31,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="txttaikhoan" value="" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">
+                                            @Html.TextBoxFor(a => a.name_user, new { type = "Text", @class = "user" })
+                                            @*<input type="text" class="form-control" name="txttaikhoan" value="" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">*@
                                         </div>
                                         <div class="help-block with-errors text-danger"></div>
                                     </div>
@@ -46,7 +46,9 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-unlock" aria-hidden="true"></i></span>
                                             </div>
-                                            <input type="password" name="txtmatkhau" class="form-control" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">
+                                            @Html.TextBoxFor(a => a.password, new { type = "password", @class = "pass" })
+
+                                            @*<input type="password" name="txtmatkhau" class="form-control" pattern=".{4,}" title="Cuatro(4) o mas caracteres" required="">*@
                                         </div>
                                         <div class="help-block with-errors text-danger"></div>
                                     </div>
@@ -76,3 +78,41 @@
 
 </body>
 
+@*<body>
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
+
+        <!-- main -->
+        <div class="center-container">
+            <!--header-->
+            <!--//header-->
+            <div class="main-content-agile">
+                <div class="sub-main-w3">
+                    <div class="wthree-pro">
+                        <h2>Đăng Nhập</h2>
+                    </div>
+                    <form action="#" method="post">
+                        <div class="pom-agile">
+
+                            @Html.TextBoxFor(a => a.name_user, new { type = "Text", @class = "user" })
+                            <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="pom-agile">
+                            @Html.TextBoxFor(a => a.password, new { type = "password", @class = "pass" })
+                            <span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="sub-w3l">
+                            <div class="right-w3l">
+                                <input type="submit" value="Login">
+                                <center><h4 style="color:red;">@ViewBag.SuccessMessage</h4></center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--//main-->
+            <!--footer-->
+            <!--//footer-->
+        </div>
+    }
+</body>*@

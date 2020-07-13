@@ -14,7 +14,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
     public class QL_BaivietController : Controller
     {
         // GET: ql_website/QL_Baiviet
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         public ActionResult Index()
         {
             return View();
@@ -22,8 +22,12 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         public ActionResult danhsachbaiviet()
         {
             return View(db.tintucs.ToList());
+            //using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            //{
+            //    var empList = db.tintucs.ToList<tintuc>();
+            //    return Json(new { data=empList }, JsonRequestBehavior.AllowGet);
+            //}
         }
-
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,15 +49,17 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create(tintuc imageModel)
+        public ActionResult Create(FormCollection f, tintuc imageModel)
         {
             string filename = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
             string extension = Path.GetExtension(imageModel.ImageFile.FileName);
             filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
             imageModel.hinhanh = "~/hinh_tintuc/" + filename;
             filename = Path.Combine(Server.MapPath("~/hinh_tintuc/"), filename);
+
             imageModel.ImageFile.SaveAs(filename);
-            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 db.tintucs.Add(imageModel);
                 db.SaveChanges();   

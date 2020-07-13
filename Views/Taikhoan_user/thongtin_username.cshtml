@@ -1,7 +1,10 @@
-﻿
+﻿@model IEnumerable<doan_qldkonline.Models.datlichkham>
+
 @{
     ViewBag.Title = "thongtin_username";
     Layout = "~/Views/layout/layout_user_profile.cshtml";
 }
-
-<h2>thongtin_username</h2>
+@foreach (var item in Model)
+{
+    <span style="border:groove;background-color:lightslategray;color:aliceblue;width:100px;text-align:center"> @Html.ActionLink("CHỈNH SỬA", "dangkybacsi", new { id = item.id_benhnhan })</span> <br />
+}

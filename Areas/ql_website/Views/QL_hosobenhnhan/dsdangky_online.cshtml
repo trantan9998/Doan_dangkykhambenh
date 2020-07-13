@@ -7,8 +7,9 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h3 style="background-color:chocolate;color:white;25px;">Bệnh nhân đăng ký trực tuyến \</h3>
-<a href="@Url.Action("XuatFileExcel","QL_hosobenhnhan")" style="background-color:darkblue;color:white;float:right;border:groove">
+<h3 style="background-color:forestgreen;border-radius:10px;color:white;">Bệnh nhân đăng ký trực tuyến \</h3>
+<hr />
+<a href="@Url.Action("XuatFileExcel","QL_hosobenhnhan")" style="background-color:darkblue;color:white;float:right;border-radius:5px;">
     XUẤT FILE EXCEL
 </a>
 @*<p>
@@ -26,10 +27,9 @@
 <hr />
 
 <table class="table table-striped table-bordered">
-    <tr style="background-color:lavender">
+    <tr style="background-color:green;color:white">
         <th>
             @Html.DisplayNameFor(model => model.id_benhnhan)
-
         </th>
         <th>
             @Html.DisplayNameFor(model => model.hovaten)
@@ -43,7 +43,7 @@
         <th>
             @Html.DisplayNameFor(model => model.sodienthoai)
         </th>
-        <th>
+        <th style="width:150px;">
             Chức năng
         </th>
     </tr>
@@ -65,13 +65,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.sodienthoai)
             </td>
-            <td style="width:100px;">
-                <span style="border:groove;background-color:darkgoldenrod;color:aliceblue;width:100px;text-align:center">@Html.ActionLink("XEM CHI TIẾT", "Details", new { id = item.id_benhnhan })</span> <br />
-                <span style="border:groove;background-color:lightslategray;color:aliceblue;width:100px;text-align:center"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_benhnhan })</span> <br />
-                <span style="border:groove;background-color:darkred;color:aliceblue;width:100px;text-align:center">@Html.ActionLink("XÓA BỎ", "Delete", new { id = item.id_benhnhan })</span>
+            <td>
+                <button style="width:150px;color:goldenrod"> @Html.ActionLink("XEM THÔNG TIN", "Details", new { id = item.id_benhnhan }) </button> <br />
+                <button style="width:150px;color:darkblue"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_benhnhan })</button>  <br />
+                <button style="width:150px;color:red"> @Html.ActionLink("LOẠI BỎ", "Delete", new { id = item.id_benhnhan })</button>
             </td>
         </tr>
     }
 </table>
-</div>
 

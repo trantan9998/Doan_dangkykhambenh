@@ -9,7 +9,7 @@ namespace doan_qldkonline.Controllers
 {
     public class KhoaController : Controller
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         // GET: Khoa
         public ActionResult khoa()
         {
@@ -45,9 +45,6 @@ namespace doan_qldkonline.Controllers
             Session["id_bacsi"] = id_bs;
             return View(bs);
         }
-        public ActionResult datlichkham_bs()
-        {
-            return View();
-        }
+        
     }
 }

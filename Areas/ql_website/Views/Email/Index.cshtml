@@ -1,0 +1,51 @@
+﻿@model doan_qldkonline.Models.email
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+@using (Html.BeginForm("Index", "Email", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-horizontal">
+    <h2 style="margin-left:100px;color:darkblue">GỬI EMAIL</h2>
+    <hr />
+    <div style="background-color:aliceblue;margin-left:100px;width:700px;border:dashed">
+        <div class="form-group" style="margin-left:100px;">
+            <h3>EMAIL:</h3>
+            <div style="font-size:20px;margin-left:150px;">
+                @Html.TextBoxFor(model => model.To)
+                @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <hr />
+        <div class="form-group" style="margin-left:100px;">
+            <h4>TIÊU ĐỀ:</h4>
+            <div style="font-size:20px;margin-left:150px;">
+                @Html.TextBoxFor(model => model.Subject)
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-left:100px;">
+            <h4>NỘI DUNG:</h4>
+            <div style="font-size:20px; margin-left:150px;">
+                @Html.TextBoxFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+  <hr />
+  <div style="margin-left:400px;font-size:20px;">
+      <input type="submit" value="GỬI ĐI" />
+
+  </div>
+  <h3 style="color:forestgreen;margin-left:300px;">
+      @ViewBag.message
+  </h3>
+</div>
+}

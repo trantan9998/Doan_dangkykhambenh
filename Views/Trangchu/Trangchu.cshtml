@@ -9,72 +9,52 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-     
         <nav style="text-align:center">
+            <div style="font-size:35px; color:midnightblue">
+                <span class="glyphicon glyphicon-hand-down"> </span>
+
+            </div>
             <h3 style="color:forestgreen"><b>LÝ DO CHỌN BỆNH VIỆN ABC</b></h3>
-            <h4>CHÚNG TÔI LUÔN ĐỀ CAO CHẤT LƯỢNG KHÁM BỆNH LÊN HÀNG ĐẦU</h4>
+            <h4>Chúng tôi luôn đề cao chất lượng khám bệnh lên hàng đầu</h4>
         </nav>
         <div class="col-md-3">
             <a class="btn btn-block btn-lg btn-success" data-toggle="modal" data-target="#mymodal">
                 <i class="fa fa-users" id="icone_grande"></i> <br>
                 <h5 style="font-size:30px;">@ViewBag.tongSoBacSi</h5>
-                <span class="texto_grande">BÁC SỸ  </span>
+                <span class="texto_grande">ĐỘI NGŨ BÁC SỸ  </span>
             </a>
         </div>
         <div class="col-md-3">
             <a class="btn btn-block btn-lg btn-danger" data-toggle="modal" data-target="#mymodal">
                 <i class="fa fa-user" id="icone_grande"></i> <br>
                 <h5 style="font-size:30px;"> @ViewBag.tongSoDatLich</h5>
-                <span class="texto_grande">KHÁCH HÀNG </span>
+                <span class="texto_grande">BỆNH NHÂN KHÁM BỆNH </span>
             </a>
         </div>
         <div class="col-md-3">
             <a class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#mymodal">
                 <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br>
-                <h5 style="font-size:30px;">6</h5>
-                <span class="texto_grande">THÁNG PHÁT TRIỂN</span>
+                <h5 style="font-size:30px;">@ViewBag.tongSohoso</h5>
+                <span class="texto_grande">HỒ SƠ ĐƯỢC TẠO</span>
             </a>
         </div>
         <div class="col-md-3">
             <a class="btn btn-block btn-lg btn-warning" data-toggle="modal" data-target="#mymodal">
                 <i class="fa fa-pied-piper-alt" id="icone_grande"></i> <br>
-                <h5 style="font-size:30px;">1000</h5>
-                <span class="texto_grande">NGƯỜI THEO DÕI</span>
+                <h5 style="font-size:30px;">@ViewBag.bnkhambenh</h5>
+                <span class="texto_grande">BỆNH NHÂN ĐĂNG KÝ</span>
             </a>
         </div>
     }
 </div>
+<br />
 <hr />
+@Html.Action("gioithieu", "Trangchu")
+<br />
 @Html.Action("goikham_partial", "Trangchu")
 
-<div class="how-section1">
-    <h2 style="text-align:center;color:darkblue">VỀ CHÚNG TÔI</h2>
-    <div class="row">
-        <div class="col-md-6 how-img">
-            <img src="https://cdn.bookingcare.vn/fr/w800/2019/05/21/164731bs-than-kinh.jpg" style="width:550px;border-radius:30px" class="rounded-circle img-fluid" alt="" />
-        </div>
-        <div class="col-md-6">
-            <h4>TITLE</h4>
-            <h4 class="subheading">Mô tả ngắn</h4>
-            <p class="text-muted">
-                Nội dung ngắn
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>TITLE</h4>
-            <h4 class="subheading">Mô tả ngắn</h4>
-            <p class="text-muted">
-                Nội dung ngắn
-            </p>
-        </div>
-        <div class="col-md-6 how-img">
-            <img src="https://thetinypharmacist.files.wordpress.com/2016/03/medical-marketing-2.jpg" style="width:550px;border-radius:30px" class="rounded-circle img-fluid" alt="" />
-        </div>
-    </div>
-   
-</div>
+
+
 @*
     <section id="home-banner">
         <div class="container-fluid">
@@ -113,17 +93,17 @@
 <!-- Container (About Section) -->
 
 
-@Html.Action("tintucpartial", "Trangchu")
+@Html.Action("tintucpartial", "Trangchu")<br />
 
-<div class="container" style="height: 35rem;background-image: url('../../Areas/ql_website/img/bradcam2.png');background-position: center;background-size: cover;width: 100%;">
+<div class="container" style="height: 25rem;background-image: url('../../Areas/ql_website/img/bradcam2.png');background-position: center;background-size: cover;width: 100%;">
     <center>
-        <h1 style="margin-top:100px;color:aliceblue;font-family:'UTM Americana'">
+        <h1 style="margin-top:100px;color:forestgreen;font-family:'UTM Americana'">
             <b>PHÒNG KHÁM BỆNH ABC</b>
         </h1>
-        <h2 class="glyphicon glyphicon-phone"> 0966375505</h2><br />
+        <h3 class="glyphicon glyphicon-phone">0966375505</h3><br />
         <div class="btn btn-primary">
-            <a href="@Url.Action("datlichkham","Trangchu")" style="color:aliceblue;text-decoration:none">
-                ĐẶT LỊCH KHÁM
+            <a href="@Url.Action("dangkykhambenh","Trangchu")" style="color:aliceblue;text-decoration:none">
+                ĐĂNG KÝ KHÁM BỆNH
             </a>
         </div>
     </center>

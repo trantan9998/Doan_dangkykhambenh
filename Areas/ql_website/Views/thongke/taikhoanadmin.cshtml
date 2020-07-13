@@ -1,0 +1,54 @@
+﻿@model IEnumerable<doan_qldkonline.Models.LOGIN>
+
+@{
+    ViewBag.Title = "taikhoanadmin";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+<table class="table table-striped table-bordered">
+    <tr style="background-color:darkgreen;color:white;">
+        <th>
+            @Html.DisplayNameFor(model => model.ma_user)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name_user)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.quyen)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.id_bacsi)
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ma_user)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name_user)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quyen)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.id_bacsi)
+            </td>       
+        </tr>
+    }
+
+</table>

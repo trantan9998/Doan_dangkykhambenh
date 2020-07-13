@@ -20,7 +20,7 @@
         <h2 class="section-heading h1 pt-4">ĐĂNG KÝ KHÁM BỆNH</h2>
         <!--Section description-->
         <p class="section-description">
-            Vui lòng điền đầy đủ thông tin vào form
+            Vui lòng điền đầy đủ thông tin vào form (bắt buộc (*))
         </p>
         <hr />
         <div class="row">
@@ -82,8 +82,14 @@
                                 <div class="md-form">
                                     <label for="email" class="">Giới tính *</label>
                                     @*<input name="matkhaus" type="password" class="form-control" />*@
-                                    @Html.EditorFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.DropDownListFor(model => model.gioitinh,new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")*@
+                                    @*@Html.EditorFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    <select class="form-control" id="gioitinh" name="gioitinh">
+                                        <option>NAM</option>
+                                        <option>NỮ</option>
+                                    </select>
                                     @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })
+
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -105,7 +111,7 @@
 
                             <div class="col-md-12">
                                 <div class="md-form">
-                                    <label for="message">Khác *</label>
+                                    <label for="message">Khác </label>
                                     @Html.EditorFor(model => model.khac, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.khac, "", new { @class = "text-danger" })
                                 </div>
@@ -134,18 +140,7 @@
 
                             <br />
                         </div>
-                        @*<div class="row">
-
-                    <div class="col-md-6">
-                        <div class="md-form">
-                            <label for="email" class="">BÁC SỸ</label>
-                            <input name="id_bacsi" type="text" class="form-control">
-
-                            @html.dropdownlist("id_bacsi", (ienumerable<selectlistitem>)viewbag.bacsi,"chọn bác sỹ")
-
-                        </div>
-                    </div>
-                </div>*@
+                  
                         <hr />
                         <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd ' name='finish' value='ĐĂNG KÝ KHÁM' style="margin-left:200px;" />
 

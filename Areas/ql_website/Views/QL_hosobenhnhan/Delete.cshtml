@@ -5,11 +5,8 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h2>Delete</h2>
-
 <h3 style="color:red">BẠN CHẮC CHẮN XÓA THÔNG TIN BỆNH NHÂN NÀY ⛔</h3>
 <div>
-    <h4>dangkykhambenh</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -89,9 +86,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="XÓA BỎ" class="btn btn-default" /> |
-            @Html.ActionLink("Quay về", "dsdangky_online")
-        </div>
+    <div class="form-actions no-color">
+        @Html.ActionLink("QUAY LẠI /", "dsdangky_online")
+        <input type="submit" value="XÓA BỎ" class="btn btn-danger" style="margin-left:100px;" /> 
+    </div>
     }
 </div>

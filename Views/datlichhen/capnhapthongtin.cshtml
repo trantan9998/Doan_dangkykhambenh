@@ -1,0 +1,49 @@
+﻿@model doan_qldkonline.Models.datlichkham
+
+@{
+    ViewBag.Title = "capnhapthongtin";
+    Layout = "~/Views/layout/layout_user_profile.cshtml";
+}
+
+<h2>BỔ SUNG THÔNG TIN</h2>
+
+@using (Html.BeginForm(Html.BeginForm("capnhapthongtin", "datlichhen", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_benhnhan)
+
+   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ngaysinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" id="ngaysinh" name="ngaysinh" class="form-control" required>
+                
+                @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gioitinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="gioitinh" name="gioitinh" required>
+                    <option>NAM</option>
+                    <option>NỮ</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" >
+                <input type="submit" value="CẬP NHẬP" class="btn btn-default" style="background-color:forestgreen;color:white"/>
+            </div>
+        </div>
+    </div>
+}

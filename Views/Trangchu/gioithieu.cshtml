@@ -1,0 +1,74 @@
+﻿@using doan_qldkonline.Models
+@model List<Thietlap_Trangchu>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="@Url.Content(item.hinhanh1)" style="width:700px;height:550px" alt="Image">
+                            @*<div class="carousel-caption">
+                                <h3>Sell $</h3>
+                                <p>Money Money.</p>
+                            </div>*@
+                        </div>
+
+                        <div class="item">
+                            <img src="@Url.Content(item.hinhanh2)" style="width:700px;height:550px" alt="Image">
+                            @*<div class="carousel-caption">
+                                <h3>More Sell $</h3>
+                                <p>Lorem ipsum...</p>
+                            </div>*@
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-4" >
+                <div class="well" style="color:forestgreen;font-size:18px;">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.tieude1)
+                    </p>
+                </div>
+                <div class="well" style="color:darkblue;font-size:16px;">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.mota1)
+                    </p>
+                </div>
+                <div class="well" style="color:forestgreen;font-size:18px;">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.tieude2)
+                    </p>
+                </div> 
+                <div class="well" style="color:darkblue;font-size:16px;">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.mota2)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

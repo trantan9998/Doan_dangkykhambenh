@@ -11,10 +11,14 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
     public class ThongkeController : Controller
     {
         // GET: ql_website/Thongke_benhnhan
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult taikhoanadmin()
+        {
+            return View(db.LOGINs.ToList());
         }
         public ActionResult thongke()
         {
@@ -24,7 +28,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             var tongSoBacSi = db.bacsis.OrderByDescending(model => model.id_bacsi);
             ViewBag.tongSoBacSi = tongSoBacSi.Count();
 
-            var tongSohoso = db.Hosobenhnhans.OrderByDescending(model => model.id_hoso);
+            var tongSohoso = db.dangkykhambenhs.OrderByDescending(model => model.id_benhnhan);
             ViewBag.tongSohoso = tongSohoso.Count();
 
             var tongSobaiviet = db.tintucs.OrderByDescending(model => model.id_tintuc);

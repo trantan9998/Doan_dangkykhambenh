@@ -1,0 +1,27 @@
+﻿@model doan_qldkonline.Models.khoa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT VỀ KHOA</h2>
+
+<div>
+    <h4>khoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_khoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_khoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_khoa }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

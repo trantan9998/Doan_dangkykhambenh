@@ -11,10 +11,14 @@ namespace doan_qldkonline.Controllers
 {
     public class TrangchuController : Controller
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         
         // GET: Trangchu
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult lienhe()
         {
             return View();
         }
@@ -29,13 +33,17 @@ namespace doan_qldkonline.Controllers
             var tongSohoso = db.Hosobenhnhans.OrderByDescending(model => model.id_hoso);
             ViewBag.tongSohoso = tongSohoso.Count();
 
-            var tongSobaiviet = db.tintucs.OrderByDescending(model => model.id_tintuc);
-            ViewBag.tongSobaiviet = tongSobaiviet.Count();
+            var bnkhambenh = db.dangkykhambenhs.OrderByDescending(model => model.id_benhnhan);
+            ViewBag.bnkhambenh = bnkhambenh.Count();
 
             return View(db.tintucs.ToList());
         }
       
   
+        public ActionResult gioithieu()
+        {
+            return View(db.Thietlap_Trangchu.ToList());
+        }
         public ActionResult dichvu()
         {
             return View();
@@ -52,10 +60,9 @@ namespace doan_qldkonline.Controllers
             return View(db.tintucs.ToList());
         }
      
-     
         public ActionResult tintucpartial()
         {
-            var tt = db.tintucs.Take(5).ToList();
+            var tt = db.tintucs.Take(4).ToList();
             return View(tt);
         }
        
@@ -113,11 +120,11 @@ namespace doan_qldkonline.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (QL_DKKHAMBENH_ONLINEEntities dbs = new QL_DKKHAMBENH_ONLINEEntities())
+                using (QL_DKKHAMBENH_ONLINEEntities1 dbs = new QL_DKKHAMBENH_ONLINEEntities1())
                 {
                     dbs.dangkykhambenhs.Add(dkkhambenh);
                     dbs.SaveChanges();
-                    ViewBag.message = "bạn đã đăng ký thành công, vui lòng chờ bộ phận tư vấn liên hệ";
+                    ViewBag.message = "BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG, vui lòng chờ bộ phận tư vấn liên hệ";
                 }
                 //return RedirectToAction("dangkykhambenh");
 

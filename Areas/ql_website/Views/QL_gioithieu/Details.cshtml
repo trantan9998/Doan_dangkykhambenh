@@ -1,0 +1,85 @@
+﻿@model doan_qldkonline.Models.Thietlap_Trangchu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="color:darkblue">THÔNG TIN ĐƯỢC HIỂN THỊ LÊN WEBSITE</h3>
+
+<div>
+    <button style="background-color:darkgoldenrod;float:right;height:40px;color:white"><h4 >@Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.id })</h4> </button>
+    <hr />
+    <dl class="dl-horizontal">
+        <h3>GIỚI THIỆU THỨ 1</h3>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tieude1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieude1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noidung1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noidung1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhanh1)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.hinhanh1)" width="250" height="250" multiple />
+        </dd>
+        <h3>GIỚI THIỆU THỨ 2</h3>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tieude2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieude2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noidung2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noidung2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhanh2)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.hinhanh1)" width="250" height="250" multiple />
+        </dd>
+
+    </dl>
+    <hr />
+</div>
+<p>
+    @Html.ActionLink("QUAY LẠI /", "trangchu_nguoidung")
+</p>

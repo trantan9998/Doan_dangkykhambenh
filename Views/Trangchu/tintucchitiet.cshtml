@@ -17,16 +17,17 @@
                 @Html.DisplayNameFor(model => model.ngaydang):             
                 @Html.DisplayFor(model => model.ngaydang)
             </h5>
-            <h2 class="title">
+            <h3 class="title">
                 @Html.DisplayFor(model => model.SEOTitle)
-            </h2>
+            </h3>
         </div>
         <!-- INFO -->
         <div class="row">
             <div class="col-xs-12">
                 <h3>
-                    @Html.DisplayFor(model => model.tenbaiviet)
+                    <b>@Html.DisplayFor(model => model.tenbaiviet)</b> 
                 </h3>
+                <br />
                 <h4 style="line-height: 25px;">
                     @Html.DisplayFor(model => model.SEOdescriptison)
                 </h4>
@@ -37,7 +38,7 @@
         </div>
         <div class="row row-eq-height" style="padding-right:15px">
             <div class="col-xs-9 text">
-                <img src="@Url.Content(Model.hinhanh)" width="250" height="250" multiple /><hr />
+                <img src="@Url.Content(Model.hinhanh)" width="600" height="450" multiple /><hr />
                 @Html.DisplayFor(model => model.noidung)
 
             </div>

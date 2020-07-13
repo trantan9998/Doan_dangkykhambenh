@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge" style="color:orangered;font-size:25px;">@ViewBag.tongSoDatLich</div>
-                                        <div>BỆNH NHÂN ĐĂNG KÝ</div>
+                                        <div style="font-size:15px;">BỆNH NHÂN ĐĂNG KÝ VỚI BÁC SĨ</div>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge" style="color:orangered;font-size:25px;">@ViewBag.tongSoBacSi</div>
-                                        <div>TỔNG SỐ BÁC SỸ</div>
+                                        <div>HỒ SƠ BÁC SĨ TẠI BỆNH VIỆN</div>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge" style="color:orangered;font-size:25px;">@ViewBag.tongSohoso</div>
-                                        <div>HỒ SƠ ĐƯỢC TẠO</div>
+                                        <div>BỆNH NHÂN ĐĂNG KÝ KHÁM NHANH</div>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge" style="color:orangered;font-size:25px;">@ViewBag.tongsobaiviet</div>
-                                        <div>TỔNG SỐ BÀI VIẾT</div>
+                                        <div>TỔNG SỐ BÀI VIẾT TRÊN WEBSITE</div>
                                     </div>
                                 </div>
                             </div>
@@ -114,8 +114,106 @@
 
                 </div>
             </div>
-        </div><!-- /#wrapper -->
+        </div>
+        <!-- /#wrapper -->
     }
-    </body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <div id="page-wrapper">
+            <hr />
+            <h4 style="color:forestgreen"> HƯỚNG DẪN SỬ DỤNG TRANG QUẢN TRỊ WEBSITE</h4>
+            <!-- /.row -->
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel" style="background-color:darkorange;">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-left">
+                                    <div>HƯỚNG DẪN SỬ DỤNG</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" >
+                            <div class="panel-footer">
+                               
+                                <h4 style="font-size:15px;">
+                                    <b>
+                                        *QUẢN LÝ BỆNH NHÂN:
+                                    </b>
+                                    <br /><br />
+                                    <span>* ĐĂNG KÝ BỆNH NHÂN </span> -
+                                    Chức năng xử lý: <br /><br />
+                                    + có quyền xem thông tin bệnh nhân đăng ký<br />
+                                    + có quyền chỉnh sửa thông tin (nếu như bệnh nhân có yêu cầu thay đổi)<br />
+                                    + Có quyền loại bỏ thông tin (nếu như thông tin không hợp lệ)<br />
+                                    + có quyền gửi mail cho bệnh nhân<br />
+                                    + Cho phép xuất file Excel thống kê<br /><br />
+
+                                    <span>* BỆNH NHÂN ĐĂNG KÝ VỚI BÁC SĨ</span> -
+                                    Chức năng xử lý: <br /><br />
+                                    + có quyền xem kiểm tra thông tin bệnh nhân đăng ký đã được kích hoạt tài khoản <br />
+                                    + Xem chi tiết bệnh nhân đăng ký trực tiếp với bác sỹ nào<br />
+                                    + Cho phép xóa bỏ thông tin bệnh nhân (nếu như thông tin không hợp lệ)<br />
+                                    + có quyền gửi mail cho bệnh nhân<br />
+                                    + Cho phép chỉnh sửa lại thông (nếu như bệnh nhân đó yêu cầu chỉnh sửa)<br /><br />
+
+                                    <b>* QUẢN LÝ BÁC SĨ</b> -
+                                    Chức năng xử lý: <br /><br />
+                                    + Cho phép tạo hồ sơ Bác sĩ và hiển thị bác sĩ lên website <br />
+                                    + Cho phép Chỉnh sửa thông tin Bác sĩ <br />
+                                    + Cho phép xóa bỏ thông tin Bác sĩ<br /><br />
+                                    <b>* QUẢN LÝ KHOA</b> -
+                                    Chức năng xử lý: <br /><br />
+                                    + Cho phép Thêm mới một KHOA<br />
+                                    + Cho phép chỉnh sửa Tên KHOA<br />
+                                    + Cho phép loại bỏ KHOA Khỏi website<br /><br />
+                                    <b>* QUẢN KÝ GÓI KHÁM</b> -
+                                    Chức năng xử lý: <br /><br />
+                                    + Cho phép Tạo một gói khám sức khỏe <br />
+                                    + Cho phép Thay đổi nội dung của gói khám sức khỏe<br />
+                                    + Cho phép Xóa bỏ gói khám khỏi website<br /><br />
+                                    <b>* QUẢN LÝ BÀI VIẾT</b> -
+                                    Chức năng xử lý: <br /><br />
+                                    + Cho phép tạo mới 1 bài viết đăng lên website<br />
+                                    + Cho phép chỉnh sửa nội dung bài viết trên website<br />
+                                    + Cho phép xóa bỏ bài viết khỏi website<br />
+
+                                </h4>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-left">
+                                    <div>VIDEO HƯỚNG DẪN</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+
+</body>
 
 </html>

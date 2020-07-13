@@ -1,0 +1,60 @@
+﻿@model IEnumerable < doan_qldkonline.Models.datlichkham>
+
+@{
+    ViewBag.Title = "thongtindangky";
+    Layout = "~/Views/layout/layout_user_profile.cshtml";
+}
+<div class="dashboard-area">
+    <div class="row">
+        <div class="col-12">
+            <div class="mb-3 bg-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto mr-auto">
+                                <div class="profiles p-3 my-4 rounded text-center ">
+                                    <div class="avatars">
+                                        <a>
+                                            <img src="~/hinh/login.png" alt="Circle Image" style="width:90px;">
+                                        </a>
+                                    </div>
+                                    <br />
+                                    <div class="names">
+                                        <h4 class="title text-light k">Bệnh nhân  </h4>
+                                        <br />
+                                        <h3 style="color:aliceblue">@Session["hovaten"].ToString()</h3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-start">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" style="background-color:chocolate;color:white">
+                    THÔNG TIN BỆNH NHÂN ĐĂNG KÝ
+                </div>
+                <div class="card-body">
+                    @if (Session["hovaten"] != null)
+                    {
+                        <p>SỐ ĐIỆN THOẠI: @Session["sodienthoai"].ToString()</p>
+                        <p>ĐẠI CHỈ: @Session["diachi"].ToString()</p>
+                        <p>Email: @Session["email"].ToString()</p>
+                    }
+                </div>
+            </div>
+
+        </div>
+        @*@foreach (var item in Model)
+        {
+            @Html.ActionLink("CHỈNH SỬA", "datlichhen", new { id = item.id_benhnhan })
+        }*@
+    </div>
+
+
+</div>

@@ -4,17 +4,18 @@
     ViewBag.Title = "bacsy";
     Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
-<div style="background-color:aliceblue;margin-top:-50px;margin-bottom:40px;border-radius:10px;height:30px;">
-    <center> <h3 style="color:forestgreen;font-style:unset">ĐỘI NGŨ Y BÁC SỸ TẠI BỆNH VIỆN </h3></center>
-
+<div style="margin-top:-50px;margin-bottom:40px;border-radius:10px;height:30px;">
+    <h3 style="color:darkgreen;font-style:unset"><b>ĐỘI NGŨ Y BÁC SỸ /</b></h3>
+    <h4 style="color:forestgreen;font-style:unset"><b>Chúng tôi tự hào với đội ngũ y bác sỹ giỏi nhiều năm kinh nghiệm trong lĩnh vực khám chữa bệnh</b></h4>
 </div>
+<hr />
 <div class="row text-center @*slideanim*@">
     @foreach (var item in Model)
     {
         <div class="col-sm-3">
             <div class="thumbnail" style="background-color:azure;">
                 <p class="card">
-                    <img src=" @Url.Content("~/hinh_bacsi/" + item.hinhanh)">
+                    <img src="@Url.Content(item.hinhanh)" style="width:200px;height:210px;">
                 </p>
                 <p class="card-text">
                     BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.hovaten)</b><br />

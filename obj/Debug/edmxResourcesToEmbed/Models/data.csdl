@@ -17,8 +17,37 @@
     <Property Name="id_khoa" Type="Int32" />
     <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
     <Property Name="id_benhnhan" Type="Int32" />
+    <Property Name="ngaylamviec" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="khoa" Relationship="Self.FK_bacsi_khoa" FromRole="bacsi" ToRole="khoa" />
     <NavigationProperty Name="datlichkhams" Relationship="Self.FK_datlichkham_bacsi" FromRole="bacsi" ToRole="datlichkham" />
+    <NavigationProperty Name="LOGINs" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi" FromRole="bacsi" ToRole="LOGIN" />
+  </EntityType>
+  <EntityType Name="Chitiet_HoaDon">
+    <Key>
+      <PropertyRef Name="id_hoadon" />
+      <PropertyRef Name="id_goikham" />
+    </Key>
+    <Property Name="id_hoadon" Type="Int32" Nullable="false" />
+    <Property Name="id_goikham" Type="Int32" Nullable="false" />
+    <Property Name="soluong" Type="Int32" />
+    <Property Name="dongia" Type="Double" />
+    <NavigationProperty Name="goi_kham_suc_khoe" Relationship="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="Chitiet_HoaDon" ToRole="goi_kham_suc_khoe" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK_Chitiet_HoaDon_HOADON" FromRole="Chitiet_HoaDon" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="dangkykhambenh">
+    <Key>
+      <PropertyRef Name="id_benhnhan" />
+    </Key>
+    <Property Name="id_benhnhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hovaten" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="namsinh" Type="Double" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="ngaykham" Type="DateTime" Precision="0" />
+    <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="khac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="sodienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="datlichkham">
     <Key>
@@ -33,14 +62,40 @@
     <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
     <Property Name="ngaykham" Type="DateTime" Precision="0" />
+    <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="hinhdaidien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="id_bacsi" Type="Int32" />
     <Property Name="ActivationCode" Type="Guid" />
     <Property Name="IsEmailVerified" Type="Boolean" />
     <NavigationProperty Name="bacsi" Relationship="Self.FK_datlichkham_bacsi" FromRole="datlichkham" ToRole="bacsi" />
-    <NavigationProperty Name="HOADONs" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham" FromRole="datlichkham" ToRole="HOADON" />
-    <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_datlichkham" FromRole="datlichkham" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="goi_kham_suc_khoe">
+    <Key>
+      <PropertyRef Name="id_goikham" />
+    </Key>
+    <Property Name="id_goikham" Type="Int32" Nullable="false" />
+    <Property Name="ten_goikham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="gia" Type="Double" />
+    <Property Name="gioithieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="soluong" Type="Int32" />
+    <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hinhanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Chitiet_HoaDon" Relationship="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="goi_kham_suc_khoe" ToRole="Chitiet_HoaDon" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="id_hoadon" />
+    </Key>
+    <Property Name="id_hoadon" Type="Int32" Nullable="false" />
+    <Property Name="dathanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tinhtrang_goikham" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ngaydat" Type="DateTime" Precision="0" />
+    <Property Name="id_benhnhan" Type="Int32" />
+    <NavigationProperty Name="Chitiet_HoaDon" Relationship="Self.FK_Chitiet_HoaDon_HOADON" FromRole="HOADON" ToRole="Chitiet_HoaDon" />
+    <NavigationProperty Name="datlichkham" Relationship="Self.FK_HOADON_datlichkham" FromRole="HOADON" ToRole="datlichkham" />
   </EntityType>
   <EntityType Name="Hosobenhnhan">
     <Key>
@@ -93,9 +148,12 @@
     <Key>
       <PropertyRef Name="ma_user" />
     </Key>
-    <Property Name="ma_user" Type="Int32" Nullable="false" />
+    <Property Name="ma_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quyen" Type="Int32" />
+    <Property Name="id_bacsi" Type="Int32" />
+    <NavigationProperty Name="bacsi" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi" FromRole="LOGIN" ToRole="bacsi" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -106,6 +164,20 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Thietlap_Trangchu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tieude1" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="mota1" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="noidung1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hinhanh1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tieude2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mota2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="noidung2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hinhanh2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tintuc">
     <Key>
@@ -143,82 +215,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="bacsis" EntityType="Self.bacsi" />
-    <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
-    <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
-    <EntitySet Name="khoas" EntityType="Self.khoa" />
-    <EntitySet Name="khoangoais" EntityType="Self.khoangoai" />
-    <EntitySet Name="khoanois" EntityType="Self.khoanoi" />
-    <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="tintucs" EntityType="Self.tintuc" />
-    <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
-      <End Role="khoa" EntitySet="khoas" />
-      <End Role="bacsi" EntitySet="bacsis" />
-    </AssociationSet>
-    <AssociationSet Name="FK_datlichkham_bacsi" Association="Self.FK_datlichkham_bacsi">
-      <End Role="bacsi" EntitySet="bacsis" />
-      <End Role="datlichkham" EntitySet="datlichkhams" />
-    </AssociationSet>
-    <EntitySet Name="goi_kham_suc_khoe" EntityType="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe" />
-    <EntitySet Name="Chitiet_HoaDon" EntityType="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" />
-    <EntitySet Name="HOADONs" EntityType="QL_DKKHAMBENH_ONLINEModel.HOADON" />
-    <AssociationSet Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe" Association="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe">
-      <End Role="goi_kham_suc_khoe" EntitySet="goi_kham_suc_khoe" />
-      <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Chitiet_HoaDon_HOADON" Association="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON">
-      <End Role="HOADON" EntitySet="HOADONs" />
-      <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HOADON_datlichkham" Association="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham">
-      <End Role="datlichkham" EntitySet="datlichkhams" />
-      <End Role="HOADON" EntitySet="HOADONs" />
-    </AssociationSet>
-    <EntitySet Name="dangkykhambenhs" EntityType="QL_DKKHAMBENH_ONLINEModel.dangkykhambenh" />
-  </EntityContainer>
-  <EntityType Name="goi_kham_suc_khoe">
-    <Key>
-      <PropertyRef Name="id_goikham" />
-    </Key>
-    <Property Name="id_goikham" Type="Int32" Nullable="false" />
-    <Property Name="ten_goikham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="gia" Type="Double" />
-    <Property Name="gioithieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="soluong" Type="Int32" />
-    <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="hinhanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Chitiet_HoaDon" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="goi_kham_suc_khoe" ToRole="Chitiet_HoaDon" />
-  </EntityType>
-  <EntityType Name="Chitiet_HoaDon">
-    <Key>
-      <PropertyRef Name="id_hoadon" />
-      <PropertyRef Name="id_goikham" />
-    </Key>
-    <Property Name="id_hoadon" Type="Int32" Nullable="false" />
-    <Property Name="id_goikham" Type="Int32" Nullable="false" />
-    <Property Name="soluong" Type="Int32" />
-    <Property Name="dongia" Type="Double" />
-    <NavigationProperty Name="goi_kham_suc_khoe" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_goi_kham_suc_khoe" FromRole="Chitiet_HoaDon" ToRole="goi_kham_suc_khoe" />
-    <NavigationProperty Name="HOADON" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON" FromRole="Chitiet_HoaDon" ToRole="HOADON" />
-  </EntityType>
-  <EntityType Name="HOADON">
-    <Key>
-      <PropertyRef Name="id_hoadon" />
-    </Key>
-    <Property Name="id_hoadon" Type="Int32" Nullable="false" />
-    <Property Name="dathanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tinhtrang_goikham" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="ngaydat" Type="DateTime" Precision="0" />
-    <Property Name="id_benhnhan" Type="Int32" />
-    <NavigationProperty Name="Chitiet_HoaDon" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_Chitiet_HoaDon_HOADON" FromRole="HOADON" ToRole="Chitiet_HoaDon" />
-    <NavigationProperty Name="datlichkham" Relationship="QL_DKKHAMBENH_ONLINEModel.FK_HOADON_datlichkham" FromRole="HOADON" ToRole="datlichkham" />
-  </EntityType>
   <Association Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe">
-    <End Type="QL_DKKHAMBENH_ONLINEModel.goi_kham_suc_khoe" Role="goi_kham_suc_khoe" Multiplicity="1" />
-    <End Type="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" Role="Chitiet_HoaDon" Multiplicity="*" />
+    <End Role="goi_kham_suc_khoe" Type="Self.goi_kham_suc_khoe" Multiplicity="1" />
+    <End Role="Chitiet_HoaDon" Type="Self.Chitiet_HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="goi_kham_suc_khoe">
         <PropertyRef Name="id_goikham" />
@@ -229,8 +228,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Chitiet_HoaDon_HOADON">
-    <End Type="QL_DKKHAMBENH_ONLINEModel.HOADON" Role="HOADON" Multiplicity="1" />
-    <End Type="QL_DKKHAMBENH_ONLINEModel.Chitiet_HoaDon" Role="Chitiet_HoaDon" Multiplicity="*" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="Chitiet_HoaDon" Type="Self.Chitiet_HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HOADON">
         <PropertyRef Name="id_hoadon" />
@@ -241,8 +240,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HOADON_datlichkham">
-    <End Type="QL_DKKHAMBENH_ONLINEModel.datlichkham" Role="datlichkham" Multiplicity="0..1" />
-    <End Type="QL_DKKHAMBENH_ONLINEModel.HOADON" Role="HOADON" Multiplicity="*" />
+    <End Role="datlichkham" Type="Self.datlichkham" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="datlichkham">
         <PropertyRef Name="id_benhnhan" />
@@ -252,19 +251,56 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="dangkykhambenh">
-    <Key>
-      <PropertyRef Name="id_benhnhan" />
-    </Key>
-    <Property Name="id_benhnhan" Type="Int32" Nullable="false" />
-    <Property Name="hovaten" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-    <Property Name="namsinh" Type="Double" />
-    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="diachi" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-    <Property Name="ngaykham" Type="DateTime" Precision="0" />
-    <Property Name="giokham" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="motatrieuchung" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-    <Property Name="khac" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
-    <Property Name="sodienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
+  <EntityContainer Name="QL_DKKHAMBENH_ONLINEEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bacsis" EntityType="Self.bacsi" />
+    <EntitySet Name="Chitiet_HoaDon" EntityType="Self.Chitiet_HoaDon" />
+    <EntitySet Name="dangkykhambenhs" EntityType="Self.dangkykhambenh" />
+    <EntitySet Name="datlichkhams" EntityType="Self.datlichkham" />
+    <EntitySet Name="goi_kham_suc_khoe" EntityType="Self.goi_kham_suc_khoe" />
+    <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+    <EntitySet Name="Hosobenhnhans" EntityType="Self.Hosobenhnhan" />
+    <EntitySet Name="khoas" EntityType="Self.khoa" />
+    <EntitySet Name="khoangoais" EntityType="Self.khoangoai" />
+    <EntitySet Name="khoanois" EntityType="Self.khoanoi" />
+    <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Thietlap_Trangchu" EntityType="Self.Thietlap_Trangchu" />
+    <EntitySet Name="tintucs" EntityType="Self.tintuc" />
+    <AssociationSet Name="FK_bacsi_khoa" Association="Self.FK_bacsi_khoa">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="bacsi" EntitySet="bacsis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datlichkham_bacsi" Association="Self.FK_datlichkham_bacsi">
+      <End Role="bacsi" EntitySet="bacsis" />
+      <End Role="datlichkham" EntitySet="datlichkhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Chitiet_HoaDon_goi_kham_suc_khoe" Association="Self.FK_Chitiet_HoaDon_goi_kham_suc_khoe">
+      <End Role="goi_kham_suc_khoe" EntitySet="goi_kham_suc_khoe" />
+      <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Chitiet_HoaDon_HOADON" Association="Self.FK_Chitiet_HoaDon_HOADON">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="Chitiet_HoaDon" EntitySet="Chitiet_HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOADON_datlichkham" Association="Self.FK_HOADON_datlichkham">
+      <End Role="datlichkham" EntitySet="datlichkhams" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGIN_bacsi" Association="QL_DKKHAMBENH_ONLINEModel.FK_LOGIN_bacsi">
+      <End Role="bacsi" EntitySet="bacsis" />
+      <End Role="LOGIN" EntitySet="LOGINs" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_LOGIN_bacsi">
+    <End Type="QL_DKKHAMBENH_ONLINEModel.bacsi" Role="bacsi" Multiplicity="0..1" />
+    <End Type="QL_DKKHAMBENH_ONLINEModel.LOGIN" Role="LOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bacsi">
+        <PropertyRef Name="id_bacsi" />
+      </Principal>
+      <Dependent Role="LOGIN">
+        <PropertyRef Name="id_bacsi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

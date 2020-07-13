@@ -5,8 +5,8 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h3 style="background-color:chocolate;color:white;25px;">Bệnh nhân đăng ký trực tuyến \</h3>
-
+<h3 style="background-color:forestgreen;border-radius:10px;color:white;">Bệnh nhân đăng ký trực tuyến \</h3>
+<hr />
 @using (Html.BeginForm("timkiem", "QL_hosobenhnhan", FormMethod.Get))
 {
     @Html.TextBox("timkiem", "", htmlAttributes: new { @placeholder = "nhập số điện thoại..." })
@@ -26,7 +26,7 @@ else
 {
 
     <table class="table table-striped table-bordered">
-        <tr style="background-color:lavender">
+        <tr style="background-color:green;color:white">
             <th>
                 @Html.DisplayNameFor(model => model.id_benhnhan)
 
@@ -43,7 +43,7 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.sodienthoai)
             </th>
-            <th>
+            <th style="width:150px;">
                 Chức năng
             </th>
         </tr>
@@ -66,12 +66,14 @@ else
                     @Html.DisplayFor(modelItem => item.sodienthoai)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id_benhnhan }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id_benhnhan }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id_benhnhan })
+                    <button style="width:150px;color:goldenrod"> @Html.ActionLink("XEM THÔNG TIN", "Details", new { id = item.id_benhnhan }) </button> <br />
+                    <button style="width:150px;color:darkblue"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_benhnhan })</button>  <br />
+                    <button style="width:150px;color:red"> @Html.ActionLink("LOẠI BỎ", "Delete", new { id = item.id_benhnhan })</button>
                 </td>
             </tr>
         }
     </table>
+
+
 }
 

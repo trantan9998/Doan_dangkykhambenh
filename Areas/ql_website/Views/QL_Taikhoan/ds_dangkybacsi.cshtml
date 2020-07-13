@@ -1,0 +1,84 @@
+﻿@model IEnumerable<doan_qldkonline.Models.datlichkham>
+
+@{
+    ViewBag.Title = "ds_dangkybacsi";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="background-color:forestgreen;border-radius:10px;color:white;">Bệnh nhân đăng ký với Bác Sĩ \</h3>
+<a href="@Url.Action("XuatFileExcel","QL_Taikhoan")" style="background-color:darkblue;color:white;float:right;border-radius:5px;">
+    XUẤT FILE EXCEL
+</a>
+<hr />
+<table class="table table-striped table-bordered">
+    <tr style="background-color:darkgreen;color:white;">
+        <th>
+            @Html.DisplayNameFor(model => model.id_benhnhan)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hoten)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.gioitinh)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.sodienthoai)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ngaykham)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.giokham)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsEmailVerified)
+        </th>
+        <th>
+            Chức năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_benhnhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hoten)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.gioitinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sodienthoai)
+        </td>
+
+
+        <td>
+            @Convert.ToDateTime(item.ngaykham).ToString("dd/mm/yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.giokham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEmailVerified)
+        </td>
+
+
+        <td>
+            <button style="width:150px;color:goldenrod"> @Html.ActionLink("XEM THÔNG TIN", "Details", new { id = item.id_benhnhan }) </button> <br />
+            <button style="width:150px;color:darkblue"> @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = item.id_benhnhan })</button>  <br />
+            <button style="width:150px;color:red"> @Html.ActionLink("LOẠI BỎ", "Delete", new { id = item.id_benhnhan })</button>
+        </td>
+    </tr>
+    }
+
+</table>

@@ -13,7 +13,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
 
     public class QL_GoikhamController : Controller
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         // GET: ql_website/QL_Goikham
         public ActionResult Index()
         {
@@ -55,7 +55,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             imageModel.hinhanh = "~/hinh_goikham/" + filename;
             filename = Path.Combine(Server.MapPath("~/hinh_goikham/"), filename);
             imageModel.ImageFile.SaveAs(filename);
-            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 db.goi_kham_suc_khoe.Add(imageModel);
                 db.SaveChanges();

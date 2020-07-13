@@ -1,0 +1,119 @@
+﻿@model doan_qldkonline.Models.Hosobenhnhan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+
+<h3 style="color:red">BẠN CHẮC CHẮN XÓA HỒ SƠ BỆNH NHÂN NÀY ⛔</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cmnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dantoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dantoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nghenghiep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nghenghiep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chohientai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chohientai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cannang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cannang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ghichu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghichu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chieucao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chieucao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tieusu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieusu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_khoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_khoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chandoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chandoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ketqua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ketqua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_benhnhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_benhnhan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("QUAY LẠI", "quanlyhs")
+        </div>
+    }
+</div>

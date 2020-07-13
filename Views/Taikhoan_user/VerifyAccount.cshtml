@@ -5,8 +5,11 @@
 }
 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
 {
-    <div class="alert alert-success">
-        <strong>ĐĂNG KÝ THÀNH CÔNG!</strong> TÀI KHOẢN CỦA BẠN ĐÃ ĐƯỢC KÍCH HOẠT THÀNH CÔNG, CLICK VÀO ĐÂY: @Html.ActionLink("login", "login", "Taikhoan_user")
+    <div class="alert alert-success" style="font-size:20px;">
+        <strong>ĐĂNG KÝ THÀNH CÔNG!</strong> TÀI KHOẢN CỦA BẠN ĐÃ ĐƯỢC KÍCH HOẠT,<br />
+        BÂY GIỜ BẠN CÓ QUYỀN ĐĂNG KÝ KHÁM VỚI BÁC SĨ
+
+        @*CLICK VÀO ĐÂY: @Html.ActionLink("login", "login", "Taikhoan_user")*@
     </div>
 }
 else

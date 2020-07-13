@@ -1,10 +1,10 @@
 ﻿@*@using doan_qldkonline.Models;*@
 @model IEnumerable<doan_qldkonline.Models.bacsi>
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "timkiem";
-                Layout = "~/Views/layout/layout_trangchu.cshtml";
+    ViewBag.Title = "timkiem";
+    Layout = "~/Views/layout/layout_trangchu.cshtml";
 }
 
 <h3>BÁC SỸ CHUYÊN MÔN</h3>
@@ -20,15 +20,27 @@ else
 
     foreach (var item in Model)
     {
-        <div class="col-sm-4">
-            <div class="thumbnail" style="background-color:lavender">
-                <img src="@Url.Content(item.hovaten)"><br />
+        <div class="text-center @*slideanim*@">
 
-                <h5 class="card-title">
-                    @Html.DisplayFor(modelItem => item.khoa)
-                </h5>
-                <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})">XEM CHI TIẾT</a>
+            <div class="col-sm-3">
+                <div class="thumbnail" style="background-color:azure;">
+                    <p class="card">
+                        <img src="@Url.Content(item.hinhanh)" style="width:200px;height:210px;">
+                    </p>
+                    <p class="card-text">
+                        BS:<b style="color:maroon"> @Html.DisplayFor(modelItem => item.hovaten)</b><br />
+                        @Html.DisplayFor(modelItem => item.namsinh)<br />
+                        @Html.DisplayFor(modelItem => item.chucvu)
+                    </p>
+                    <div style="background-color:forestgreen; height:40px;padding:10px;">
+                        <a href="@Url.Action("chitietbacsi",new { @id_bs = item.id_bacsi})" style="color:white;text-decoration:none">Thông tin chi tiết ></a>
+
+                    </div>
+
+                </div>
             </div>
-        </div>
+            </div>
+        }
+      
     }
-}
+

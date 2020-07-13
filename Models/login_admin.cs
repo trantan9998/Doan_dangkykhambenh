@@ -10,10 +10,12 @@ namespace doan_qldkonline.Models
 {
     public class login_admin
     {
-        [DisplayName("email")]
-        [Required(ErrorMessage = "Vui lòng nhập Tài khoản")]
+        public int ma_user { get; set; }
         public string name_user { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         public string password { get; set; }
+        public Nullable<int> quyen { get; set; }
+        public Nullable<int> id_bacsi { get; set; }
+
+        public virtual bacsi bacsi { get; set; }
     }
 }

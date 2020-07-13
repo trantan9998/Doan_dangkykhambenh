@@ -1,0 +1,154 @@
+﻿@model doan_qldkonline.Models.datlichkham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
+}
+<h3 style="color:forestgreen">THÔNG TIN BỆNH NHÂN ĐĂNG KÝ VỚI BÁC SĨ</h3>
+<div class="toolbar hidden-print">
+    <div class="text-right">
+        <button style="background-color:forestgreen;color:white;border-radius:10px;">
+            @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.id_benhnhan })
+        </button>
+        <a onclick="window.print()" id="printInvoice" class="btn btn-info" href="#"> Print</a>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="background-color:lavender;border-radius:20px;font-size:18px;margin-left:60px;width:700px;">
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.hoten)
+        </dt>
+
+        <dd >
+            @Html.DisplayFor(model => model.hoten)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaysinh)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.gioitinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gioitinh)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.sodienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sodienthoai)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.diachi)
+        </dt>
+
+        <dd >
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.motatrieuchung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motatrieuchung)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.ngaykham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaykham)
+
+        </dd>
+
+        @*<dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.hinhdaidien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhdaidien)
+        </dd>*@
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matkhau)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.ActivationCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivationCode)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.IsEmailVerified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEmailVerified)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.giokham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giokham)
+        </dd>
+
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.id_bacsi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_bacsi)
+        </dd>
+        <dd>
+            <a href="@Url.Action("quanlybacsi","QL_bacsi")" style="background-color:darkblue;color:white">XEM BÁC SĨ</a>
+
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.bacsi.hovaten)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.bacsi.hovaten)
+            </dd>*@
+
+    </dl>
+    <button style="margin-left:400px;background-color:forestgreen;font-size:20px;border-radius:10px;color:white">
+        <a href="@Url.Action("Index","Email")">GỬI EMAIL</a> /
+
+    </button>
+ 
+</div>
+<p>
+    @Html.ActionLink("QUAY LẠI /", "ds_dangkybacsi")
+</p>

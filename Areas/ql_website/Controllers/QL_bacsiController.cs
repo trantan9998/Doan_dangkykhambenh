@@ -14,19 +14,53 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
     public class QL_bacsiController : Controller
     {
         // GET: ql_website/QL_bacsi
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult quanlybacsi()
+        [HttpGet]
+        public ActionResult themtaikhoan(int? id_bacsi)
         {
-            return View(db.bacsis.ToList());
+            LOGIN l = db.LOGINs.SingleOrDefault(n => n.id_bacsi == id_bacsi);
+            return View(l);
         }
-        public ActionResult timkiem(string timkiem)
+        [HttpPost]
+        public ActionResult themtaikhoan(LOGIN bs)
         {
-            return View(db.bacsis.Where(x => x.hovaten.Contains(timkiem) || timkiem == null).ToList());
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
+            {
+                db.LOGINs.Add(bs);
+                db.SaveChanges();
+            }
+            //viewbag.message = "bạn đã thêm thành công";
+            return View();
         }
+        //public actionresult quanlybacsi()
+        //{
+        //    return view();
+        //}
+
+        [HttpGet]
+        public ActionResult quanlybacsi( )
+        {
+            //return View(db.bacsis.ToList());
+            if (Session["quyen"] == null)
+            {
+                var mabs = int.Parse(Session["getbacsi"].ToString());
+                var mabacsi = db.bacsis.Where(n => n.id_bacsi == mabs).ToList();
+                return View(mabacsi);
+            }
+            else
+            {
+                using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
+                {
+                    var mabacsi = (from bacsi in db.bacsis select bacsi).ToList();
+                    return View(mabacsi);
+                }
+            }
+        }
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,11 +72,15 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.khoa = new SelectList(db.khoas.ToList().OrderBy(n => n.id_khoa), "id_khoa", "id_khoa");
+
             return View(bs);
         }
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.khoa = new SelectList(db.khoas.ToList().OrderBy(n => n.id_khoa), "id_khoa", "id_khoa");
+
             return View();
         }
         [HttpPost]
@@ -55,12 +93,14 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             imageModel.hinhanh = "~/hinh_bacsi/" + filename;
             filename = Path.Combine(Server.MapPath("~/hinh_bacsi/"), filename);
             imageModel.ImageFile.SaveAs(filename);
-            using (QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities())
+            using (QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1())
             {
                 db.bacsis.Add(imageModel);
                 db.SaveChanges();   
             }
             ModelState.Clear();
+            ViewBag.khoa = new SelectList(db.khoas.ToList().OrderBy(n => n.id_khoa), "id_khoa", "id_khoa");
+
             //ViewBag.message = "Bạn đã thêm thành công";
             return View();
         }
@@ -77,6 +117,8 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.khoa = new SelectList(db.khoas.ToList().OrderBy(n => n.id_khoa), "id_khoa", "id_khoa");
+
             return View(dk);
         }
 
@@ -96,7 +138,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit");
             }
-
+            ViewBag.khoa = new SelectList(db.khoas.ToList().OrderBy(n => n.id_khoa), "id_khoa", "id_khoa");
             return View(imageModel);
         }
         //[HttpGet]

@@ -15,7 +15,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
 {
     public class QL_hosobenhnhanController : Controller
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
         // GET: ql_website/QL_hosobenhnhan
         public ActionResult Index()
         {
@@ -51,7 +51,6 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             }
             return View(dk);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(dangkykhambenh dangkykhambenhh)
@@ -65,25 +64,7 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             }
             return View(dangkykhambenhh);
         }
-       
-        
-       
-        //public ActionResult Edit(int? id)
-        //{
-
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    datlichkham dlk = db.datlichkhams.Find(id);
-        //    if (dlk == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(dlk);
-        //}
      
-
 
         public ActionResult Delete(int? id)
         {
@@ -141,12 +122,6 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             dt.Columns.Add("mô tả triệu chứng", typeof(string));
             dt.Columns.Add("Khác", typeof(string));
 
-
-
-
-            //Add in the datarow
-
-
             foreach (var item in dh)
             {
                 DataRow newRow = dt.NewRow();
@@ -187,5 +162,9 @@ namespace doan_qldkonline.Areas.ql_website.Controllers
             Response.End();
             return Redirect("/ql_website/dsdangky_online");
         }
+
+        
+
+
     }
 }

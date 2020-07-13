@@ -5,14 +5,13 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 
-<h2>Create</h2>
+<h3 style="color:green;font-style:normal">TẠO HỒ SƠ BÁC SĨ</h3>
 
-@using (Html.BeginForm("Create", "QL_bacsi", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+@using (Html.BeginForm("Create", "QL_bacsi", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-                @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-        <h4>bacsi</h4>
+    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -87,14 +86,22 @@
                 @Html.ValidationMessageFor(model => model.kinhnghiem, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ngaylamviec, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ngaylamviec, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ngaylamviec, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*@Html.DropDownList("MaHeHoc", (IEnumerable<SelectListItem>)ViewBag.HeHoc_MHH, "---Chọn---", new { @class = "form-control" })*@
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.id_khoa, "id_khoa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_khoa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("id_khoa", (IEnumerable<SelectListItem>)ViewBag.khoa, "---Chọn---", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_khoa, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.diachi, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -105,19 +112,19 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.id_benhnhan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_benhnhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_benhnhan, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.id_benhnhan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_benhnhan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_benhnhan, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-                    @ViewBag.message
+        @ViewBag.message
     </div>
 }
 

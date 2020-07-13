@@ -7,7 +7,7 @@ namespace doan_qldkonline.Models
 {
     public class giohang
     {
-        QL_DKKHAMBENH_ONLINEEntities db = new QL_DKKHAMBENH_ONLINEEntities();
+        QL_DKKHAMBENH_ONLINEEntities1 db = new QL_DKKHAMBENH_ONLINEEntities1();
 
         public int i_goikham { get; set; }
 

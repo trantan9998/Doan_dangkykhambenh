@@ -15,16 +15,46 @@ namespace doan_qldkonline.Models
 
     public partial class dangkykhambenh
     {
+        [Display (Name ="Mã bệnh nhân")]
         public int id_benhnhan { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "vui lòng nhập họ tên")]
+        [Display(Name = "Họ Và Tên")]
+        [Required(ErrorMessage = "vui lòng nhập Họ và tên")]
         public string hovaten { get; set; }
+
+        [Display(Name = "Năm sinh")]
+        [Required(ErrorMessage = "vui lòng nhập năm sinh")]
         public Nullable<double> namsinh { get; set; }
+
+        [Display(Name = "Giới tính")]
+        [Required(ErrorMessage = "vui lòng nhập giới tính")]
         public string gioitinh { get; set; }
+
+        [Display(Name = "Địa chỉ")]
+        [Required(ErrorMessage = "vui lòng nhập địa chỉ")]
         public string diachi { get; set; }
+
+        [Display(Name = "Ngày khám")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "vui lòng nhập Ngày Khám")]
         public Nullable<System.DateTime> ngaykham { get; set; }
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [Required(ErrorMessage = "vui lòng nhập giờ khám")]
+
         public string giokham { get; set; }
+
+        [Display(Name = "Mô Tả Triệu chứng")]
+        [Required(ErrorMessage = "vui lòng nhập mô tả triệu chứng")]
         public string motatrieuchung { get; set; }
+
+        [Display(Name = "Khác")]
         public string khac { get; set; }
+
+        [Display(Name = "Số Điện Thoại")]
+        [Required(ErrorMessage = "vui lòng nhập số điện thoại")]
+        [Phone(ErrorMessage = "Vui lòng nhập đúng số điện thoại")]
+        [StringLength(maximumLength: 10, MinimumLength = 10, ErrorMessage = "Số điện thoại phải 10 số")]
         public string sodienthoai { get; set; }
     }
 }

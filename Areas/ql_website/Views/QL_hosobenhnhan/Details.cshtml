@@ -5,83 +5,85 @@
     Layout = "~/Areas/ql_website/Views/Shared/Layout_admin01.cshtml";
 }
 <div>
-    <h3>THÔNG TIN BỆNH NHÂN </h3>
+    <h3 style="color:forestgreen">THÔNG TIN BỆNH NHÂN ĐĂNG KÝ </h3>
     <div class="toolbar hidden-print">
         <div class="text-right">
-            <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
-            <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+            <button style="background-color:forestgreen;color:white;border-radius:10px;">
+                @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.id_benhnhan }) 
+            </button>
+            <a onclick="window.print()" id="printInvoice" class="btn btn-info" href="#"> Print</a>
+
         </div>
     </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hovaten)
+    <dl class="dl-horizontal" style="background-color:lavender;border-radius:20px;font-size:18px;margin-left:60px;width:700px;">
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.hovaten):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.hovaten)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.namsinh)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.namsinh):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.namsinh)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gioitinh)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.gioitinh):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.gioitinh)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.diachi)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.diachi):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.diachi)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ngaykham)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.ngaykham):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ngaykham)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.giokham)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.giokham):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.giokham)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.motatrieuchung)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.motatrieuchung):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.motatrieuchung)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.khac)
+        <dt style="font-size:17px;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.khac):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.khac)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.sodienthoai)
+        <dt style="font-size:17px;color:orangered;background-color:lightblue">
+            @Html.DisplayNameFor(model => model.sodienthoai):
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.sodienthoai)
         </dd>
@@ -89,8 +91,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_benhnhan }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("QUAY LẠI /", "dsdangky_online")
 </p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="~/Areas/ql_website/css/print.css" rel="stylesheet" />

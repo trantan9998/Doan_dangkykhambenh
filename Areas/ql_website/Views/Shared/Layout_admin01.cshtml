@@ -18,10 +18,10 @@
         <nav id="sidebar" style="background-color:#222D32; color: #9EBDC7;">
             <div class="sidebar-header" style="background-color:#1A2226;color:white">
                 <h3>Administrator </h3>
-                <h3 class="glyphicon glyphicon-user">
+                <h3 class="glyphicon glyphicon-user"><br />
                     @{
 
-                        if (Session["taikhoan"] == null)
+                        if (Session["Admin"] == null)
                         {
 
                         }
@@ -29,8 +29,8 @@
                         {
                             <a href="#" style="text-decoration:none;">
 
-                                <font color="aqua">
-                                    @Session["taikhoan"]
+                                <font color="aqua" size="4px;">
+                                    @Session["Admin"]
 
                                 </font>
                             </a>
@@ -40,92 +40,114 @@
 
                 <strong style="font-size:15px">ADMIN</strong>
             </div>
-            
+
             <ul class="list-unstyled @*components*@">
+                @if (Session["quyen"] == null)
+                {
+                    <a href="@Url.Action("quanlybacsi", "QL_bacsi")">
+                        <i class="glyphicon glyphicon-send"></i>
+                        Quản lý Bác sỹ
+                    </a>
+                }
+                else
+                {
 
 
-                <li style="background-color:#1A2226;font-size:16px;">
+
+
+                <li style="background-color:#1A2226;font-size:16px;color:orange">
                     <span>
-                        CHỨC NĂNG HỆ THỐNG
+                        CHỨC NĂNG QUẢN LÝ
                     </span>
                 </li>
 
                 <li style="margin-top:10px;">
-                    <a href="@Url.Action("thongke","Thongke")">
+                    <a href="@Url.Action("thongke", "Thongke")">
                         <i class="glyphicon glyphicon-home"></i>
                         Trang chủ
                     </a>
 
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-paperclip"></i>
+                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-cog"></i>
                         Thiết lập website
                     </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu1">
+                        <li><a href="@Url.Action("trangchu_nguoidung", "QL_gioithieu")">Thiết lập giới thiệu</a></li>
+                        <li><a href="#">Khóa website</a></li>
+                    </ul>
                 </li>
-
                 <li class="bg-grey">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Quản lý hồ sơ
+                        <i class="glyphicon glyphicon-user"></i>
+                        Quản lý bệnh nhân
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li><a href="@Url.Action("dsdangky_online","QL_hosobenhnhan")">đăng ký online</a></li>
-                        <li><a href="#">Đăng ký offline</a></li>
+                        <li><a href="@Url.Action("dsdangky_online", "QL_hosobenhnhan")">Đăng ký khám</a></li>
+                        <li><a href="@Url.Action("ds_dangkybacsi", "QL_Taikhoan")">Đăng ký với bác sĩ</a></li>
+                        <li><a href="@Url.Action("quanlyhs", "Hosobenhnhan")">Lập hồ sơ Bệnh Nhân</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="@Url.Action("quanlybacsi","QL_bacsi")">
-                        <i class="glyphicon glyphicon-send"></i>
+                    <a href="@Url.Action("quanlybacsi", "QL_bacsi")">
+                        <i class="glyphicon glyphicon-leaf"></i>
                         Quản lý Bác sỹ
                     </a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-duplicate"></i>
+                        <i class="glyphicon glyphicon-grain"></i>
                         Quản lý khoa
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="@Url.Action("quanlykhoa", "QL_Khoa")" style="background-color:darkslategrey">KHOA</a></li>
                         <li><a href="#">Khoa nội</a></li>
                         <li><a href="#">Khoa ngoại</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="@Url.Action("quanlygoikham","QL_goikham")">
-                        <i class="glyphicon glyphicon-link"></i>
+                    <a href="@Url.Action("quanlygoikham", "QL_goikham")">
+                        <i class="glyphicon glyphicon-tasks"></i>
                         Quản lý gói khám
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-link"></i>
+                    <a href="@Url.Action("taikhoanadmin", "thongke")">
+                        <i class="glyphicon glyphicon-list-alt"></i>
                         Quản lý tài khoản
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("danhsachbaiviet","QL_Baiviet")">
-                        <i class="glyphicon glyphicon-paperclip"></i>
+                    <a href="@Url.Action("danhsachbaiviet", "QL_Baiviet")">
+                        <i class="glyphicon glyphicon-pencil	"></i>
                         Quản lý bài viết
                     </a>
                 </li>
-
                 <li>
                     <a href="https://dashboard.tawk.to/#/chat">
-                        <i class="glyphicon glyphicon-paperclip"></i>
+                        <i class="glyphicon glyphicon-comment	"></i>
                         Quản lý Tin nhắn
                     </a>
                 </li>
+                <li>
+                    <a href="@Url.Action("Index", "Email")">
+                        <i class="glyphicon glyphicon-send	"></i>
+                        Gửi Email
+                    </a>
+                </li>
+                }
 
             </ul>
         </nav>
         <!-- Page Content Holder -->
         <div id="content">
             @*<div class="input-group">
-                <input type="text" class="form-control" placeholder="Search ..">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>*@
+                    <input type="text" class="form-control" placeholder="Search ..">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>*@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -137,7 +159,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            
+
                             <li><a href="@Url.Action("Map","Admin")">MAP</a></li>
                             <li><a href="@Url.Action("Thongtin","Admin")">THÔNG TIN</a></li>
                             <li>
@@ -147,13 +169,13 @@
                                     </a>
                                     <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item " href="#"><center>Thông tin</center></a>
-                                         <a class="dropdown-item" href="#" >
-                                       <h4 class="glyphicon glyphicon-user" style="text-align:center;background-color:darkred;width:100%;height:30px;color:aliceblue;font-style:italic;padding:1px;">@Html.ActionLink(" ĐĂNG XUẤT", "index", "Login")</h4> 
-                                         </a>
+                                        <a class="dropdown-item" href="#">
+                                            <h4 class="glyphicon glyphicon-user" style="text-align:center;background-color:darkred;width:100%;height:30px;color:aliceblue;font-style:italic;padding:1px;">@Html.ActionLink(" ĐĂNG XUẤT", "index", "Login")</h4>
+                                        </a>
 
                                         <br />
                                     </div>
-                                   
+
                                 </div>
                             </li>
                         </ul>
@@ -175,6 +197,6 @@
             });
         });
     </script>
-
+   
 </body>
 </html>
