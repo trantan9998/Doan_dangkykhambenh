@@ -767,6 +767,7 @@
     <Content Include="Areas\ql_website\Views\Hosobenhnhan\Edit.cshtml" />
     <Content Include="Areas\ql_website\Views\Hosobenhnhan\Delete.cshtml" />
     <Content Include="Areas\ql_website\Views\Hosobenhnhan\Create.cshtml" />
+    <Content Include="Areas\ql_website\img\video_demo.mp4" />
     <None Include="packages.config" />
     <Content Include="Views\layout\layout_trangchu.cshtml" />
     <Content Include="Views\Trangchu\dichvu.cshtml" />
